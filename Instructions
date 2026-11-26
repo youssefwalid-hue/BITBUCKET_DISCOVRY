@@ -5,3 +5,7 @@ py bri.py statut --nom instance --verifier                                    # 
 py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000   # seulement si la collecte --refresh a tourné avec la v7.4
 py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires
 py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus
+
+
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
+py tests\test_bri.py 2>&1 | Select-String "ÉCHEC|Résultat"
