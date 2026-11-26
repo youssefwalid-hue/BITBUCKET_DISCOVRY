@@ -1,0 +1,1152 @@
+{
+ "sonde": "1.3",
+ "date_utc": "2026-11-26T10:53:41Z",
+ "hote": "https://apitools.mycloud.intrabpce.fr",
+ "cia": "NXW53",
+ "tests": [
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/health",
+   "description": "disponibilité de la façade Bitbucket",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/health",
+   "status": 200,
+   "ms": 768,
+   "bytes": 14,
+   "content_type": "application/json",
+   "shape": "str",
+   "error": null
+  },
+  {
+   "facade": "refa",
+   "operation": "refa/{cia}/info",
+   "description": "informations complètes du CIA (CIA techniques, score DICP, entité, établissement, équipe ops, statut, parent)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/NXW53/info",
+   "status": 200,
+   "ms": 193,
+   "bytes": 188,
+   "content_type": "application/json",
+   "shape": {
+    "cia": "str",
+    "status": "str",
+    "dicp": "int",
+    "entite_biats": "str",
+    "entite_refa": "str",
+    "code_etablissement": "str",
+    "cia_tech": [
+     "1 éléments",
+     "str"
+    ],
+    "ops_team": "str",
+    "parent": "null"
+   },
+   "error": null,
+   "body": {
+    "cia": "NXW53",
+    "status": "Deployed",
+    "dicp": 25,
+    "entite_biats": "BPCESA",
+    "entite_refa": "BPCE",
+    "code_etablissement": "02C",
+    "cia_tech": [
+     "BIS88"
+    ],
+    "ops_team": "PRD-APP-CORP-RSK-AUTRE",
+    "parent": null
+   }
+  },
+  {
+   "facade": "refa",
+   "operation": "refa/{cia}/dicp",
+   "description": "score DICP",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/NXW53/dicp",
+   "status": 200,
+   "ms": 137,
+   "bytes": 11,
+   "content_type": "application/json",
+   "shape": {
+    "dicp": "int"
+   },
+   "error": null,
+   "body": {
+    "dicp": 25
+   }
+  },
+  {
+   "facade": "refa",
+   "operation": "refa/{cia}/cia_tech",
+   "description": "CIA techniques associés",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/NXW53/cia_tech",
+   "status": 200,
+   "ms": 150,
+   "bytes": 9,
+   "content_type": "application/json",
+   "shape": [
+    "1 éléments",
+    "str"
+   ],
+   "error": null,
+   "body": [
+    "BIS88"
+   ]
+  },
+  {
+   "facade": "refa",
+   "operation": "refa/privatif_etab",
+   "description": "table préfixe CIA (bigramme) → code contributeur (trigramme)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/privatif_etab",
+   "status": 200,
+   "ms": 145,
+   "bytes": 353,
+   "content_type": "application/json",
+   "shape": {
+    "NA": "str",
+    "VF": "str",
+    "LC": "str",
+    "BX": "str",
+    "RI": "str",
+    "MS": "str",
+    "LI": "str",
+    "LR": "str",
+    "SU": "str",
+    "BN": "str",
+    "PA": "str",
+    "NO": "str",
+    "MP": "str",
+    "IF": "str",
+    "PL": "str",
+    "GE": "str",
+    "AP": "str",
+    "PR": "str",
+    "LD": "str",
+    "BO": "str",
+    "LA": "str",
+    "LO": "str",
+    "RA": "str",
+    "CA": "str",
+    "AU": "str",
+    "NF": "str",
+    "OC": "str",
+    "CT": "str",
+    "SC": "str",
+    "IC": "str",
+    "TU": "str",
+    "FI": "str"
+   },
+   "error": null,
+   "body": {
+    "NA": "BGO",
+    "VF": "BVF",
+    "LC": "BLC",
+    "BX": "BCA",
+    "RI": "BRI",
+    "MS": "BME",
+    "LI": "BPN",
+    "LR": "BRA",
+    "SU": "BPS",
+    "BN": "BBF",
+    "PA": "PAL",
+    "NO": "NOR",
+    "MP": "MPY",
+    "IF": "IDF",
+    "PL": "BPL",
+    "GE": "GEE",
+    "AP": "APC",
+    "PR": "PAC",
+    "LD": "LDA",
+    "BO": "BFC",
+    "LA": "LRO",
+    "LO": "LOC",
+    "RA": "RHA",
+    "CA": "CAZ",
+    "AU": "ALI",
+    "NF": "NFE",
+    "OC": "BOC",
+    "CT": "CAP",
+    "SC": "SFI",
+    "IC": "IDC",
+    "TU": "TUR",
+    "FI": "CFI"
+   }
+  },
+  {
+   "facade": "refa",
+   "operation": "refa/code_etab",
+   "description": "codes établissement par entité",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/code_etab",
+   "status": 200,
+   "ms": 142,
+   "bytes": 225,
+   "content_type": "application/json",
+   "shape": {
+    "GFS": [
+     "25 éléments",
+     "str"
+    ],
+    "BSA": [
+     "2 éléments",
+     "str"
+    ],
+    "BSI": [
+     "4 éléments",
+     "str"
+    ],
+    "BIT": [
+     "1 éléments",
+     "str"
+    ]
+   },
+   "error": null,
+   "body": {
+    "GFS": [
+     "53E",
+     "64H",
+     "73D",
+     "940",
+     "58E",
+     "795",
+     "932",
+     "849",
+     "103",
+     "869",
+     "77D",
+     "119",
+     "895",
+     "325",
+     "03A",
+     "25J",
+     "278",
+     "253",
+     "46A",
+     "92F",
+     "23F",
+     "121",
+     "677",
+     "19A",
+     "000"
+    ],
+    "BSA": [
+     "02C",
+     "42D"
+    ],
+    "BSI": [
+     "131",
+     "26D",
+     "72H",
+     "81H"
+    ],
+    "BIT": [
+     "094"
+    ]
+   }
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/projects/{cia}",
+   "description": "projets Bitbucket rattachés au CIA selon apitools",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/projects/NXW53",
+   "status": 200,
+   "ms": 632,
+   "bytes": 15,
+   "content_type": "application/json",
+   "shape": {
+    "projects": [
+     "0 éléments",
+     null
+    ]
+   },
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/project/{key}/habilitations",
+   "description": "habilitations du premier projet renvoyé",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/habilitations",
+   "status": 200,
+   "ms": 210,
+   "bytes": 1096,
+   "content_type": "application/json",
+   "shape": {
+    "habilitations": [
+     "14 éléments",
+     {
+      "group": "{…1 clés}",
+      "permission": "str"
+     }
+    ]
+   },
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/project/{key}/repos",
+   "description": "dépôts du premier projet renvoyé",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/repos",
+   "status": 200,
+   "ms": 589,
+   "bytes": 16876,
+   "content_type": "application/json",
+   "shape": {
+    "repositories": [
+     "21 éléments",
+     {
+      "slug": "str",
+      "id": "int",
+      "name": "str",
+      "hierarchyId": "str",
+      "scmId": "str",
+      "state": "str",
+      "statusMessage": "str",
+      "forkable": "bool",
+      "project": "{…7 clés}",
+      "public": "bool",
+      "archived": "bool",
+      "links": "{…2 clés}"
+     }
+    ]
+   },
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/project/{key}/{repo}/forks",
+   "description": "forks du premier dépôt",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/w53-ioda-backend/forks",
+   "status": 200,
+   "ms": 205,
+   "bytes": 2,
+   "content_type": "application/json",
+   "shape": [
+    "0 éléments",
+    null
+   ],
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/project/{key}/repos/{repo}/branches?order_by=MODIFICATION&limit=1",
+   "description": "branche la plus récemment modifiée",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/repos/w53-ioda-backend/branches?order_by=MODIFICATION&limit=1",
+   "status": 200,
+   "ms": 5042,
+   "bytes": 8488,
+   "content_type": "application/json",
+   "shape": [
+    "30 éléments",
+    {
+     "id": "str",
+     "displayId": "str",
+     "type": "str",
+     "latestCommit": "str",
+     "latestChangeset": "str",
+     "isDefault": "bool"
+    }
+   ],
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/project/{key}/cf-activity",
+   "description": "activité Code Frequency du projet",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/cf-activity",
+   "status": 200,
+   "ms": 2047,
+   "bytes": 2880,
+   "content_type": "application/json",
+   "shape": {
+    "status": "str",
+    "probes": {
+     "NXW53/nxw53-datasource_jboss": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-ap-fft": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-ap-prob-distributions": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-bashscripts": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-e2etests": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-ioda-backend": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-ioda-frontend": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-ioda-var-engine": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-mint-e2e-test": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-monitoring": {
+      "empty": "bool"
+     },
+     "NXW53/w53-osirisk": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-osirisk-client-sdk": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-osirisk-e2e-test": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-osirisk-integration-test": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-osirisk-sql": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-support-dashboard": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-web-app": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-web-gui": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53-xld-dictionary": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53_moteur": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     },
+     "NXW53/w53_sql": {
+      "size": "int",
+      "write": "int",
+      "last180": "int",
+      "committer": "str"
+     }
+    }
+   },
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/awesome-graphs-api-commits?limit=1",
+   "description": "Awesome Graphs : commits (1 élément)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/awesome-graphs-api-commits?limit=1",
+   "status": 200,
+   "ms": 13327,
+   "bytes": 485,
+   "content_type": "application/json",
+   "shape": {
+    "values": [
+     "1 éléments",
+     {
+      "author": "{…2 clés}",
+      "authorTimestamp": "str",
+      "linesOfCode": "{…2 clés}",
+      "parents": [
+       "1 éléments",
+       "{…1 clés}"
+      ],
+      "repository": "{…3 clés}",
+      "id": "str"
+     }
+    ],
+    "isLastPage": "bool",
+    "nextPageStart": "int",
+    "size": "int",
+    "limit": "int",
+    "start": "int"
+   },
+   "error": null
+  },
+  {
+   "facade": "bitbucket",
+   "operation": "bitbucket/awesome-graphs-api-pull-requests?limit=1",
+   "description": "Awesome Graphs : pull requests (1 élément)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/awesome-graphs-api-pull-requests?limit=1",
+   "status": 200,
+   "ms": 4417,
+   "bytes": 1715,
+   "content_type": "application/json",
+   "shape": {
+    "values": [
+     "1 éléments",
+     {
+      "locked": "bool",
+      "closed": "bool",
+      "open": "bool",
+      "participants": [
+       "0 éléments",
+       null
+      ],
+      "updatedDate": "str",
+      "toRef": "{…4 clés}",
+      "title": "str",
+      "fromRef": "{…4 clés}",
+      "author": "{…4 clés}",
+      "reviewers": [
+       "0 éléments",
+       null
+      ],
+      "createdDate": "str",
+      "id": "int",
+      "state": "str",
+      "version": "int",
+      "description": "str",
+      "link": "str"
+     }
+    ],
+    "isLastPage": "bool",
+    "nextPageStart": "int",
+    "size": "int",
+    "limit": "int",
+    "start": "int"
+   },
+   "error": null
+  },
+  {
+   "facade": "checkmarx",
+   "operation": "Checkmarx/teams/{cia}",
+   "description": "équipe Checkmarx du CIA (SAST)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/Checkmarx/teams/NXW53",
+   "status": 200,
+   "ms": 571,
+   "bytes": 110,
+   "content_type": "application/json",
+   "shape": {
+    "input": "str",
+    "allowed": "bool",
+    "exists": "bool",
+    "teampath": "str",
+    "reason": "null"
+   },
+   "error": null
+  },
+  {
+   "facade": "sonarqube",
+   "operation": "Sonarqube/projects?project={cia}",
+   "description": "projets SonarQube filtrés sur le CIA",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/Sonarqube/projects?project=NXW53",
+   "status": 200,
+   "ms": 2032,
+   "bytes": 1921,
+   "content_type": "application/json",
+   "shape": [
+    "8 éléments",
+    {
+     "key": "str",
+     "name": "str",
+     "qualifier": "str",
+     "visibility": "str",
+     "lastAnalysisDate": "str",
+     "managed": "bool",
+     "projectUuid": "str"
+    }
+   ],
+   "error": null
+  },
+  {
+   "facade": "jenkins",
+   "operation": "jenkins/folder/{cia}",
+   "description": "dossier Jenkins du CIA",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/folder/NXW53",
+   "status": 200,
+   "ms": 359,
+   "bytes": 118,
+   "content_type": "application/json",
+   "shape": [
+    "1 éléments",
+    {
+     "folder": "str",
+     "url": "str",
+     "msg": "str",
+     "status": "str"
+    }
+   ],
+   "error": null
+  },
+  {
+   "facade": "jenkins",
+   "operation": "jenkins/url/{cia}",
+   "description": "instance Jenkins du CIA",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/url/NXW53",
+   "status": 200,
+   "ms": 169,
+   "bytes": 57,
+   "content_type": "application/json",
+   "shape": {
+    "bis88": [
+     "1 éléments",
+     "str"
+    ]
+   },
+   "error": null
+  },
+  {
+   "facade": "jenkins",
+   "operation": "jenkins/inventory/{cia}/items",
+   "description": "jobs du dossier racine (sans folder_path)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/inventory/NXW53/items",
+   "status": 404,
+   "ms": 164,
+   "bytes": 52,
+   "content_type": "application/json",
+   "shape": {
+    "detail": "str"
+   },
+   "error": "{\"detail\": \"No Jenkins instance found for CIA NXW53\"}"
+  },
+  {
+   "facade": "jenkins",
+   "operation": "jenkins/inventory/{cia}/items?folder_path={cia}",
+   "description": "jobs du dossier nommé par le CIA",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/inventory/NXW53/items?folder_path=NXW53",
+   "status": 404,
+   "ms": 134,
+   "bytes": 52,
+   "content_type": "application/json",
+   "shape": {
+    "detail": "str"
+   },
+   "error": "{\"detail\": \"No Jenkins instance found for CIA NXW53\"}"
+  },
+  {
+   "facade": "jenkins",
+   "operation": "jenkins/inventory/{cia_tech}/items",
+   "description": "jobs à la racine de l'instance du CIA technique",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/inventory/BIS88/items",
+   "status": 200,
+   "ms": 181,
+   "bytes": 6798,
+   "content_type": "application/json",
+   "shape": {
+    "https://jenkins-bis88.mycloud.intrabpce.fr/": {
+     "_class": "str",
+     "jobs": [
+      "32 éléments",
+      "{…7 clés}"
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "facade": "jenkins",
+   "operation": "jenkins/inventory/{cia_tech}/items?folder_path={cia}",
+   "description": "jobs du dossier du CIA sur l'instance du CIA technique",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/inventory/BIS88/items?folder_path=NXW53",
+   "status": 200,
+   "ms": 166,
+   "bytes": 10078,
+   "content_type": "application/json",
+   "shape": {
+    "https://jenkins-bis88.mycloud.intrabpce.fr/": {
+     "_class": "str",
+     "fullName": "str",
+     "jobs": [
+      "9 éléments",
+      "{…16 clés}"
+     ]
+    }
+   },
+   "error": null
+  },
+  {
+   "facade": "jira",
+   "operation": "jira/projects/search?cia={cia}",
+   "description": "projet Jira du CIA",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jira/projects/search?cia=NXW53",
+   "status": 422,
+   "ms": 137,
+   "bytes": 89,
+   "content_type": "application/json",
+   "shape": {
+    "detail": [
+     "1 éléments",
+     {
+      "type": "str",
+      "loc": [
+       "2 éléments",
+       "str"
+      ],
+      "msg": "str",
+      "input": "null"
+     }
+    ]
+   },
+   "error": "{\"detail\": [{\"type\": \"missing\", \"loc\": [\"query\", \"key\"], \"msg\": \"Field required\", \"input\": null}]}"
+  },
+  {
+   "facade": "jira",
+   "operation": "jira/projects/search?cia={cia}&key={key}",
+   "description": "projet Jira du CIA (avec la clé de projet)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jira/projects/search?cia=NXW53&key=NXW53",
+   "status": 404,
+   "ms": 785,
+   "bytes": 310,
+   "content_type": "application/json",
+   "shape": {
+    "message": "str",
+    "backend_message": "str"
+   },
+   "error": "{\"message\": \"Client error '404 ' for url 'https://jira.mycloud.intranatixis.com/rest/api/2/project/NXW53NXW53'\\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404\", \"backend_message\": \"{\\\"errorMessages\\\":[\\\"No project could be found with key 'NXW53NXW53'.\\\"],\\\"e"
+  },
+  {
+   "facade": "jira",
+   "operation": "jira/projects/{key}",
+   "description": "projet Jira portant la clé du projet Bitbucket",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jira/projects/NXW53",
+   "status": 404,
+   "ms": 194,
+   "bytes": 300,
+   "content_type": "application/json",
+   "shape": {
+    "message": "str",
+    "backend_message": "str"
+   },
+   "error": "{\"message\": \"Client error '404 ' for url 'https://jira.mycloud.intranatixis.com/rest/api/2/project/NXW53'\\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404\", \"backend_message\": \"{\\\"errorMessages\\\":[\\\"No project could be found with key 'NXW53'.\\\"],\\\"errors\\\":{}"
+  },
+  {
+   "facade": "xld",
+   "operation": "xld/{cia_tech}/url",
+   "description": "URLs XLD du CIA technique",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/url",
+   "status": 200,
+   "ms": 135,
+   "bytes": 120,
+   "content_type": "application/json",
+   "shape": [
+    "1 éléments",
+    {
+     "url": "str",
+     "is_mars": "bool",
+     "id": "int",
+     "cia_tech": "str",
+     "target_cia_tech": "str"
+    }
+   ],
+   "error": null,
+   "body": [
+    {
+     "url": "https://xld-bis88.mycloud.intrabpce.fr/",
+     "is_mars": false,
+     "id": 58,
+     "cia_tech": "BIS88",
+     "target_cia_tech": "BIS88"
+    }
+   ]
+  },
+  {
+   "facade": "xld",
+   "operation": "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor}&page_size=1&page=1",
+   "description": "applications déployées XLD (1 élément)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/applications?elt_type=deployed_application&editor=BI&page_size=1&page=1",
+   "status": 200,
+   "ms": 222,
+   "bytes": 92,
+   "content_type": "application/json",
+   "shape": [
+    "1 éléments",
+    {
+     "ref": "str",
+     "type": "str"
+    }
+   ],
+   "error": null,
+   "body": [
+    {
+     "ref": "Environments/BIS88/BFABS/10-DEV/ABS-DEV/ABS-API",
+     "type": "udm.DeployedApplication"
+    }
+   ]
+  },
+  {
+   "facade": "xld",
+   "operation": "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor2}&page_size=1&page=1",
+   "description": "applications déployées XLD, autre éditeur",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/applications?elt_type=deployed_application&editor=NX&page_size=1&page=1",
+   "status": 200,
+   "ms": 215,
+   "bytes": 92,
+   "content_type": "application/json",
+   "shape": [
+    "1 éléments",
+    {
+     "ref": "str",
+     "type": "str"
+    }
+   ],
+   "error": null,
+   "body": [
+    {
+     "ref": "Environments/BIS88/BFABS/10-DEV/ABS-DEV/ABS-API",
+     "type": "udm.DeployedApplication"
+    }
+   ]
+  },
+  {
+   "facade": "xld",
+   "operation": "xld/{cia_tech}/environments?editor={editor}&page_size=1&page=1",
+   "description": "environnements XLD (1 élément)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/environments?editor=BI&page_size=1&page=1",
+   "status": 200,
+   "ms": 209,
+   "bytes": 80,
+   "content_type": "application/json",
+   "shape": [
+    "1 éléments",
+    {
+     "ref": "str",
+     "type": "str"
+    }
+   ],
+   "error": null,
+   "body": [
+    {
+     "ref": "Environments/BIS88/BF000/20-VAL/000-VAL.ENV",
+     "type": "udm.Environment"
+    }
+   ]
+  },
+  {
+   "facade": "xld",
+   "operation": "xld/{cia_tech}/applications?elt_type=application&editor={editor}&page_size=50&page=1",
+   "description": "applications XLD de la plateforme (50 premières : repérer le dossier du CIA)",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/applications?elt_type=application&editor=BI&page_size=50&page=1",
+   "status": 200,
+   "ms": 202,
+   "bytes": 3822,
+   "content_type": "application/json",
+   "shape": [
+    "50 éléments",
+    {
+     "ref": "str",
+     "type": "str"
+    }
+   ],
+   "error": null,
+   "body": [
+    {
+     "ref": "Applications/BIS88/BFNIH/BPCEIT/BFNIH-CTLM",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFNIH/BPCEIT/BFNIH-CTLM-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFNIH/nih-notation",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFNIH/nih-notation-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFNIH/nih-notation-sql",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFNII/BPCEIT/BFNII-CTLM",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFNII/BPCEIT/BFNII-CTLM-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/ALTAIR-PAP-DIC",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BFPAP-BDD-ENTR",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BFPAP-BDD-FEERIE",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BFPAP-BDD-MONI",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BFPAP-BDD-ODS",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BFPAP-BDD-PARAM_PAP",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BFPAP-BDD-XLD_OPER",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BPCEIT/BFPAP-CTLM",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/BPCEIT/BFPAP-CTLM-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/PAP-ALTAIR",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/PAP-APP",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPAP/PAP-DIC",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPRO/BFPRO-BACKEND",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPRO/BFPRO-DIC",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPRO/BFPRO-FRONTEND",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPVR/BPCEIT/BFPVR-CTLM",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPVR/BPCEIT/BFPVR-CTLM-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPVR/BPCESA/PVR-API",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPVR/BPCESA/PVR-APPLI",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPVR/BPCESA/PVR-BDD",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFPVR/BPCESA/PVR-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRCC/bfrcc-backend",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRCC/bfrcc-frontend",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRCC/bfrcc-pgsql",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRCC/bfrcc-vault",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRHA/OPENSHIFT/RHA/pge-back",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRHA/OPENSHIFT/RHA/pge-back-dict",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRHA/OPENSHIFT/RHA/pge-front",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRHA/OPENSHIFT/RHA/pge-front-dict",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRNB/BFRNB-API",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRNB/BFRNB-APPLI",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRNB/BFRNB-BDD",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRNB/BFRNB-DICT",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRNB/rnb-appli-POC-Contenairisation/rnb-back",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFRNB/rnb-appli-POC-Contenairisation/rnb-front",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFSTC/Test_rust_app",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFSTC/opera",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFSTC/testappp",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFVMD/bfvmd-dic",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFVMD/mrm-api",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFVSC/bfvsc-dic",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFVSC/mononoke",
+     "type": "udm.Application"
+    },
+    {
+     "ref": "Applications/BIS88/BFYBP/BPCEIT/BFYBP-CTLM",
+     "type": "udm.Application"
+    }
+   ]
+  },
+  {
+   "facade": "artifactory",
+   "operation": "artifactory/health",
+   "description": "connectivité Artifactory",
+   "url": "https://apitools.mycloud.intrabpce.fr/api/v1/artifactory/health",
+   "status": 200,
+   "ms": 235,
+   "bytes": 16,
+   "content_type": "application/json",
+   "shape": "str",
+   "error": null
+  },
+  {
+   "facade": "artifactory",
+   "operation": "artifactory/xray/index/{repo_art}",
+   "description": "indexation Xray du dépôt Artifactory nommé par --repo-artifactory",
+   "status": null,
+   "skipped": "prérequis absent : repo_art"
+  }
+ ],
+ "resume": {
+  "par_code": {
+   "200": 26,
+   "404": 4,
+   "422": 1,
+   "sauté": 1
+  },
+  "cle_projet": "NXW53",
+  "depot": "w53-ioda-backend",
+  "cia_tech": "BIS88",
+  "lisibles": [
+   "bitbucket/health",
+   "refa/{cia}/info",
+   "refa/{cia}/dicp",
+   "refa/{cia}/cia_tech",
+   "refa/privatif_etab",
+   "refa/code_etab",
+   "bitbucket/projects/{cia}",
+   "bitbucket/project/{key}/habilitations",
+   "bitbucket/project/{key}/repos",
+   "bitbucket/project/{key}/{repo}/forks",
+   "bitbucket/project/{key}/repos/{repo}/branches?order_by=MODIFICATION&limit=1",
+   "bitbucket/project/{key}/cf-activity",
+   "bitbucket/awesome-graphs-api-commits?limit=1",
+   "bitbucket/awesome-graphs-api-pull-requests?limit=1",
+   "Checkmarx/teams/{cia}",
+   "Sonarqube/projects?project={cia}",
+   "jenkins/folder/{cia}",
+   "jenkins/url/{cia}",
+   "jenkins/inventory/{cia_tech}/items",
+   "jenkins/inventory/{cia_tech}/items?folder_path={cia}",
+   "xld/{cia_tech}/url",
+   "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor}&page_size=1&page=1",
+   "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor2}&page_size=1&page=1",
+   "xld/{cia_tech}/environments?editor={editor}&page_size=1&page=1",
+   "xld/{cia_tech}/applications?elt_type=application&editor={editor}&page_size=50&page=1",
+   "artifactory/health"
+  ],
+  "refusees_403": [],
+  "absentes_404": [
+   "jenkins/inventory/{cia}/items",
+   "jenkins/inventory/{cia}/items?folder_path={cia}",
+   "jira/projects/search?cia={cia}&key={key}",
+   "jira/projects/{key}"
+  ]
+ }
+}
