@@ -1,1 +1,7 @@
-py sonde_apitools.py --cia NXW53 --projet NXW53 --contenu refa,bitbucket,checkmarx,sonarqube,jenkins,xld --out D:\bri\in\sonde_apitools_NXW53_v2.json
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils
+# 1. enregistrer le sonde_apitools.py joint à la place de l'ancien, puis vérifier :
+Select-String -Path .\sonde_apitools.py -Pattern '^VERSION'                          # attendu : VERSION = "1.3"
+Remove-Item D:\bri\in\sonde_apitools_NXW53_v2.json -ErrorAction SilentlyContinue     # passe 1.1 : données nominatives
+
+# 2. sonde 1.3 (jeton : $env:APITOOLS_TOKEN s'il est posé, sinon saisie masquée) — première ligne affichée : « sonde apitools 1.3 · … »
+py .\sonde_apitools.py --cia NXW53 --projet NXW53 --depot w53-ioda-backend --contenu refa,xld --out D:\bri\in\sonde_apitools_NXW53_v3.json
