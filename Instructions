@@ -1,23 +1,7 @@
 Expand-Archive .\bri_v7.zip -DestinationPath C:\Users\BWT40FH\BITBUCKET\V7\outils -Force
 cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-py -W error verifier_package.py --complet                                     # 17 contrôles attendus
+py -W error verifier_package.py --complet                                     # 17 / 17 attendus, même avec le jeton en session
 py bri.py statut --nom instance --verifier                                    # lignes « qualité » → à me renvoyer
 py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000   # seulement si la collecte --refresh a tourné avec la v7.4
 py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires
-py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus
-
-
-cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-py tests\test_bri.py 2>&1 | Select-String "ÉCHEC|Résultat"
-
-
-
-cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-$env:PYTHONIOENCODING = "utf-8"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-py tests\test_bri.py *> D:\bri\in\test_bri_out.txt
-Select-String -Path D:\bri\in\test_bri_out.txt -Pattern "CHEC|sultat"
-
-cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-$env:PYTHONIOENCODING = "utf-8"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-py tests\test_bri.py *> .\test_bri_out.txt                                                  # relance complète (≈ 1 min), sortie dans le fichier
-Select-String -Path .\test_bri_out.txt -Pattern "CHEC" -Context 0,25 | Out-File .\echecs.txt -Encoding utf8   # les 3 échecs + 25 lignes de détail chacun
+py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus (ton jeton de session sert ici, à juste titre)
