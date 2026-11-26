@@ -1,0 +1,4 @@
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7          # ou le dossier où tu poses le script
+$env:APITOOLS_TOKEN = "<jeton>"
+py sonde_apitools.py --cia NXW53 --out D:\bri\in\sonde_apitools_NXW53.json
+# options : --url https://<hôte apitools>   --contenu refa,checkmarx,xld   --repo-artifactory <clé>   --ca-bundle D:\certs\bpce.pem
