@@ -1,80 +1,25 @@
 
-> test_bri_out.txt:26:  [ÉCHEC] sources externes (REFA + apitools) — stress True {'total': 300, 'faits': 300, 'avec_projets': 300, 
-'sans_projet': 0, 'erreurs': 0, 'liens': 300, 'budget_exhausted': False, 'interrompu': False} {'total': 300, 'faits': 300, 'ok': 
-300, 'vides': 0, 'erreurs': 0, 'sautees': 0, 'budget_exhausted': False, 'interrompu': False, 'par_type': {'responsibles': 300}, 
-'non_souscrits': []} · skip403 True {'total': 4, 'faits': 2, 'ok': 0, 'vides': 1, 'erreurs': 1, 'sautees': 2, 'budget_exhausted': 
-False, 'interrompu': False, 'par_type': {'hostings': 0, 'urls': 0}, 'non_souscrits': ['hostings']} · rc2b 0 port
-  test_bri_out.txt:27:REFA : recherche non relancée (--sans-recherche) · 4 applications en base
-  test_bri_out.txt:28:détails REFA (hostings, urls, responsibles) : 2 applications · 0 lectures à faire (codes rattachés à 
-Bitbucket) · 4 fils
-  test_bri_out.txt:29: · rc 0/0/0/0/0/0/0/1 · same_refa True same_hab None · cnt {'refa_applications': 4, 'refa_hostings': 2, 
-'refa_urls': 2, 'refa_responsibles': 3, 'refa_details': 12, 'apitools_habilitations': 3, 'apitools_projects': 0, 
-'apitools_cia_projects': 0, 'apitools_cia_lookups': 2} · hab_err {'status': 'error', 'http_status': 401} · users 0 · iup 0 · bank 
-{'status_code': 'PRD', 'confidentiality_code': '4', 'internet_exposed': 1, 'ssi_top': 1, 'dora_id': '1', 'pci': 1, 'it_org': 'DSI 
-Banque (direction)'} · resp [{'type_code': 'IT', 'email': 'it.owner@example.com'}, {'type_code': 'RSSI', 'email': 
-'rssi@example.com'}] · syn {'concordant': 0, 'divergent': 0, 'apitools_seul': 0, 'bri_seul': 3, 'aucun': 0, 'projets': 3, 
-'codes_apitools_hors_refa': [], 'projets_apitools_hors_inventaire': [], 'codes_apitools_consultes': 2, 'projets_apitools': 0, 
-'projets_apitools_avec_cia': 0} · mock {'requests': 36, 'refa_tokens': 5, 'apitools_tokens': 0, 'search_posts': 3, 'gets': 28, 
-'hors_liste': 0, 'verbes_non_autorises': 0, 'unauthorized': 13} · ns 3 (error 3) · entrées utilisateur ignorées 0 · projets 0 (avec 
-CIA 0) · codes consultés error 2 · liens CIA → projet 0
-  test_bri_out.txt:30:instantanés du rattachement : #6 refa 2026-11-26T12:06 (4 lignes, api:PROD sources.refa_20261126-120655_80) · 
-#2 habilitations 2026-11-26T12:06 (3 lignes, habilitations.json) · #1 refa 2026-11-26T12:06 (3 lignes, applications.csv)
-  test_bri_out.txt:31:  - 2026-11-26T12:07:00Z sources.projets · ok · appels 3 · faits 2 · erreurs 2
-  test_bri_out.txt:32:  - 2026-11-26T12:06:59Z sources.refa · ok · appels 0 · faits 0 · erreurs 0
-  test_bri_out.txt:33:  - 2026-11-26T12:06:59Z sources.habilitations · ok · appels 3 · faits 3 · erreurs 3
-  test_bri_out.txt:34:  - 2026-11-26T12:06:55Z sources.refa · ok · appels 18 · faits 2 · erreurs 0
-  test_bri_out.txt:35:  - 2026-11-26T12:06:54Z sources.refa · partiel · appels 2 · faits 2 · erreurs 0 · budget épuisé
-  test_bri_out.txt:36:cia importer : [Errno 2] No such file or directory: 
-'C:\\Users\\BWT40FH\\AppData\\Local\\Temp\\bri_test_im9n4nyx\\cia\\hab_api.json'
-  test_bri_out.txt:37:
-> test_bri_out.txt:38:  [ÉCHEC] enrichissement REFA et pages v8 — rc7 0 REFA : 4 applications complétées sur 4 (digramme / éditeur, 
-validation, application associée, MiFID2, libellé DORA, convention et calendrier de service, unités de production) · 0 appel
-  test_bri_out.txt:39: · ext 4 {'group_id': 'A0001', 'cia': 'NXBNK', 'digram': 'NX', 'editor': 'NATIXIS', 'editor_strategy': 'STA', 
-'validation_date': None, 'associated_app': None, 'latency_sensitive': None, 'dora_label': 'DORA', 'agreement_code': None, 
-'agreement_label': None, 'calendar': '7j/7', 'prod_org_unit': 'Production (direction)', 'prod_op_org_unit': 'Exploitation 
-(direction)', 'payload_version': 3, 'enriched_utc': '2026-11-26T12:07:02Z'} · rc8 0 · bank_r {'x': 1, 'top': 1, 'd': ['2', '3', 
-'4', '2'], 'do': 1, 'pci': 1, 'gd': '1', 'pd': '0', 'rf': 0, 'bc': 0, 'si': 0, 'ty': 'APP', 'na': 'DEV', 'lv': 'APP', 'dg': 'NX', 
-'lat': None, 'env': ['PRD', 'UAT'], 'ho': ['INT']} · bank_p {'apit': None, 'cat': None} · cte --nom t --activite
-  test_bri_out.txt:40:prochaine action : arbitrer dans arbitrage.html → Exporter les décisions → py bri.py cia decisions --nom t 
---importer <fichier.json> --appliquer → py bri.py cia rapport --nom t
-  test_bri_out.txt:41:
-> test_bri_out.txt:42:  [OK]    v7.5 activité dérivée (0 appel) + présence + passe --activite — repo_activity : 144 dépôts · 
+> test_bri_out.txt:28:  [OK]    v7.5 activité dérivée (0 appel) + présence + passe --activite — repo_activity : 144 dépôts · 
 payment-api : 79 commits à 90 j / 100+ à 365 j, 1 PR ouverte (45 j, ancienne), 1 fusionnée, branches 1 active / 1 morte, builds 2 
 branches (1 en échec), Jira 1 · bank-commons : dernier tag v2 · présence : 147 dépôts, 3 projets, 0 disparu · --activite : 1 dépôt 
 relu sans toucher au contenu, second passage « rien à faire »
-  test_bri_out.txt:43:  [OK]    v7.5 présence — disparition et réapparition à l'inventaire — docs-wiki retiré de l'instance : 
+  test_bri_out.txt:29:  [OK]    v7.5 présence — disparition et réapparition à l'inventaire — docs-wiki retiré de l'instance : 
 marqué disparu (ligne repos conservée), message de l'inventaire · remis : marque levée
-  test_bri_out.txt:44:  [OK]    v7.5 qualité, extraits par propriétaire, périmètre REFA, pages — statut --verifier : lignes qualité 
-(dépôts, collecte, activité, présence, rattachement) + qualite_20261126-120707.json · rapport : 168 lignes d'extraits (responsables 
+  test_bri_out.txt:30:  [OK]    v7.5 qualité, extraits par propriétaire, périmètre REFA, pages — statut --verifier : lignes qualité 
+(dépôts, collecte, activité, présence, rattachement) + qualite_20261126-122951.json · rapport : 168 lignes d'extraits (responsables 
 REFA × dépôts signalés) + synthèse · index.js : activité par dépôt (c9, po), agrégats projet / instance, premières vues · pages : 
 section et carte d'activité, signal APITOOLS_DIVERGES · --refa-entite BPCE (exact) / --refa-dsi banque (contient) : périmètres sans 
 fichier ; libellé inconnu refusé
-> test_bri_out.txt:45:  [ÉCHEC] v7.5 sonde + test apitools étendu — rc14 0 te globale des dépôts
-  test_bri_out.txt:46:niveau de droits probable du compte : lecture seule REPO_READ (réglages d'administration refusés : hooks du 
-dépôt, webhooks du dépôt, permissions (groupes) du dépôt, permissions (groupes) du projet, journal d'audit du dépôt)
-  test_bri_out.txt:47:résultat écrit : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_im9n4nyx\sonde.json (codes HTTP et formes 
-seulement, aucun corps)
-  test_bri_out.txt:48:19 appels GET, 0 non GET
-  test_bri_out.txt:49: · tests {"version de l'instance": 'absent', 'dépôt (identité)': 'lisible', 'branches avec métadonnées': 
-'lisible', 'tags par modification': 'lisible', 'statuts de build du dernier commit': 'absent', 'Code Insights du dernier commit': 
-'absent', 'labels du dépôt': 'absent', 'taille du dépôt': 'absent', 'relecteurs par défaut': 'absent', 'réglages de pull request': 
-'absent', 'auto-decline des PR': 'absent', 'restrictions de branches': 'absent', 'builds requis': 'absent', 'hooks du dépôt': 
-'absent', 'webhooks du dépôt': 'absent', 'permissions (groupes) du dépôt': 'absent', 'permissions (groupes) du projet': 'absent', 
-"journal d'audit du dépôt": 'absent', 'liste globale des dépôts': 'absent'} · rc15 0       HTTP 401 · objet {detail} · 143 ms
-  test_bri_out.txt:50:    bitbucket cf-activity    HTTP 401 · objet {detail} · 107 ms
-  test_bri_out.txt:51:    xld url                  sauté (CIA technique inconnu : refa/{cia}/info non lisible)
-  test_bri_out.txt:52:    xld applications         sauté (CIA technique inconnu : refa/{cia}/info non lisible)
-  test_bri_out.txt:53:    xld environments         sauté (CIA technique inconnu : refa/{cia}/info non lisible)
-  test_bri_out.txt:54:  lisibles : 0 / 13
-  test_bri_out.txt:55:apitools : 15 GET · 0 POST (jeton) · 0 écriture · liste blanche respectée · 0 erreurs · Bitbucket : 0 appel
-  test_bri_out.txt:56:
-  test_bri_out.txt:57:  [OK]    activity_schema.sql = DDL embarqué dans bri.core.activite
-  test_bri_out.txt:58:  [OK]    statut — prochaine action : py bri.py rapport --nom t
-  test_bri_out.txt:59:  [OK]    statut --verifier (intégrité et cohérence de la base, reste à faire) — intégrité : OK — aucune 
+  test_bri_out.txt:31:  [OK]    v7.5 sonde de droits Bitbucket + test apitools étendu — sonder : 19 opérations, identité / branches 
+/ tags lisibles, réglages d'administration absents de l'instance simulée → verdict REPO_READ, JSON sans corps · sources test 
+--etendu : 13 / 13 façades lisibles (refa info → CIA technique BIS88, cf-activity 2 dépôts sondés, committer jamais affiché)
+  test_bri_out.txt:32:  [OK]    activity_schema.sql = DDL embarqué dans bri.core.activite
+  test_bri_out.txt:33:  [OK]    statut — prochaine action : py bri.py rapport --nom t
+  test_bri_out.txt:34:  [OK]    statut --verifier (intégrité et cohérence de la base, reste à faire) — intégrité : OK — aucune 
 anomalie (0 s)
-  test_bri_out.txt:60:  [OK]    aucun verbe autre que GET côté serveur — 2513 appels, 0 non GET
-  test_bri_out.txt:61:  [OK]    aucun verbe HTTP autre que GET dans bri/core/http.py
-  test_bri_out.txt:62:
-> test_bri_out.txt:63:Résultat : ÉCHEC (36 contrôles, 3 échec(s)) — fichiers : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_im9n4nyx
+  test_bri_out.txt:35:  [OK]    aucun verbe autre que GET côté serveur — 2543 appels, 0 non GET
+  test_bri_out.txt:36:  [OK]    aucun verbe HTTP autre que GET dans bri/core/http.py
+  test_bri_out.txt:37:
+> test_bri_out.txt:38:Résultat : OK (36 contrôles, 0 échec(s)) — fichiers : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_0l56ilz5
 
 
