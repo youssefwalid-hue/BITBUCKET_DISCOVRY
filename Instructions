@@ -1,4 +1,36 @@
-cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7          # ou le dossier où tu poses le script
-$env:APITOOLS_TOKEN = "<jeton>"
-py sonde_apitools.py --cia NXW53 --out D:\bri\in\sonde_apitools_NXW53.json
-# options : --url https://<hôte apitools>   --contenu refa,checkmarx,xld   --repo-artifactory <clé>   --ca-bundle D:\certs\bpce.pem
+PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py sonde_apitools.py --cia NXW53 --out D:\bri\in\sonde_apitools_NXW53.json
+sonde apitools 1.0 · hôte https://apitools.mycloud.intrabpce.fr · CIA NXW53 · 25 tests (GET sans effet de bord, lecture seule)
+  bitbucket/health                                                                  200    920 ms       14 o
+  refa/NXW53/info                                                                   200    185 ms      188 o
+  refa/NXW53/dicp                                                                   200    153 ms       11 o
+  refa/NXW53/cia_tech                                                               200    150 ms        9 o
+  refa/privatif_etab                                                                200    148 ms      353 o
+  refa/code_etab                                                                    200    157 ms      225 o
+  bitbucket/projects/NXW53                                                          200    712 ms       15 o
+  bitbucket/project/{key}/habilitations                                             sauté (key)
+  bitbucket/project/{key}/repos                                                     sauté (key)
+  bitbucket/project/{key}/{repo}/forks                                              sauté (key, repo)
+  bitbucket/project/{key}/repos/{repo}/branches?order_by=MODIFICATION&limit=1       sauté (key, repo)
+  bitbucket/project/{key}/cf-activity                                               sauté (key)
+  bitbucket/awesome-graphs-api-commits?limit=1                                      200   9726 ms      659 o
+  bitbucket/awesome-graphs-api-pull-requests?limit=1                                200   3511 ms     1205 o
+  Checkmarx/teams/NXW53                                                             200    518 ms      110 o
+  Sonarqube/projects?project=NXW53                                                  200   5591 ms     1921 o
+  jenkins/folder/NXW53                                                              200    450 ms      118 o
+  jenkins/url/NXW53                                                                 200    155 ms       57 o
+  jenkins/inventory/NXW53/items                                                     404    171 ms       52 o
+  jira/projects/search?cia=NXW53                                                    422    134 ms       89 o
+  xld/BIS88/url                                                                     200    131 ms      120 o
+  xld/BIS88/applications?elt_type=deployed_application&editor=NX&page_size=1&page=  200   7145 ms       92 o
+  xld/BIS88/environments?editor=NX&page_size=1&page=1                               200    226 ms       80 o
+  artifactory/health                                                                200    238 ms       16 o
+  artifactory/xray/index/{repo_art}                                                 sauté (repo_art)
+Traceback (most recent call last):
+  File "C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\sonde_apitools.py", line 202, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\sonde_apitools.py", line 194, in main
+    with open(path_out, "w", encoding="utf-8") as f:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'D:\\bri\\in\\sonde_apitools_NXW53.json'
+PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7>
