@@ -1,23 +1,63 @@
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py tests\test_bri.py 2>&1 | Select-String "ÉCHEC|Résultat"
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> $env:PYTHONIOENCODING = "utf-8"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py tests\test_bri.py *> C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\test_bri_out.txt
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> Select-String -Path C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\test_bri_out.txt -Pattern "CHEC|sultat"
+  [OK]    init — espace et stockage créés
+  [OK]    inventaire — 3 projets, 147 dépôts
+  [OK]    collecte avec plafond d'appels — 17 dépôts puis arrêt propre, reprise proposée
+  [OK]    coupure brutale puis reprise — 26 dépôts validés avant le kill, 144 après la reprise, 0 en attente, 3 erreurs (projet FORBIDDEN) ; état sauvegardé : 100.0 % (etat_collecte.json)
+  [OK]    cache HTTP sans contenu ni donnée nominative — 716 réponses en cache (listes seulement), 0 commits / pull requests / raw
+  [OK]    cache par dernier commit — 126 dépôts recollectés sans appel de contenu
+  [OK]    N2 partout puis N3 priorisée — 24 dépôts en N2 (186 appels) ; --level 3 --actifs 400 --sans-archives : 19 montées N2 → N3 en 94 appels (niveau 2 réutilisé), 15 dépôts en N3, 0 restant à monter
+  [OK]    montée du reste puis rien à collecter — 4 dépôts écartés par le ciblage (2 archivés, 2 inactifs) montés ensuite ; troisième passage : rien à collecter (message explicite)
+  [OK]    passage complet ciblé (--satures --profil complet) — 1 dépôt(s) saturé(s) relu(s) en profil complet malgré le cache ; second passage : rien à collecter
+  [OK]    classification (non-régression v5) — 24/24 types attendus, 147 fiches, règles E.5, bloc analyse sur 147
+  [OK]    exports compatibles v5 — discovery 147 dépôts, contenu 144 dépôts, calls_non_get 0
+  [OK]    grille d'étiquetage xlsx — 40 dépôts, 7 onglets
+  [OK]    mesure L20 + kit D-08 + rapport de synthèse — auto-cohérence 100 %, rapport 492 Ko
+  [OK]    tableaux de bord — index.html + 3 projets, 3 fichiers de fiches, 1 tranches ; instance : 147 dépôts, 147 fiches
+  [OK]    rapport par entité — périmètre DEMO (fichier : bank ; NOPE) → 1 projet retenu, NOPE signalé inconnu, 24 dépôts, 1 fichier projet ; mémorisé dans bri.json et réutilisé par --entite seul ; export discovery/fiches suffixés DEMO
+  [OK]    versions de paramètres — page des règles générée ; version TEST_ENT (deployable_api=NOM, profil court_10) : payment-api → API / MAINTENANCE, fiches « E.5/TEST_ENT » ; mesure enregistrée dans la version (100 %) ; retour à la base : APPLICATION / ACTIVE
+  [OK]    plan de collecte — plan de collecte — 3 projets, 147 dépôts (3 à collecter) · ≈ 606 appels GET · 0.0 h à 6.0 appels/s (3 fils) · 3 lot(s), 1 jour(s) à 10 h/jou
+  [OK]    auto (BANK, taxonomie v2) — chaîne complète en une commande
+  [OK]    rattachement CIA (imports, moteur, états de revue) — 2 imports tracés (réimport ignoré) · run de référence sur 3 projets : BANK → NXBNK (R7, corroboré par le libellé REFA et la description) OK · BIG → NXBIG (R2, 2 candidats, suggestion exacte acceptée, groupes concordants, projet partagé NXBIG + CEBIG) OK · FORBIDDEN non rattaché · schéma v2 (7 tables, 3 vues)
+  [OK]    groupe cia sans appel à Bitbucket — 2481 appels côté serveur avant comme après les commandes cia
+  [OK]    rattachement effectif + décisions — 3 projets / 147 dépôts couverts · CSV : 2 décisions insérées, 4 rejets motivés, réimport 0 doublon créé · JSON page : REVOKE (remplacement tracé) et SET divergent (DECISION_DIVERGES, libellé REFA) · CONFIRM en ligne de commande (auteur wy2) · 5 décisions exportées · exports § 7.3 écrits
+  [OK]    cia rapport (tableaux de bord + arbitrage + exports) — index.js : méta cia, 2 applications, CIA par dépôt (27 dépôts NXBNK) · fiche BANK/payment-api : bloc cia ATTACHED NXBNK décidé par wy2 · arbitrage.html + cia_index / cia_projets (3) / cia_refa (3) · discovery et fiches CSV / JSON avec cia_* · rapport par entité DEMO (1 projet)
+  [OK]    tableaux de bord v7.1 (vue application, rattachement, gouvernance, périmètre CIA) — data/c/NXBNK.js (2 projets : BANK + FORBIDDEN décidé, agrégats) · KPI de gouvernance · onglet Rattachement et navigation · rapport --cia NXBNK,ZZZZZ : 2 projets retenus, ZZZZZ sans projet (cia_sans_projet.csv) · --cia-file CSV Excel (cp1252, « ; », en-tête, entité « DSI Épargne », doublon et valeur invalide ignorés)
+  [OK]    cia comparer + mesurer — comparaison sans → avec habilitations : 1 projets modifiés (NOUVEAU_CODE) · mesure : projet 3 évaluées (1 correct, 1 faux, FORBIDDEN décidé ≠ attendu vide), 1 hors inventaire ; dépôt 1 correct, 1 inexistant ignoré
+  [OK]    cia_schema.sql = DDL embarqué dans bri_store
+  [ÉCHEC] sources externes (REFA + apitools) — stress True {'total': 300, 'faits': 300, 'avec_projets': 300, 'sans_projet': 0, 'erreurs': 0, 'liens': 300, 'budget_exhausted': False, 'interrompu': False} {'total': 300, 'faits': 300, 'ok': 300, 'vides': 0, 'erreurs': 0, 'sautees': 0, 'budget_exhausted': False, 'interrompu': False, 'par_type': {'responsibles': 300}, 'non_souscrits': []} · skip403 True {'total': 4, 'faits': 2, 'ok': 0, 'vides': 1, 'erreurs': 1, 'sautees': 2, 'budget_exhausted': False, 'interrompu': False, 'par_type': {'hostings': 0, 'urls': 0}, 'non_souscrits': ['hostings']} · rc2b 0 port
+REFA : recherche non relancée (--sans-recherche) · 4 applications en base
+détails REFA (hostings, urls, responsibles) : 2 applications · 0 lectures à faire (codes rattachés à Bitbucket) · 4 fils
+ · rc 0/0/0/0/0/0/0/1 · same_refa True same_hab None · cnt {'refa_applications': 4, 'refa_hostings': 2, 'refa_urls': 2, 'refa_responsibles': 3, 'refa_details': 12, 'apitools_habilitations': 3, 'apitools_projects': 0, 'apitools_cia_projects': 0, 'apitools_cia_lookups': 2} · hab_err {'status': 'error', 'http_status': 401} · users 0 · iup 0 · bank {'status_code': 'PRD', 'confidentiality_code': '4', 'internet_exposed': 1, 'ssi_top': 1, 'dora_id': '1', 'pci': 1, 'it_org': 'DSI Banque (direction)'} · resp [{'type_code': 'IT', 'email': 'it.owner@example.com'}, {'type_code': 'RSSI', 'email': 'rssi@example.com'}] · syn {'concordant': 0, 'divergent': 0, 'apitools_seul': 0, 'bri_seul': 3, 'aucun': 0, 'projets': 3, 'codes_apitools_hors_refa': [], 'projets_apitools_hors_inventaire': [], 'codes_apitools_consultes': 2, 'projets_apitools': 0, 'projets_apitools_avec_cia': 0} · mock {'requests': 36, 'refa_tokens': 5, 'apitools_tokens': 0, 'search_posts': 3, 'gets': 28, 'hors_liste': 0, 'verbes_non_autorises': 0, 'unauthorized': 13} · ns 3 (error 3) · entrées utilisateur ignorées 0 · projets 0 (avec CIA 0) · codes consultés error 2 · liens CIA → projet 0
+instantanés du rattachement : #6 refa 2026-11-26T11:54 (4 lignes, api:PROD sources.refa_20261126-115419_04) · #2 habilitations 2026-11-26T11:54 (3 lignes, habilitations.json) · #1 refa 2026-11-26T11:54 (3 lignes, applications.csv)
+  - 2026-11-26T11:54:25Z sources.projets · ok · appels 3 · faits 2 · erreurs 2
+  - 2026-11-26T11:54:24Z sources.habilitations · ok · appels 3 · faits 3 · erreurs 3
+  - 2026-11-26T11:54:23Z sources.refa · ok · appels 0 · faits 0 · erreurs 0
+  - 2026-11-26T11:54:19Z sources.refa · ok · appels 18 · faits 2 · erreurs 0
+  - 2026-11-26T11:54:18Z sources.refa · partiel · appels 2 · faits 2 · erreurs 0 · budget épuisé
+cia importer : [Errno 2] No such file or directory: 'C:\\Users\\BWT40FH\\AppData\\Local\\Temp\\bri_test_11lau2yz\\cia\\hab_api.json'
 
-test_bri_out.txt:26:  [ÉCHEC] sources externes (REFA + apitools) — stress True {'total': 300, 'faits': 300, 'avec_projets': 300,
-'sans_projet': 0, 'erreurs': 0, 'liens': 300, 'budget_exhausted': False, 'interrompu': False} {'total': 300, 'faits': 300, 'ok':
-300, 'vides': 0, 'erreurs': 0, 'sautees': 0, 'budget_exhausted': False, 'interrompu': False, 'par_type': {'responsibles': 300},
-'non_souscrits': []} · skip403 True {'total': 4, 'faits': 2, 'ok': 0, 'vides': 1, 'erreurs': 1, 'sautees': 2, 'budget_exhausted':
-False, 'interrompu': False, 'par_type': {'hostings': 0, 'urls': 0}, 'non_souscrits': ['hostings']} · rc2b 0 port
-test_bri_out.txt:38:  [ÉCHEC] enrichissement REFA et pages v8 — rc7 0 REFA : 4 applications complétées sur 4 (digramme / éditeur,
-validation, application associée, MiFID2, libellé DORA, convention et calendrier de service, unités de production) · 0 appel
-test_bri_out.txt:42:  [OK]    v7.5 activité dérivée (0 appel) + présence + passe --activite — repo_activity : 144 dépôts ·
-payment-api : 79 commits à 90 j / 100+ à 365 j, 1 PR ouverte (45 j, ancienne), 1 fusionnée, branches 1 active / 1 morte, builds 2
-branches (1 en échec), Jira 1 · bank-commons : dernier tag v2 · présence : 147 dépôts, 3 projets, 0 disparu · --activite : 1 dépôt
-relu sans toucher au contenu, second passage « rien à faire »
-test_bri_out.txt:45:  [ÉCHEC] v7.5 sonde + test apitools étendu — rc14 0 te globale des dépôts
-test_bri_out.txt:47:résultat écrit : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_11lau2yz\sonde.json (codes HTTP et formes
-seulement, aucun corps)
-test_bri_out.txt:63:Résultat : ÉCHEC (36 contrôles, 3 échec(s)) — fichiers : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_11lau2yz
+  [ÉCHEC] enrichissement REFA et pages v8 — rc7 0 REFA : 4 applications complétées sur 4 (digramme / éditeur, validation, application associée, MiFID2, libellé DORA, convention et calendrier de service, unités de production) · 0 appel
+ · ext 4 {'group_id': 'A0001', 'cia': 'NXBNK', 'digram': 'NX', 'editor': 'NATIXIS', 'editor_strategy': 'STA', 'validation_date': None, 'associated_app': None, 'latency_sensitive': None, 'dora_label': 'DORA', 'agreement_code': None, 'agreement_label': None, 'calendar': '7j/7', 'prod_org_unit': 'Production (direction)', 'prod_op_org_unit': 'Exploitation (direction)', 'payload_version': 3, 'enriched_utc': '2026-11-26T11:54:27Z'} · rc8 0 · bank_r {'x': 1, 'top': 1, 'd': ['2', '3', '4', '2'], 'do': 1, 'pci': 1, 'gd': '1', 'pd': '0', 'rf': 0, 'bc': 0, 'si': 0, 'ty': 'APP', 'na': 'DEV', 'lv': 'APP', 'dg': 'NX', 'lat': None, 'env': ['PRD', 'UAT'], 'ho': ['INT']} · bank_p {'apit': None, 'cat': None} · cte --nom t --activite
+prochaine action : arbitrer dans arbitrage.html → Exporter les décisions → py bri.py cia decisions --nom t --importer <fichier.json> --appliquer → py bri.py cia rapport --nom t
 
+  [OK]    v7.5 activité dérivée (0 appel) + présence + passe --activite — repo_activity : 144 dépôts · payment-api : 79 commits à 90 j / 100+ à 365 j, 1 PR ouverte (45 j, ancienne), 1 fusionnée, branches 1 active / 1 morte, builds 2 branches (1 en échec), Jira 1 · bank-commons : dernier tag v2 · présence : 147 dépôts, 3 projets, 0 disparu · --activite : 1 dépôt relu sans toucher au contenu, second passage « rien à faire »
+  [OK]    v7.5 présence — disparition et réapparition à l'inventaire — docs-wiki retiré de l'instance : marqué disparu (ligne repos conservée), message de l'inventaire · remis : marque levée
+  [OK]    v7.5 qualité, extraits par propriétaire, périmètre REFA, pages — statut --verifier : lignes qualité (dépôts, collecte, activité, présence, rattachement) + qualite_20261126-115431.json · rapport : 168 lignes d'extraits (responsables REFA × dépôts signalés) + synthèse · index.js : activité par dépôt (c9, po), agrégats projet / instance, premières vues · pages : section et carte d'activité, signal APITOOLS_DIVERGES · --refa-entite BPCE (exact) / --refa-dsi banque (contient) : périmètres sans fichier ; libellé inconnu refusé
+  [ÉCHEC] v7.5 sonde + test apitools étendu — rc14 0 te globale des dépôts
+niveau de droits probable du compte : lecture seule REPO_READ (réglages d'administration refusés : hooks du dépôt, webhooks du dépôt, permissions (groupes) du dépôt, permissions (groupes) du projet, journal d'audit du dépôt)
+résultat écrit : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_11lau2yz\sonde.json (codes HTTP et formes seulement, aucun corps)
+19 appels GET, 0 non GET
+ · tests {"version de l'instance": 'absent', 'dépôt (identité)': 'lisible', 'branches avec métadonnées': 'lisible', 'tags par modification': 'lisible', 'statuts de build du dernier commit': 'absent', 'Code Insights du dernier commit': 'absent', 'labels du dépôt': 'absent', 'taille du dépôt': 'absent', 'relecteurs par défaut': 'absent', 'réglages de pull request': 'absent', 'auto-decline des PR': 'absent', 'restrictions de branches': 'absent', 'builds requis': 'absent', 'hooks du dépôt': 'absent', 'webhooks du dépôt': 'absent', 'permissions (groupes) du dépôt': 'absent', 'permissions (groupes) du projet': 'absent', "journal d'audit du dépôt": 'absent', 'liste globale des dépôts': 'absent'} · rc15 0       HTTP 401 · objet {detail} · 148 ms
+    bitbucket cf-activity    HTTP 401 · objet {detail} · 102 ms
+    xld url                  sauté (CIA technique inconnu : refa/{cia}/info non lisible)
+    xld applications         sauté (CIA technique inconnu : refa/{cia}/info non lisible)
+    xld environments         sauté (CIA technique inconnu : refa/{cia}/info non lisible)
+  lisibles : 0 / 13
+apitools : 15 GET · 0 POST (jeton) · 0 écriture · liste blanche respectée · 0 erreurs · Bitbucket : 0 appel
 
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7>
+  [OK]    activity_schema.sql = DDL embarqué dans bri.core.activite
+  [OK]    statut — prochaine action : py bri.py rapport --nom t
+  [OK]    statut --verifier (intégrité et cohérence de la base, reste à faire) — intégrité : OK — aucune anomalie (0 s)
+  [OK]    aucun verbe autre que GET côté serveur — 2512 appels, 0 non GET
+  [OK]    aucun verbe HTTP autre que GET dans bri/core/http.py
+
+Résultat : ÉCHEC (36 contrôles, 3 échec(s)) — fichiers : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_11lau2yz
