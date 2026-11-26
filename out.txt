@@ -1,38 +1,78 @@
-  [OK]    init — espace et stockage créés
-  [OK]    inventaire — 3 projets, 147 dépôts
-  [OK]    collecte avec plafond d'appels — 17 dépôts puis arrêt propre, reprise proposée
-  [OK]    coupure brutale puis reprise — 26 dépôts validés avant le kill, 144 après la reprise, 0 en attente, 3 erreurs (projet FORBIDDEN) ; état sauvegardé : 100.0 % (etat_collecte.json)
-  [OK]    cache HTTP sans contenu ni donnée nominative — 569 réponses en cache (listes seulement), 0 commits / pull requests / branches / raw
-  [OK]    cache par dernier commit — 126 dépôts recollectés sans appel de contenu
-  [OK]    N2 partout puis N3 priorisée — 24 dépôts en N2 (186 appels) ; --level 3 --actifs 400 --sans-archives : 19 montées N2 → N3 en 114 appels (niveau 2 réutilisé), 15 dépôts en N3, 0 restant à monter
-  [OK]    montée du reste puis rien à collecter — 4 dépôts écartés par le ciblage (2 archivés, 2 inactifs) montés ensuite ; troisième passage : rien à collecter (message explicite)
-  [OK]    passage complet ciblé (--satures --profil complet) — 1 dépôt(s) saturé(s) relu(s) en profil complet malgré le cache ; second passage : rien à collecter
-  [OK]    classification (non-régression v5) — 24/24 types attendus, 147 fiches, règles E.5, bloc analyse sur 147
-  [OK]    exports compatibles v5 — discovery 147 dépôts, contenu 144 dépôts, calls_non_get 0
-  [OK]    grille d'étiquetage xlsx — 40 dépôts, 7 onglets
-  [OK]    mesure L20 + kit D-08 + rapport de synthèse — auto-cohérence 100 %, rapport 492 Ko
-  [OK]    tableaux de bord — index.html + 3 projets, 3 fichiers de fiches, 1 tranches ; instance : 147 dépôts, 147 fiches
-  [OK]    rapport par entité — périmètre DEMO (fichier : bank ; NOPE) → 1 projet retenu, NOPE signalé inconnu, 24 dépôts, 1 fichier projet ; mémorisé dans bri.json et réutilisé par --entite seul ; export discovery/fiches suffixés DEMO
-  [OK]    versions de paramètres — page des règles générée ; version TEST_ENT (deployable_api=NOM, profil court_10) : payment-api → API / MAINTENANCE, fiches « E.5/TEST_ENT » ; mesure enregistrée dans la version (100 %) ; retour à la base : APPLICATION / ACTIVE
-  [OK]    plan de collecte — plan de collecte — 3 projets, 147 dépôts (3 à collecter) · ≈ 606 appels GET · 0.0 h à 6.0 appels/s (3 fils) · 3 lot(s), 1 jour(s) à 10 h/jou
-  [OK]    auto (BANK, taxonomie v2) — chaîne complète en une commande
-  [OK]    rattachement CIA (imports, moteur, états de revue) — 2 imports tracés (réimport ignoré) · run de référence sur 3 projets : BANK → NXBNK (R7, corroboré par le libellé REFA et la description) OK · BIG → NXBIG (R2, 2 candidats, suggestion exacte acceptée, groupes concordants, projet partagé NXBIG + CEBIG) OK · FORBIDDEN non rattaché · schéma v2 (7 tables, 3 vues)
-  [OK]    groupe cia sans appel à Bitbucket — 2511 appels côté serveur avant comme après les commandes cia
-  [OK]    rattachement effectif + décisions — 3 projets / 147 dépôts couverts · CSV : 2 décisions insérées, 4 rejets motivés, réimport 0 doublon créé · JSON page : REVOKE (remplacement tracé) et SET divergent (DECISION_DIVERGES, libellé REFA) · CONFIRM en ligne de commande (auteur wy2) · 5 décisions exportées · exports § 7.3 écrits
-  [OK]    cia rapport (tableaux de bord + arbitrage + exports) — index.js : méta cia, 2 applications, CIA par dépôt (27 dépôts NXBNK) · fiche BANK/payment-api : bloc cia ATTACHED NXBNK décidé par wy2 · arbitrage.html + cia_index / cia_projets (3) / cia_refa (3) · discovery et fiches CSV / JSON avec cia_* · rapport par entité DEMO (1 projet)
-  [OK]    tableaux de bord v7.1 (vue application, rattachement, gouvernance, périmètre CIA) — data/c/NXBNK.js (2 projets : BANK + FORBIDDEN décidé, agrégats) · KPI de gouvernance · onglet Rattachement et navigation · rapport --cia NXBNK,ZZZZZ : 2 projets retenus, ZZZZZ sans projet (cia_sans_projet.csv) · --cia-file CSV Excel (cp1252, « ; », en-tête, entité « DSI Épargne », doublon et valeur invalide ignorés)
-  [OK]    cia comparer + mesurer — comparaison sans → avec habilitations : 1 projets modifiés (NOUVEAU_CODE) · mesure : projet 3 évaluées (1 correct, 1 faux, FORBIDDEN décidé ≠ attendu vide), 1 hors inventaire ; dépôt 1 correct, 1 inexistant ignoré
-  [OK]    cia_schema.sql = DDL embarqué dans bri_store
-  [OK]    sources externes (REFA + apitools) — REFA : 4 applications en 2 pages (budget 1 appel → reprise page 2) · 12 détails (2 hébergements, 2 URLs, 3 responsables) · IUP des saisisseurs absents · instantané #6 identique ligne à ligne à l'import fichier #8 · habilitations apitools : 3 projets (FORBIDDEN 403, 1 entrée utilisateur ignorée), instantané #7 identique au fichier #9 · projets apitools 3 (BANK → NXBNK), comparaison 2 concordants / 0 divergents / 0 apitools seul / 1 bri seul · jeton REFA renouvelé sur 401 (5 jetons, 2 refus) · opération non souscrite (403) : 1 appel puis lectures sautées · 2 × 300 écritures sur 8 fils sans verrou SQLite · mock : 0 requête hors liste, 0 verbe non autorisé
-  [OK]    enrichissement REFA (payload) et pages classique + v8 — refa_applications_ext : 4 / 4 (NXBNK : digramme NX = NATIXIS) · 83 digrammes et référentiels statiques dans index.js · index.html (classique) et index_v8.html (par profil) identiques au mode par défaut près · KPI REFA des applications (exposition, SSI TOP, environnements) · apitools par projet (BANK concordant)
-  [OK]    v7.5 activité dérivée (0 appel) + présence + passe --activite — repo_activity : 144 dépôts · payment-api : 79 commits à 90 j / 100+ à 365 j, 1 PR ouverte (45 j, ancienne), 1 fusionnée, branches 1 active / 1 morte, builds 2 branches (1 en échec), Jira 1 · bank-commons : dernier tag v2 · présence : 147 dépôts, 3 projets, 0 disparu · --activite : 1 dépôt relu sans toucher au contenu, second passage « rien à faire »
-  [OK]    v7.5 présence — disparition et réapparition à l'inventaire — docs-wiki retiré de l'instance : marqué disparu (ligne repos conservée), message de l'inventaire · remis : marque levée
-  [OK]    v7.5 qualité, extraits par propriétaire, périmètre REFA, pages — statut --verifier : lignes qualité (dépôts, collecte, activité, présence, rattachement) + qualite_20261126-122951.json · rapport : 168 lignes d'extraits (responsables REFA × dépôts signalés) + synthèse · index.js : activité par dépôt (c9, po), agrégats projet / instance, premières vues · pages : section et carte d'activité, signal APITOOLS_DIVERGES · --refa-entite BPCE (exact) / --refa-dsi banque (contient) : périmètres sans fichier ; libellé inconnu refusé
-  [OK]    v7.5 sonde de droits Bitbucket + test apitools étendu — sonder : 19 opérations, identité / branches / tags lisibles, réglages d'administration absents de l'instance simulée → verdict REPO_READ, JSON sans corps · sources test --etendu : 13 / 13 façades lisibles (refa info → CIA technique BIS88, cf-activity 2 dépôts sondés, committer jamais affiché)
-  [OK]    activity_schema.sql = DDL embarqué dans bri.core.activite
-  [OK]    statut — prochaine action : py bri.py rapport --nom t
-  [OK]    statut --verifier (intégrité et cohérence de la base, reste à faire) — intégrité : OK — aucune anomalie (0 s)
-  [OK]    aucun verbe autre que GET côté serveur — 2543 appels, 0 non GET
-  [OK]    aucun verbe HTTP autre que GET dans bri/core/http.py
+espace instance — instance · stockage C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db
+règles E.5
+périmètres mémorisés : CIB (603 projets)  (py bri.py rapport --nom instance --entite <nom>)
+taxonomie v2 · profil standard · niveau 3 · 3 fils · conventions défaut · cycle de vie calibrated_cib
+inventaire : 6686 projets retenus (6 653 visibles sur l'instance) · 91 960 dépôts · fait le 2026-11-21T17:56:32Z
+collecte    : [████████████░░░░░░░░]  63.1 % · 58 018 faits · 33 942 erreurs · 0 en attente · N3 40 851 · N2 17 167 · 756 686 appels · 20 876 servis par le cache
+classification : 91 960 fiches (159 % des dépôts collectés)
+dépôts saturés en profil standard (liste tronquée, tailles incomplètes, monorepos) : 43 590, dont 18 038 déjà en profil complet → py bri.py collecte --nom instance --satures --profil complet
+dernières exécutions :
+  - 2026-11-26T12:49:44Z collecte · running · appels 0 · faits 0 · erreurs 0
+  - 2026-11-26T12:45:25Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+  - 2026-11-26T12:42:22Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+  - 2026-11-26T12:39:51Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+  - 2026-11-26T06:34:07Z collecte · partiel · appels 106 521 · faits 4 898 · erreurs 9 · interrompu
+  - 2026-11-25T09:41:25Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+dernière progression : [ 11.7 %] 6 775 / 58 018 dépôts · ok 6 766 · erreurs 9 · cache 0 · appels 27 105 (6.1/s) · écoulé 1:14:34 · reste ≈ 13:37:43
+état sauvegardé (2026-11-26T14:04:16Z) : 11.7 % · 6 770 faits · 9 erreurs · 27 083 appels GET · reste ≈ 48 991 s
+cache HTTP : 1 157 244 réponses, 869.9 Mo
+contenu de la base (source de vérité, schéma v3) : projets 6 686 (descriptions 5 373) · dépôts 91 960 (collectés 58 018, fiches 91 960) · exécutions 73 · événements 26
+rattachement CIA en base : imports habilitations 3 / refa 3 · runs 4 (référence cia_rapprocher_20261125-082300_233e) · lectures 26 510 · décisions actives 0 · rattachement effectif 6 686 calculé le 2026-11-25T08:23:25Z
+sources externes en base : REFA 34 871 applications (lu le 2026-11-25) · responsables 63 469 · apitools habilitations 6 686 projets · liens CIA → projet 4 802   (py bri.py sources statut --nom instance)
+prochaine action : py bri.py rapport --nom instance
+vérification de la base (quick_check, lecture seule, rien n'est modifié)…
+  fichier : C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db · 2305.6 Mo · journal wal · WAL 1.0 Mo · pages libres 0 · schéma v3 · PRAGMA quick_check : OK
+  inventaire : 6 686 projets (5 373 avec description, 854 sans dépôt) · 91 960 dépôts · 0 orphelins · inventaire du 2026-11-21T17:56:32Z
+  collecte : 58 018 faits · 33 942 erreurs · 0 en attente · 0 ignorés · N3 40 851 · N2 17 167 · contenus illisibles (échantillon) 0 · faits sans contenu 0
+    motifs d'erreur : métadonnées : FORBIDDEN (33 453) · métadonnées : ERROR (473) · fichiers : FORBIDDEN (15) · fichiers : ERROR (1)
+  classification : 91 960 fiches · 0 à classer · 4 904 périmées · 0 d'une autre version de règles · fiches illisibles (échantillon) 0
+  rattachement CIA : imports habilitations 3 / refa 3 · runs 4 · run de référence cia_rapprocher_20261125-082300_233e · rattachement effectif 6 686 projets (2026-11-25T08:23:25Z) · décisions actives 0 · file d'arbitrage 98
+  qualité — dépôts : 6 076 archivés · 4 064 forks · 6 publics · 3 706 sans commit · 23 295 sans commit depuis plus de 2 ans · 6 301 commits plafonnés (page de 100) · 59 321 sans description
+  qualité — collecte : 33 942 erreurs (33 453 métadonnées : FORBIDDEN · 473 métadonnées : ERROR · 15 fichiers : FORBIDDEN · 1 fichiers : ERROR) · 0 en attente · 43 590 saturés (profil complet à prévoir) · 0 collectés sans fiche · 24 453 type inconnu · 2 407 classification en conflit
+  qualité — activité (6 789 dépôts connus) : 1 141 actifs à 90 j · 5 648 inactifs · PR ouvertes 108 (15 sans mise à jour depuis 30 j, sur 72 dépôts) · 1 432 avec tag · builds publiés sur 1 841 dépôts (889 en échec) · branches mortes (> 1 an) sur 3 462 dépôts · fenêtre de commits plafonnée 79
+  qualité — présence : 0 dépôts et 0 projets disparus de l'inventaire · 0 projets personnels · 861 projets sans dépôt · 0 projets à liste tronquée · première vue estimée pour 91 960 dépôts
+  qualité — rattachement : 58 projets sans CIA · 98 à revoir · 651 codes décommissionnés · 0 codes inconnus de REFA
+  qualité — apitools : 4 688 projets concordants · 6 divergents (signal APITOOLS_DIVERGES) · 4 apitools seul · 1 934 bri seul
+  compteurs écrits : C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\espaces\instance\qualite_20261126-140433.json
+  [constat] 229 projets dont le nombre de dépôts annoncé diffère des dépôts inventoriés (dépôts créés ou supprimés depuis, ou inventaire partiel) → relancer l'inventaire
+  [constat] 4904 fiches plus anciennes que le contenu collecté (à refaire : py bri.py classifier)
+  [constat] 3 exécution(s) sans fin enregistrée (coupure brutale ou en cours) : collecte 2026-11-26T12:49:44Z, sources.projets 2026-11-03T20:50:07Z, collecte 2026-10-18T12:19:13Z
+  intégrité : OK — aucune anomalie (10 s)
+  reste à faire, dans l'ordre : py bri.py collecte --nom instance --retry-errors → py bri.py classifier --nom instance → arbitrage (98 projets en file)
 
-Résultat : OK (36 contrôles, 0 échec(s)) — fichiers : C:\Users\BWT40FH\AppData\Local\Temp\bri_test_0l56ilz5
+
+
+
+PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py bri.py cia rapport --nom instance --out C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\tdb_instance --extraits-proprietaires   # ligne « activité (v7.5) : … » → à me renvoyer
+tableaux de bord : C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\tdb_instance (6 686 projets, 91 960 dépôts, 91 960 fiches ; CIA par dépôt, filtres, onglet Applications) — ouvrir index.html (vue classique) ou index_v8.html (vue par profil)
+page d'arbitrage : C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\tdb_instance\arbitrage.html — 6 686 projets · file 98 projets / 1 208 dépôts · 0 déjà décidés — ouvrir en double-clic (hors réseau)
+activité (v7.5) : 6 910 dépôts avec activité dérivée sur 91 960 · 0 disparus de l'inventaire · 6 projets APITOOLS_DIVERGES · dépôts sans activité : py bri.py collecte --nom instance --activite
+extraits par propriétaire : C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\tdb_instance\extraits_proprietaires_20261126-140714.csv (428 377 lignes · 7 034 responsables REFA · 31 193 dépôts signalés · 56 projets sans application) · synthèse : C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\tdb_instance\extraits_proprietaires_synthese_20261126-140714.csv
+prochaine action : arbitrer dans arbitrage.html → Exporter les décisions → py bri.py cia decisions --nom instance --importer <fichier.json> --appliquer → py bri.py cia rapport --nom instance
+PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7>
+
+
+PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus
+apitools https://apitools.mycloud.intrabpce.fr : jeton fourni (APITOOLS_TOKEN)
+  health : HTTP 200
+  projectCount : HTTP 200 · {'project_count': 6676}
+  projects : HTTP 200 · 6 676 projets · attribut CIA : aucun · champs : description, id, key, links, name, public, type
+  habilitations de A01 : HTTP 200 · 11 groupes · 0 entrées utilisateur (ignorées)
+  projects/APADQ : HTTP 200 · 1 projets
+  tests de lecture étendus (liste blanche v7.5) : code témoin NXW53 · projet NXW53 · 13 opérations GET, rien n'est stocké
+    refa info                HTTP 200 · objet {cia, cia_tech, code_etablissement, dicp, entite_biats, entite_refa, ops_team, parent, status} · 202 ms · CIA technique BIS88 (éditeur BI) · statut Deployed · DICP 25
+    refa dicp                HTTP 200 · objet {dicp} · 154 ms
+    refa cia_tech            HTTP 200 · liste de 1 · élément : str · 159 ms
+    refa privatif_etab       HTTP 200 · objet {AP, AU, BN, BO, BX, CA, CT, FI, GE, IC, IF, LA, …} · 177 ms
+    refa code_etab           HTTP 200 · objet {BIT, BSA, BSI, GFS} · 161 ms
+    Checkmarx teams          HTTP 200 · objet {allowed, exists, input, reason, teampath} · 503 ms · allowed True · exists True
+    Sonarqube projects       HTTP 200 · liste de 8 · élément : objet {key, lastAnalysisDate, managed, name, projectUuid, qualifier, visibility} · 5612 ms
+    jenkins folder           HTTP 200 · liste de 1 · élément : objet {folder, msg, status, url} · 393 ms
+    jenkins url              HTTP 200 · objet {bis88} · 164 ms
+    bitbucket cf-activity    HTTP 200 · objet {probes, status} · 647 ms · 21 dépôts sondés (1 vides) · champs : empty, last180, last180, last180, last180, last180 · committer ignoré
+    xld url                  HTTP 200 · liste de 1 · élément : objet {cia_tech, id, is_mars, target_cia_tech, url} · 143 ms
+    xld applications         HTTP 200 · liste de 1 · élément : objet {ref, type} · 235 ms
+    xld environments         HTTP 200 · liste de 1 · élément : objet {ref, type} · 236 ms
+  lisibles : 13 / 13
+apitools : 18 GET · 0 POST (jeton) · 0 écriture · liste blanche respectée · 0 erreurs · Bitbucket : 0 appel
+PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7>
