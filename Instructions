@@ -1,1 +1,1 @@
-py sonde_apitools.py --cia NXW53 --projet <CLÉ_PROJET> --out D:\bri\in\sonde_apitools_NXW53.json
+py sonde_apitools.py --cia NXW53 --projet NXW53 --contenu refa,bitbucket,checkmarx,sonarqube,jenkins,xld --out D:\bri\in\sonde_apitools_NXW53_v2.json
