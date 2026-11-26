@@ -23,7 +23,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "1.1"
+VERSION = "1.2"
 DEFAULT_URL = "https://apitools.mycloud.intrabpce.fr"
 TIMEOUT = 30
 
@@ -51,7 +51,10 @@ TESTS = [
     ("jenkins", "jenkins/url/{cia}", "instance Jenkins du CIA"),
     ("jenkins", "jenkins/inventory/{cia}/items", "jobs du dossier racine (sans folder_path)"),
     ("jenkins", "jenkins/inventory/{cia}/items?folder_path={cia}", "jobs du dossier nommé par le CIA"),
+    ("jenkins", "jenkins/inventory/{cia}/items?folder_path={cia_tech}", "jobs du dossier nommé par le CIA technique"),
     ("jira", "jira/projects/search?cia={cia}", "projet Jira du CIA"),
+    ("jira", "jira/projects/search?cia={cia}&key={key}", "projet Jira du CIA (avec la clé de projet)"),
+    ("jira", "jira/projects/{key}", "projet Jira portant la clé du projet Bitbucket"),
     ("xld", "xld/{cia_tech}/url", "URLs XLD du CIA technique"),
     ("xld", "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor}&page_size=1&page=1", "applications déployées XLD (1 élément)"),
     ("xld", "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor2}&page_size=1&page=1", "applications déployées XLD, autre éditeur"),
@@ -59,6 +62,18 @@ TESTS = [
     ("artifactory", "artifactory/health", "connectivité Artifactory"),
     ("artifactory", "artifactory/xray/index/{repo_art}", "indexation Xray du dépôt Artifactory nommé par --repo-artifactory"),
 ]
+
+
+NOMINATIF = {"user", "author", "committer", "reviewers", "participants", "users", "email", "emailAddress", "displayName", "slug_user", "owner", "createdBy", "modifiedBy"}
+
+
+def masque(o):
+    """Retire les champs nominatifs des corps conservés (personnes : auteurs, relecteurs, utilisateurs, e-mails)."""
+    if isinstance(o, dict):
+        return {k: ("<masqué>" if k in NOMINATIF else masque(v)) for k, v in o.items()}
+    if isinstance(o, list):
+        return [masque(x) for x in o]
+    return o
 
 
 def shape(o, depth=0):
@@ -109,6 +124,8 @@ class Sonde(object):
                 res["shape"] = "non JSON (%s)" % (res["content_type"] or "?")
                 if res["status"] and res["status"] >= 400:
                     res["error"] = data.decode("utf-8", "replace")[:200]
+            if js is not None and res["status"] and res["status"] >= 400:
+                res["error"] = json.dumps(js, ensure_ascii=False)[:300]        # message d'erreur de l'API (detail), utile pour ajuster les paramètres
         return res, js
 
 
@@ -162,7 +179,7 @@ def main(argv=None):
         if facade not in keep or (res["status"] or 0) >= 400:
             row.pop("body", None)
         else:
-            row["body"] = js
+            row["body"] = masque(js)
         out["tests"].append(row)
         print("  %-80s  %s  %5d ms  %7d o" % (p[:80], res["status"] if res["status"] is not None else ("ERR " + (res["error"] or "")[:40]), res["ms"] or 0, res["bytes"]))
         # enchaînement : premier projet / dépôt / CIA technique
