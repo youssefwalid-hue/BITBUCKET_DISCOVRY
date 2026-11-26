@@ -16,3 +16,8 @@ cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
 $env:PYTHONIOENCODING = "utf-8"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 py tests\test_bri.py *> D:\bri\in\test_bri_out.txt
 Select-String -Path D:\bri\in\test_bri_out.txt -Pattern "CHEC|sultat"
+
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
+$env:PYTHONIOENCODING = "utf-8"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+py tests\test_bri.py *> .\test_bri_out.txt                                                  # relance complète (≈ 1 min), sortie dans le fichier
+Select-String -Path .\test_bri_out.txt -Pattern "CHEC" -Context 0,25 | Out-File .\echecs.txt -Encoding utf8   # les 3 échecs + 25 lignes de détail chacun
