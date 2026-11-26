@@ -23,7 +23,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "1.0"
+VERSION = "1.1"
 DEFAULT_URL = "https://apitools.mycloud.intrabpce.fr"
 TIMEOUT = 30
 
@@ -49,10 +49,12 @@ TESTS = [
     ("sonarqube", "Sonarqube/projects?project={cia}", "projets SonarQube filtrés sur le CIA"),
     ("jenkins", "jenkins/folder/{cia}", "dossier Jenkins du CIA"),
     ("jenkins", "jenkins/url/{cia}", "instance Jenkins du CIA"),
-    ("jenkins", "jenkins/inventory/{cia}/items", "jobs du dossier racine du CIA"),
+    ("jenkins", "jenkins/inventory/{cia}/items", "jobs du dossier racine (sans folder_path)"),
+    ("jenkins", "jenkins/inventory/{cia}/items?folder_path={cia}", "jobs du dossier nommé par le CIA"),
     ("jira", "jira/projects/search?cia={cia}", "projet Jira du CIA"),
     ("xld", "xld/{cia_tech}/url", "URLs XLD du CIA technique"),
     ("xld", "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor}&page_size=1&page=1", "applications déployées XLD (1 élément)"),
+    ("xld", "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor2}&page_size=1&page=1", "applications déployées XLD, autre éditeur"),
     ("xld", "xld/{cia_tech}/environments?editor={editor}&page_size=1&page=1", "environnements XLD (1 élément)"),
     ("artifactory", "artifactory/health", "connectivité Artifactory"),
     ("artifactory", "artifactory/xray/index/{repo_art}", "indexation Xray du dépôt Artifactory nommé par --repo-artifactory"),
@@ -121,6 +123,8 @@ def main(argv=None):
     ap.add_argument("--url", default=os.environ.get("APITOOLS_URL") or DEFAULT_URL, help="hôte apitools (défaut : %(default)s, ou APITOOLS_URL)")
     ap.add_argument("--out", default=None, help="fichier JSON de sortie (défaut : sonde_apitools_<CIA>_<date>.json dans le dossier courant)")
     ap.add_argument("--contenu", default="refa", help="façades dont le corps JSON est conservé dans la sortie (liste séparée par des virgules, 'aucune' pour rien ; défaut : refa)")
+    ap.add_argument("--projet", default=None, help="clé d'un projet Bitbucket témoin (sinon : premier projet renvoyé par bitbucket/projects/{cia})")
+    ap.add_argument("--depot", default=None, help="slug d'un dépôt témoin de ce projet (sinon : premier dépôt renvoyé)")
     ap.add_argument("--repo-artifactory", default=None, help="clé d'un dépôt Artifactory pour le test Xray (sinon test sauté)")
     ap.add_argument("--ca-bundle", default=os.environ.get("BRI_CA_BUNDLE"), help="bundle de certificats PEM (sinon magasin système)")
     ap.add_argument("--insecure", action="store_true", help="ne pas vérifier le certificat TLS (déconseillé)")
@@ -137,7 +141,9 @@ def main(argv=None):
         ctx.verify_mode = ssl.CERT_NONE
     keep = set(x.strip().lower() for x in a.contenu.split(",") if x.strip()) - {"aucune", "none"}
     s = Sonde(a.url, token, ctx)
-    vars_ = {"cia": cia, "editor": "BI" if cia[:2] in ("BI", "BF", "SI", "CE", "IB", "C3") else "NX", "key": None, "repo": None, "cia_tech": None, "repo_art": a.repo_artifactory}
+    def editeur(code):
+        return "BI" if (code or "")[:2].upper() in ("BI", "BF", "SI", "CE", "IB", "C3") else "NX"
+    vars_ = {"cia": cia, "editor": editeur(cia), "editor2": "NX" if editeur(cia) == "BI" else "BI", "key": (a.projet or "").strip().upper() or None, "repo": (a.depot or "").strip() or None, "cia_tech": None, "repo_art": a.repo_artifactory}
     out = {"sonde": VERSION, "date_utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "hote": a.url, "cia": cia, "tests": [], "resume": {}}
     print("sonde apitools %s · hôte %s · CIA %s · %d tests (GET sans effet de bord, lecture seule)" % (VERSION, a.url, cia, len(TESTS)))
     for facade, path, desc in TESTS:
@@ -181,6 +187,7 @@ def main(argv=None):
                     v = it if isinstance(it, str) else (it.get("cia_tech") or it.get("code") if isinstance(it, dict) else None)
                     if v:
                         vars_["cia_tech"] = v
+                        vars_["editor"] = editeur(v); vars_["editor2"] = "NX" if vars_["editor"] == "BI" else "BI"   # l'éditeur XLD suit le CIA technique
                         break
     codes = {}
     for t in out["tests"]:
@@ -191,8 +198,17 @@ def main(argv=None):
                      "refusees_403": [t["operation"] for t in out["tests"] if t.get("status") == 403],
                      "absentes_404": [t["operation"] for t in out["tests"] if t.get("status") == 404]}
     path_out = a.out or ("sonde_apitools_%s_%s.json" % (cia, datetime.datetime.now().strftime("%Y%m%d-%H%M")))
-    with open(path_out, "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=1)
+    try:
+        d_out = os.path.dirname(os.path.abspath(path_out))
+        os.makedirs(d_out, exist_ok=True)
+        with open(path_out, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, indent=1)
+    except OSError as e:
+        fallback = os.path.basename(path_out)
+        print("impossible d'écrire %s (%s) : écriture dans le dossier courant" % (path_out, e), file=sys.stderr)
+        with open(fallback, "w", encoding="utf-8") as f:
+            json.dump(out, f, ensure_ascii=False, indent=1)
+        path_out = os.path.abspath(fallback)
     print("\nrésumé : %s · projet témoin %s · dépôt %s · CIA technique %s" % (", ".join("%s × %d" % kv for kv in sorted(codes.items())), vars_["key"], vars_["repo"], vars_["cia_tech"]))
     print("sortie : %s (aucun secret ; corps conservés pour : %s)" % (path_out, ", ".join(sorted(keep)) or "aucune façade"))
     return 0
