@@ -5,3 +5,9 @@ py bri.py statut --nom instance --verifier                                    # 
 py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000   # seulement si la collecte --refresh a tourné avec la v7.4
 py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires
 py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus (ton jeton de session sert ici, à juste titre)
+
+
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
+$env:PYTHONIOENCODING = "utf-8"; [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+py tests\test_bri.py *> D:\bri\in\test_bri_out.txt
+Select-String -Path D:\bri\in\test_bri_out.txt -Pattern "CHEC|sultat"
