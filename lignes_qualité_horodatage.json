@@ -1,1 +1,42 @@
 
+espace instance — instance · stockage C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db
+règles E.5
+périmètres mémorisés : CIB (603 projets)  (py bri.py rapport --nom instance --entite <nom>)
+taxonomie v2 · profil standard · niveau 3 · 3 fils · conventions défaut · cycle de vie calibrated_cib
+inventaire : 6686 projets retenus (6 653 visibles sur l'instance) · 91 960 dépôts · fait le 2026-11-21T17:56:32Z
+collecte    : [████████████░░░░░░░░]  63.1 % · 58 018 faits · 33 942 erreurs · 0 en attente · N3 40 851 · N2 17 167 · 756 686 appels · 20 876 servis par le cache
+classification : 91 960 fiches (159 % des dépôts collectés)
+dépôts saturés en profil standard (liste tronquée, tailles incomplètes, monorepos) : 43 590, dont 18 038 déjà en profil complet → py bri.py collecte --nom instance --satures --profil complet
+dernières exécutions :
+  - 2026-11-26T12:49:44Z collecte · running · appels 0 · faits 0 · erreurs 0
+  - 2026-11-26T12:45:25Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+  - 2026-11-26T12:42:22Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+  - 2026-11-26T12:39:51Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+  - 2026-11-26T06:34:07Z collecte · partiel · appels 106 521 · faits 4 898 · erreurs 9 · interrompu
+  - 2026-11-25T09:41:25Z cia_rapport · ok · appels 0 · faits 6 686 · erreurs 0 · file 98 projets
+dernière progression : [  1.0 %] 600 / 58 018 dépôts · ok 600 · erreurs 0 · cache 0 · appels 2 403 (7.2/s) · écoulé 5:34 · reste ≈ 8:39:24
+état sauvegardé (2026-11-26T12:55:25Z) : 1.1 % · 610 faits · 0 erreurs · 2 444 appels GET · reste ≈ 31 372 s
+cache HTTP : 1 151 078 réponses, 868.8 Mo
+contenu de la base (source de vérité, schéma v3) : projets 6 686 (descriptions 5 373) · dépôts 91 960 (collectés 58 018, fiches 91 960) · exécutions 73 · événements 26
+rattachement CIA en base : imports habilitations 3 / refa 3 · runs 4 (référence cia_rapprocher_20261125-082300_233e) · lectures 26 510 · décisions actives 0 · rattachement effectif 6 686 calculé le 2026-11-25T08:23:25Z
+sources externes en base : REFA 34 871 applications (lu le 2026-11-25) · responsables 63 469 · apitools habilitations 6 686 projets · liens CIA → projet 4 802   (py bri.py sources statut --nom instance)
+prochaine action : py bri.py rapport --nom instance
+vérification de la base (quick_check, lecture seule, rien n'est modifié)…
+  fichier : C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db · 2300.6 Mo · journal wal · WAL 0.6 Mo · pages libres 0 · schéma v3 · PRAGMA quick_check : OK
+  inventaire : 6 686 projets (5 373 avec description, 854 sans dépôt) · 91 960 dépôts · 0 orphelins · inventaire du 2026-11-21T17:56:32Z
+  collecte : 58 018 faits · 33 942 erreurs · 0 en attente · 0 ignorés · N3 40 851 · N2 17 167 · contenus illisibles (échantillon) 0 · faits sans contenu 0
+    motifs d'erreur : métadonnées : FORBIDDEN (33 453) · métadonnées : ERROR (473) · fichiers : FORBIDDEN (15) · fichiers : ERROR (1)
+  classification : 91 960 fiches · 0 à classer · 4 904 périmées · 0 d'une autre version de règles · fiches illisibles (échantillon) 0
+  rattachement CIA : imports habilitations 3 / refa 3 · runs 4 · run de référence cia_rapprocher_20261125-082300_233e · rattachement effectif 6 686 projets (2026-11-25T08:23:25Z) · décisions actives 0 · file d'arbitrage 98
+  qualité — dépôts : 6 076 archivés · 4 064 forks · 6 publics · 3 720 sans commit · 23 293 sans commit depuis plus de 2 ans · 6 301 commits plafonnés (page de 100) · 59 321 sans description
+  qualité — collecte : 33 942 erreurs (33 453 métadonnées : FORBIDDEN · 473 métadonnées : ERROR · 15 fichiers : FORBIDDEN · 1 fichiers : ERROR) · 0 en attente · 43 590 saturés (profil complet à prévoir) · 0 collectés sans fiche · 24 453 type inconnu · 2 407 classification en conflit
+  qualité — activité (637 dépôts connus) : 49 actifs à 90 j · 588 inactifs · PR ouvertes 6 (0 sans mise à jour depuis 30 j, sur 4 dépôts) · 30 avec tag · builds publiés sur 57 dépôts (37 en échec) · branches mortes (> 1 an) sur 202 dépôts · fenêtre de commits plafonnée 4
+  qualité — présence : 0 dépôts et 0 projets disparus de l'inventaire · 0 projets personnels · 861 projets sans dépôt · 0 projets à liste tronquée · première vue estimée pour 91 960 dépôts
+  qualité — rattachement : 58 projets sans CIA · 98 à revoir · 651 codes décommissionnés · 0 codes inconnus de REFA
+  qualité — apitools : 4 688 projets concordants · 6 divergents (signal APITOOLS_DIVERGES) · 4 apitools seul · 1 934 bri seul
+  compteurs écrits : C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7\espaces\instance\qualite_20261126-125539.json
+  [constat] 229 projets dont le nombre de dépôts annoncé diffère des dépôts inventoriés (dépôts créés ou supprimés depuis, ou inventaire partiel) → relancer l'inventaire
+  [constat] 4904 fiches plus anciennes que le contenu collecté (à refaire : py bri.py classifier)
+  [constat] 3 exécution(s) sans fin enregistrée (coupure brutale ou en cours) : collecte 2026-11-26T12:49:44Z, sources.projets 2026-11-03T20:50:07Z, collecte 2026-10-18T12:19:13Z
+  intégrité : OK — aucune anomalie (10 s)
+  reste à faire, dans l'ordre : py bri.py collecte --nom instance --retry-errors → py bri.py classifier --nom instance → arbitrage (98 projets en file)
