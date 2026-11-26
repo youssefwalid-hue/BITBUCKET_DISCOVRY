@@ -1,7 +1,7 @@
-cd C:\Users\BWT40FH\BITBUCKET\V7\outils
-# 1. enregistrer le sonde_apitools.py joint à la place de l'ancien, puis vérifier :
-Select-String -Path .\sonde_apitools.py -Pattern '^VERSION'                          # attendu : VERSION = "1.3"
-Remove-Item D:\bri\in\sonde_apitools_NXW53_v2.json -ErrorAction SilentlyContinue     # passe 1.1 : données nominatives
-
-# 2. sonde 1.3 (jeton : $env:APITOOLS_TOKEN s'il est posé, sinon saisie masquée) — première ligne affichée : « sonde apitools 1.3 · … »
-py .\sonde_apitools.py --cia NXW53 --projet NXW53 --depot w53-ioda-backend --contenu refa,xld --out D:\bri\in\sonde_apitools_NXW53_v3.json
+Expand-Archive .\bri_v7.zip -DestinationPath C:\Users\BWT40FH\BITBUCKET\V7\outils -Force
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
+py -W error verifier_package.py --complet                                     # 17 contrôles attendus
+py bri.py statut --nom instance --verifier                                    # lignes « qualité » → à me renvoyer
+py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000   # seulement si la collecte --refresh a tourné avec la v7.4
+py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires
+py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus
