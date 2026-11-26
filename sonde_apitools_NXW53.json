@@ -1,6 +1,6 @@
 {
  "sonde": "1.1",
- "date_utc": "2026-11-26T08:37:32Z",
+ "date_utc": "2026-11-26T08:51:51Z",
  "hote": "https://apitools.mycloud.intrabpce.fr",
  "cia": "NXW53",
  "tests": [
@@ -10,11 +10,12 @@
    "description": "disponibilité de la façade Bitbucket",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/health",
    "status": 200,
-   "ms": 825,
+   "ms": 992,
    "bytes": 14,
    "content_type": "application/json",
    "shape": "str",
-   "error": null
+   "error": null,
+   "body": "Bitbucket OK"
   },
   {
    "facade": "refa",
@@ -22,7 +23,7 @@
    "description": "informations complètes du CIA (CIA techniques, score DICP, entité, établissement, équipe ops, statut, parent)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/NXW53/info",
    "status": 200,
-   "ms": 208,
+   "ms": 188,
    "bytes": 188,
    "content_type": "application/json",
    "shape": {
@@ -60,7 +61,7 @@
    "description": "score DICP",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/NXW53/dicp",
    "status": 200,
-   "ms": 140,
+   "ms": 217,
    "bytes": 11,
    "content_type": "application/json",
    "shape": {
@@ -77,7 +78,7 @@
    "description": "CIA techniques associés",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/NXW53/cia_tech",
    "status": 200,
-   "ms": 143,
+   "ms": 154,
    "bytes": 9,
    "content_type": "application/json",
    "shape": [
@@ -95,7 +96,7 @@
    "description": "table préfixe CIA (bigramme) → code contributeur (trigramme)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/privatif_etab",
    "status": 200,
-   "ms": 143,
+   "ms": 139,
    "bytes": 353,
    "content_type": "application/json",
    "shape": {
@@ -174,7 +175,7 @@
    "description": "codes établissement par entité",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/refa/code_etab",
    "status": 200,
-   "ms": 158,
+   "ms": 129,
    "bytes": 225,
    "content_type": "application/json",
    "shape": {
@@ -245,7 +246,7 @@
    "description": "projets Bitbucket rattachés au CIA selon apitools",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/projects/NXW53",
    "status": 200,
-   "ms": 736,
+   "ms": 535,
    "bytes": 15,
    "content_type": "application/json",
    "shape": {
@@ -254,7 +255,10 @@
      null
     ]
    },
-   "error": null
+   "error": null,
+   "body": {
+    "projects": []
+   }
   },
   {
    "facade": "bitbucket",
@@ -262,7 +266,7 @@
    "description": "habilitations du premier projet renvoyé",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/habilitations",
    "status": 200,
-   "ms": 175,
+   "ms": 659,
    "bytes": 1096,
    "content_type": "application/json",
    "shape": {
@@ -274,7 +278,95 @@
      }
     ]
    },
-   "error": null
+   "error": null,
+   "body": {
+    "habilitations": [
+     {
+      "group": {
+       "name": "bipe6-bitbucket_bftrv_bpcesa_globalteamleader"
+      },
+      "permission": "PROJECT_ADMIN"
+     },
+     {
+      "group": {
+       "name": "bipe6-bitbucket_nxw53_dev"
+      },
+      "permission": "PROJECT_WRITE"
+     },
+     {
+      "group": {
+       "name": "bipe6-bitbucket_nxw53_reader"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "bipe6-bitbucket_nxw53_teamleader"
+      },
+      "permission": "PROJECT_ADMIN"
+     },
+     {
+      "group": {
+       "name": "dr9_bitbucket_auditor_reader"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "dr9_w53_developer"
+      },
+      "permission": "PROJECT_WRITE"
+     },
+     {
+      "group": {
+       "name": "dr9_w53_reader"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "dr9_w53_teamleader"
+      },
+      "permission": "PROJECT_ADMIN"
+     },
+     {
+      "group": {
+       "name": "g-svc-bipf2-bit-prd-bipe4"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "g-svc-bipf2-bit-prd-bis88"
+      },
+      "permission": "PROJECT_ADMIN"
+     },
+     {
+      "group": {
+       "name": "g-svc-bipf2-prd-nxtes-global-audit"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "g-svc-biphd-prd-global-audit"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "g-svc-ibpb4-prd-global-audit"
+      },
+      "permission": "PROJECT_READ"
+     },
+     {
+      "group": {
+       "name": "g-svc-nxcwj-prd-bb-audit"
+      },
+      "permission": "PROJECT_READ"
+     }
+    ]
+   }
   },
   {
    "facade": "bitbucket",
@@ -282,7 +374,7 @@
    "description": "dépôts du premier projet renvoyé",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/repos",
    "status": 200,
-   "ms": 239,
+   "ms": 211,
    "bytes": 16876,
    "content_type": "application/json",
    "shape": {
@@ -304,7 +396,937 @@
      }
     ]
    },
-   "error": null
+   "error": null,
+   "body": {
+    "repositories": [
+     {
+      "slug": "nxw53-datasource_jboss",
+      "id": 175162,
+      "name": "nxw53-datasource_jboss",
+      "hierarchyId": "66bbf088aa42421bac40",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/nxw53-datasource_jboss.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/nxw53-datasource_jboss.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/nxw53-datasource_jboss/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-ap-fft",
+      "id": 22159,
+      "name": "w53-ap-fft",
+      "description": "Arbitrary precision Fast Fourier Transform",
+      "hierarchyId": "c8b7fc36d3e664e47efe",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": true,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-ap-fft.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-ap-fft.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-ap-fft/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-ap-prob-distributions",
+      "id": 22160,
+      "name": "w53-ap-prob-distributions",
+      "description": "Arbitrary precision probabilistic destribuitions",
+      "hierarchyId": "44c3c6d6c40de7ede097",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": true,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-ap-prob-distributions.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-ap-prob-distributions.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-ap-prob-distributions/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-bashscripts",
+      "id": 6129,
+      "name": "w53-bashscripts",
+      "hierarchyId": "a76b38ccc4ce1ee51383",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": true,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-bashscripts.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-bashscripts.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-bashscripts/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-e2etests",
+      "id": 19866,
+      "name": "W53-E2ETests",
+      "hierarchyId": "3cf7b52a41652f8c6451",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": true,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-e2etests.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-e2etests.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-e2etests/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-ioda-backend",
+      "id": 7060,
+      "name": "w53-ioda-backend",
+      "hierarchyId": "724079d399c5ac23fd43",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-ioda-backend.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-ioda-backend.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-ioda-backend/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-ioda-frontend",
+      "id": 7059,
+      "name": "w53-ioda-frontend",
+      "hierarchyId": "1c6d1696420419629f6b",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-ioda-frontend.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-ioda-frontend.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-ioda-frontend/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-ioda-var-engine",
+      "id": 20811,
+      "name": "w53-ioda-var-engine",
+      "hierarchyId": "5bcf073f3591a4efe55f",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": true,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-ioda-var-engine.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-ioda-var-engine.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-ioda-var-engine/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-mint-e2e-test",
+      "id": 191947,
+      "name": "w53-mint-e2e-test",
+      "hierarchyId": "a2e54d0588b3b973cd1c",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-mint-e2e-test.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-mint-e2e-test.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-mint-e2e-test/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-monitoring",
+      "id": 125742,
+      "name": "w53-monitoring",
+      "hierarchyId": "dfc7f8ad2f7397b72841",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-monitoring.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-monitoring.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-monitoring/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-osirisk",
+      "id": 1464,
+      "name": "w53-osirisk",
+      "hierarchyId": "8a0ac894b2e84b6ef561",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-osirisk.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-osirisk.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-osirisk/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-osirisk-client-sdk",
+      "id": 163281,
+      "name": "w53-osirisk-client-sdk",
+      "hierarchyId": "f8358b362497215a80a4",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-osirisk-client-sdk.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-osirisk-client-sdk.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-osirisk-client-sdk/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-osirisk-e2e-test",
+      "id": 181038,
+      "name": "w53-osirisk-e2e-test",
+      "hierarchyId": "bacaa68210f51b8006ef",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-osirisk-e2e-test.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-osirisk-e2e-test.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-osirisk-e2e-test/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-osirisk-integration-test",
+      "id": 178304,
+      "name": "w53-osirisk-integration-test",
+      "hierarchyId": "9a6a1036948c8708090c",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-osirisk-integration-test.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-osirisk-integration-test.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-osirisk-integration-test/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-osirisk-sql",
+      "id": 178303,
+      "name": "w53-osirisk-sql",
+      "hierarchyId": "b2c884a9b0aa35c7b064",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-osirisk-sql.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-osirisk-sql.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-osirisk-sql/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-support-dashboard",
+      "id": 187115,
+      "name": "w53-support-dashboard",
+      "hierarchyId": "4ae65ad19e34f361c89b",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-support-dashboard.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-support-dashboard.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-support-dashboard/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-web-app",
+      "id": 483,
+      "name": "w53-web-app",
+      "hierarchyId": "f0130b73d1a7218f6f81",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-web-app.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-web-app.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-web-app/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-web-gui",
+      "id": 512,
+      "name": "w53-web-gui",
+      "hierarchyId": "01e1b89b9dfd425ed517",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": true,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-web-gui.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-web-gui.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-web-gui/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53-xld-dictionary",
+      "id": 177835,
+      "name": "w53-xld-dictionary",
+      "hierarchyId": "d883157c769c70f992ea",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53-xld-dictionary.git",
+         "name": "ssh"
+        },
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53-xld-dictionary.git",
+         "name": "http"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53-xld-dictionary/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53_moteur",
+      "id": 1483,
+      "name": "w53_moteur",
+      "hierarchyId": "9f8265e83c60b614aaa6",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53_moteur.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53_moteur.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53_moteur/browse"
+        }
+       ]
+      }
+     },
+     {
+      "slug": "w53_sql",
+      "id": 1484,
+      "name": "w53_sql",
+      "hierarchyId": "76ef6548d1f7e3ef8652",
+      "scmId": "git",
+      "state": "AVAILABLE",
+      "statusMessage": "Available",
+      "forkable": true,
+      "project": {
+       "key": "NXW53",
+       "id": 411,
+       "name": "Osirisk",
+       "description": "Repository des sources du projet RiskMandate et de son successeur",
+       "public": false,
+       "type": "NORMAL",
+       "links": {
+        "self": [
+         {
+          "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53"
+         }
+        ]
+       }
+      },
+      "public": false,
+      "archived": false,
+      "links": {
+       "clone": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/scm/nxw53/w53_sql.git",
+         "name": "http"
+        },
+        {
+         "href": "ssh://git@bitbucket-mut-ssh.mycloud.intrabpce.fr:443/nxw53/w53_sql.git",
+         "name": "ssh"
+        }
+       ],
+       "self": [
+        {
+         "href": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/NXW53/repos/w53_sql/browse"
+        }
+       ]
+      }
+     }
+    ]
+   }
   },
   {
    "facade": "bitbucket",
@@ -312,14 +1334,15 @@
    "description": "forks du premier dépôt",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/nxw53-datasource_jboss/forks",
    "status": 200,
-   "ms": 190,
+   "ms": 188,
    "bytes": 2,
    "content_type": "application/json",
    "shape": [
     "0 éléments",
     null
    ],
-   "error": null
+   "error": null,
+   "body": []
   },
   {
    "facade": "bitbucket",
@@ -327,7 +1350,7 @@
    "description": "branche la plus récemment modifiée",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/repos/nxw53-datasource_jboss/branches?order_by=MODIFICATION&limit=1",
    "status": 200,
-   "ms": 1492,
+   "ms": 507,
    "bytes": 834,
    "content_type": "application/json",
    "shape": [
@@ -341,7 +1364,41 @@
      "isDefault": "bool"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "id": "refs/heads/release/1.0.1",
+     "displayId": "release/1.0.1",
+     "type": "BRANCH",
+     "latestCommit": "2af065645947fe15549bab33b966e9d8dbbc225b",
+     "latestChangeset": "2af065645947fe15549bab33b966e9d8dbbc225b",
+     "isDefault": false
+    },
+    {
+     "id": "refs/heads/develop",
+     "displayId": "develop",
+     "type": "BRANCH",
+     "latestCommit": "69074e07c364b120cca569804f0ae20b0ef5871c",
+     "latestChangeset": "69074e07c364b120cca569804f0ae20b0ef5871c",
+     "isDefault": false
+    },
+    {
+     "id": "refs/heads/release/1.0.0",
+     "displayId": "release/1.0.0",
+     "type": "BRANCH",
+     "latestCommit": "1d5f9dde50c28d8d3b470ab7bda835fd465c80f7",
+     "latestChangeset": "1d5f9dde50c28d8d3b470ab7bda835fd465c80f7",
+     "isDefault": false
+    },
+    {
+     "id": "refs/heads/master",
+     "displayId": "master",
+     "type": "BRANCH",
+     "latestCommit": "d9c6aeed500bb99c657e7a9ddf4e6dafe39c77e7",
+     "latestChangeset": "d9c6aeed500bb99c657e7a9ddf4e6dafe39c77e7",
+     "isDefault": true
+    }
+   ]
   },
   {
    "facade": "bitbucket",
@@ -349,7 +1406,7 @@
    "description": "activité Code Frequency du projet",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/project/NXW53/cf-activity",
    "status": 200,
-   "ms": 834,
+   "ms": 188,
    "bytes": 2900,
    "content_type": "application/json",
    "shape": {
@@ -480,7 +1537,135 @@
      }
     }
    },
-   "error": null
+   "error": null,
+   "body": {
+    "status": "okay",
+    "probes": {
+     "NXW53/nxw53-datasource_jboss": {
+      "size": 602112,
+      "write": 1782309792,
+      "last180": 3,
+      "committer": "Stephane ANO &lt;stephane.ano.prestataire@bpce-it.fr&gt;"
+     },
+     "NXW53/w53-ap-fft": {
+      "size": 430080,
+      "write": 1668530948,
+      "last180": 0,
+      "committer": "tiountchikal &lt;alexandre.tiountchik@natixis.com&gt;"
+     },
+     "NXW53/w53-ap-prob-distributions": {
+      "size": 446464,
+      "write": 1669142252,
+      "last180": 0,
+      "committer": "tiountchikal &lt;alexandre.tiountchik@natixis.com&gt;"
+     },
+     "NXW53/w53-bashscripts": {
+      "size": 7653376,
+      "write": 1781710203,
+      "last180": 4,
+      "committer": "BARCELINI Mateus &lt;mateus.barcelini@natixis.com&gt;"
+     },
+     "NXW53/w53-e2etests": {
+      "size": 3037419520,
+      "write": 1786369346,
+      "last180": 44,
+      "committer": "silvajo1 &lt;josefilipe.silva-ext@natixis.com&gt;"
+     },
+     "NXW53/w53-ioda-backend": {
+      "size": 150123520,
+      "write": 1795624734,
+      "last180": 1276,
+      "committer": "ribeiroru3 &lt;ruifernandes.ribeiro@natixis.com&gt;"
+     },
+     "NXW53/w53-ioda-frontend": {
+      "size": 104311808,
+      "write": 1795626721,
+      "last180": 1389,
+      "committer": "DEGOUTIN Noe Moos (EXT) &lt;noemoos.degoutin-ext@natixis.com&gt;"
+     },
+     "NXW53/w53-ioda-var-engine": {
+      "size": 8192,
+      "write": 1657722640,
+      "last180": 0,
+      "committer": "tiountchikal &lt;alexandre.tiountchik@natixis.com&gt;"
+     },
+     "NXW53/w53-mint-e2e-test": {
+      "size": 20480,
+      "write": 1792494360,
+      "last180": 2,
+      "committer": "Thiago Siqueira &lt;thiago.siqueira@natixis.com&gt;"
+     },
+     "NXW53/w53-monitoring": {
+      "empty": true
+     },
+     "NXW53/w53-osirisk": {
+      "size": 164406272,
+      "write": 1794992068,
+      "last180": 47,
+      "committer": "BARCELINI Mateus &lt;mateus.barcelini@natixis.com&gt;"
+     },
+     "NXW53/w53-osirisk-client-sdk": {
+      "size": 4597760,
+      "write": 1776893256,
+      "last180": 0,
+      "committer": "SIQUEIRA Thiago &lt;thiago.siqueira@natixis.com&gt;"
+     },
+     "NXW53/w53-osirisk-e2e-test": {
+      "size": 115727360,
+      "write": 1795621959,
+      "last180": 149,
+      "committer": "MAIA Joao &lt;joao.maia@natixis.com&gt;"
+     },
+     "NXW53/w53-osirisk-integration-test": {
+      "size": 23853056,
+      "write": 1795619235,
+      "last180": 95,
+      "committer": "israel.oaxaca-ext &lt;israel.oaxaca-ext@natixis.com&gt;"
+     },
+     "NXW53/w53-osirisk-sql": {
+      "size": 2323456,
+      "write": 1792672662,
+      "last180": 33,
+      "committer": "APBIS88PBIPE6 &lt;APBIS88PBIPE6@bpce.fr&gt;"
+     },
+     "NXW53/w53-support-dashboard": {
+      "size": 4096,
+      "write": 1788193594,
+      "last180": 1,
+      "committer": "Thiago Siqueira &lt;thiago.siqueira@natixis.com&gt;"
+     },
+     "NXW53/w53-web-app": {
+      "size": 7964672,
+      "write": 1781700739,
+      "last180": 2,
+      "committer": "abw55procjenkins &lt;abw55procjenkins@slbafrw55tn01.fr.intranet&gt;"
+     },
+     "NXW53/w53-web-gui": {
+      "size": 2842624,
+      "write": 1492179449,
+      "last180": 0,
+      "committer": "Maleze Vivien &lt;vivien.maleze-ext@natixis.com&gt;"
+     },
+     "NXW53/w53-xld-dictionary": {
+      "size": 2738176,
+      "write": 1795614944,
+      "last180": 62,
+      "committer": "BARCELINI Mateus &lt;mateus.barcelini@natixis.com&gt;"
+     },
+     "NXW53/w53_moteur": {
+      "size": 12655616,
+      "write": 1786920768,
+      "last180": 1,
+      "committer": "Thiago Siqueira &lt;thiago.siqueira@natixis.com&gt;"
+     },
+     "NXW53/w53_sql": {
+      "size": 60639232,
+      "write": 1782720920,
+      "last180": 2,
+      "committer": "MEIRA Nuno Miguel &lt;nunomiguel.meira@natixis.com&gt;"
+     }
+    }
+   }
   },
   {
    "facade": "bitbucket",
@@ -488,8 +1673,8 @@
    "description": "Awesome Graphs : commits (1 élément)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/awesome-graphs-api-commits?limit=1",
    "status": 200,
-   "ms": 14590,
-   "bytes": 640,
+   "ms": 15707,
+   "bytes": 628,
    "content_type": "application/json",
    "shape": {
     "values": [
@@ -513,7 +1698,50 @@
     "limit": "int",
     "start": "int"
    },
-   "error": null
+   "error": null,
+   "body": {
+    "values": [
+     {
+      "user": {
+       "emailAddress": "DPM_PCL_APC_DPU@bpce-it.fr",
+       "name": "apbis11pbibtkbis11",
+       "displayName": "apbis11pbibtkbis11"
+      },
+      "author": {
+       "displayName": "SVCPBIS11BIPE6",
+       "emailAddress": "DPM_PCL_APC_DPU@bpce-it.fr"
+      },
+      "authorTimestamp": "2026-11-26T09:51:50+01:00",
+      "linesOfCode": {
+       "added": 0,
+       "deleted": 0
+      },
+      "parents": [
+       {
+        "id": "ab0d0b96cf08fecc1978"
+       },
+       {
+        "id": "e514b1e8cd0b58c7712c"
+       }
+      ],
+      "repository": {
+       "slug": "lts-qrcachestrategy",
+       "name": "LTS-QRCACHESTRATEGY",
+       "project": {
+        "key": "C3LTS-TOOLS",
+        "name": "C3LTS-TOOLS",
+        "type": "NORMAL"
+       }
+      },
+      "id": "e55582fe29785b49c6bbe06b77ae8841c6999431"
+     }
+    ],
+    "isLastPage": false,
+    "nextPageStart": 1,
+    "size": 1,
+    "limit": 1,
+    "start": 0
+   }
   },
   {
    "facade": "bitbucket",
@@ -521,16 +1749,14 @@
    "description": "Awesome Graphs : pull requests (1 élément)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/bitbucket/awesome-graphs-api-pull-requests?limit=1",
    "status": 200,
-   "ms": 2306,
-   "bytes": 2240,
+   "ms": 3113,
+   "bytes": 1725,
    "content_type": "application/json",
    "shape": {
     "values": [
      "1 éléments",
      {
       "locked": "bool",
-      "closed": "bool",
-      "open": "bool",
       "participants": [
        "0 éléments",
        null
@@ -541,13 +1767,16 @@
       "fromRef": "{…4 clés}",
       "author": "{…4 clés}",
       "reviewers": [
-       "4 éléments",
+       "2 éléments",
        "{…4 clés}"
       ],
       "createdDate": "str",
+      "closed": "bool",
+      "open": "bool",
       "id": "int",
       "state": "str",
       "version": "int",
+      "description": "str",
       "link": "str"
      }
     ],
@@ -557,7 +1786,90 @@
     "limit": "int",
     "start": "int"
    },
-   "error": null
+   "error": null,
+   "body": {
+    "values": [
+     {
+      "locked": false,
+      "participants": [],
+      "updatedDate": "2026-11-26T09:52:10.458+01:00",
+      "toRef": {
+       "latestCommit": "25b9c2e39d8d7bd5f0dd09e39c5a677729461bd3",
+       "displayId": "develop",
+       "id": "refs/heads/develop",
+       "repository": {
+        "slug": "fit",
+        "name": "fit",
+        "project": {
+         "key": "DM6",
+         "name": "DM6 - Ostrum - FIT",
+         "type": "NORMAL"
+        }
+       }
+      },
+      "title": "FIT-42662-triplement-des-lignes-cash-sur-les-benchmarks-mono-indice",
+      "fromRef": {
+       "latestCommit": "de15676481d8eb5f8f17ff0834d8403952d53d06",
+       "displayId": "bugfix/FIT-42662-triplement-des-lignes-cash-sur-les-benchmarks-mono-indice",
+       "id": "refs/heads/bugfix/FIT-42662-triplement-des-lignes-cash-sur-les-benchmarks-mono-indice",
+       "repository": {
+        "slug": "fit",
+        "name": "fit",
+        "project": {
+         "key": "DM6",
+         "name": "DM6 - Ostrum - FIT",
+         "type": "NORMAL"
+        }
+       }
+      },
+      "author": {
+       "approved": false,
+       "user": {
+        "emailAddress": "eric.tarcelin-ext@natixis.com",
+        "name": "eric.tarcelin-ext@natixis.com",
+        "displayName": "TARCELIN Eric (EXT)"
+       },
+       "role": "AUTHOR",
+       "status": "UNAPPROVED"
+      },
+      "reviewers": [
+       {
+        "approved": false,
+        "user": {
+         "emailAddress": "sebastien.merceron@natixis.com",
+         "name": "sebastien.merceron@natixis.com",
+         "displayName": "MERCERON Sebastien"
+        },
+        "role": "REVIEWER",
+        "status": "UNAPPROVED"
+       },
+       {
+        "approved": false,
+        "user": {
+         "emailAddress": "laurent.bertacchini@natixis.com",
+         "name": "laurent.bertacchini@natixis.com",
+         "displayName": "BERTACCHINI Laurent"
+        },
+        "role": "REVIEWER",
+        "status": "UNAPPROVED"
+       }
+      ],
+      "createdDate": "2026-11-26T09:52:10.458+01:00",
+      "closed": false,
+      "open": true,
+      "id": 1601,
+      "state": "OPEN",
+      "version": 0,
+      "description": "passage en procstock du code appelé par le pluginf Fit et modification semi jointure",
+      "link": "https://bitbucket-mut.mycloud.intrabpce.fr/projects/DM6/repos/fit/pull-requests/1601"
+     }
+    ],
+    "isLastPage": false,
+    "nextPageStart": 1,
+    "size": 1,
+    "limit": 1,
+    "start": 0
+   }
   },
   {
    "facade": "checkmarx",
@@ -565,7 +1877,7 @@
    "description": "équipe Checkmarx du CIA (SAST)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/Checkmarx/teams/NXW53",
    "status": 200,
-   "ms": 484,
+   "ms": 579,
    "bytes": 110,
    "content_type": "application/json",
    "shape": {
@@ -575,7 +1887,14 @@
     "teampath": "str",
     "reason": "null"
    },
-   "error": null
+   "error": null,
+   "body": {
+    "input": "NXW53",
+    "allowed": true,
+    "exists": true,
+    "teampath": "/CxServer/SP/DSI-Retail/BPCESA/NXW53",
+    "reason": null
+   }
   },
   {
    "facade": "sonarqube",
@@ -583,7 +1902,7 @@
    "description": "projets SonarQube filtrés sur le CIA",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/Sonarqube/projects?project=NXW53",
    "status": 200,
-   "ms": 4111,
+   "ms": 3312,
    "bytes": 1921,
    "content_type": "application/json",
    "shape": [
@@ -598,7 +1917,85 @@
      "projectUuid": "str"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "key": "NXW53-W53-E2ETESTS",
+     "name": "NXW53-W53-E2ETESTS",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-06-26T16:19:47+0200",
+     "managed": false,
+     "projectUuid": "AZntpNn2vIjj4PZJtb-I"
+    },
+    {
+     "key": "NXW53-W53-IODA-BACKEND",
+     "name": "NXW53-W53-IODA-BACKEND",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-11-25T18:27:20+0100",
+     "revision": "d830faccccfc1f6cf547bf4cb654b90ec03dec70",
+     "managed": false,
+     "projectUuid": "AYhtslErTJDPYvoex3gA"
+    },
+    {
+     "key": "NXW53-W53-OSIRISK-CLIENT-SDK",
+     "name": "NXW53-W53-OSIRISK-CLIENT-SDK",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-04-22T23:30:13+0200",
+     "revision": "3ef01f91664133d4fa0f50bf633fbb2a46da8335",
+     "managed": false,
+     "projectUuid": "AZy0CWYVKNg45MhU4RAC"
+    },
+    {
+     "key": "NXW53-W53-OSIRISK-E2E-TEST",
+     "name": "NXW53-W53-OSIRISK-E2E-TEST",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-08-05T16:43:39+0200",
+     "managed": false,
+     "projectUuid": "0c71d5f9-f6a2-4041-969e-8347608d3ef5"
+    },
+    {
+     "key": "NXW53-W53-OSIRISK-INTEGRATION-TEST",
+     "name": "NXW53-W53-OSIRISK-INTEGRATION-TEST",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-09-01T12:57:01+0200",
+     "managed": false,
+     "projectUuid": "AZ6F-fmheMTT3HSl9Eoj"
+    },
+    {
+     "key": "NXW53-W53_MOTEUR",
+     "name": "NXW53-W53_MOTEUR",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-08-17T01:02:43+0200",
+     "managed": false,
+     "projectUuid": "2c4b9445-2a4a-4cff-8044-08edf74266b6"
+    },
+    {
+     "key": "NXW53-W53-IODA-FRONTEND",
+     "name": "W53/IODA Frontend Sonar",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-07-24T15:57:02+0200",
+     "revision": "4d68be2520a0f79f4be358a388ad0ac5ff3ff6d1",
+     "managed": false,
+     "projectUuid": "AYhtbqQbFrB610Q4YnPs"
+    },
+    {
+     "key": "NXW53:ioda-frontend:develop",
+     "name": "W53/IODA Frontend Sonar",
+     "qualifier": "TRK",
+     "visibility": "private",
+     "lastAnalysisDate": "2026-07-24T15:31:29+0200",
+     "revision": "9894d7bc248af8765ebcd3332ca0e106b6f5df0d",
+     "managed": false,
+     "projectUuid": "AZq_yMAqZvj6ZJK8kteu"
+    }
+   ]
   },
   {
    "facade": "jenkins",
@@ -606,7 +2003,7 @@
    "description": "dossier Jenkins du CIA",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/folder/NXW53",
    "status": 200,
-   "ms": 298,
+   "ms": 309,
    "bytes": 118,
    "content_type": "application/json",
    "shape": [
@@ -618,7 +2015,15 @@
      "status": "str"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "folder": "NXW53",
+     "url": "https://jenkins-bis88.mycloud.intrabpce.fr/job/NXW53",
+     "msg": "folder exists",
+     "status": "200"
+    }
+   ]
   },
   {
    "facade": "jenkins",
@@ -626,7 +2031,7 @@
    "description": "instance Jenkins du CIA",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/url/NXW53",
    "status": 200,
-   "ms": 169,
+   "ms": 182,
    "bytes": 57,
    "content_type": "application/json",
    "shape": {
@@ -635,7 +2040,12 @@
      "str"
     ]
    },
-   "error": null
+   "error": null,
+   "body": {
+    "bis88": [
+     "https://jenkins-bis88.mycloud.intrabpce.fr/"
+    ]
+   }
   },
   {
    "facade": "jenkins",
@@ -643,7 +2053,7 @@
    "description": "jobs du dossier racine (sans folder_path)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/inventory/NXW53/items",
    "status": 404,
-   "ms": 156,
+   "ms": 146,
    "bytes": 52,
    "content_type": "application/json",
    "shape": {
@@ -657,7 +2067,7 @@
    "description": "jobs du dossier nommé par le CIA",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jenkins/inventory/NXW53/items?folder_path=NXW53",
    "status": 404,
-   "ms": 152,
+   "ms": 147,
    "bytes": 52,
    "content_type": "application/json",
    "shape": {
@@ -671,7 +2081,7 @@
    "description": "projet Jira du CIA",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/jira/projects/search?cia=NXW53",
    "status": 422,
-   "ms": 132,
+   "ms": 154,
    "bytes": 89,
    "content_type": "application/json",
    "shape": {
@@ -696,7 +2106,7 @@
    "description": "URLs XLD du CIA technique",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/url",
    "status": 200,
-   "ms": 128,
+   "ms": 127,
    "bytes": 120,
    "content_type": "application/json",
    "shape": [
@@ -709,7 +2119,16 @@
      "target_cia_tech": "str"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "url": "https://xld-bis88.mycloud.intrabpce.fr/",
+     "is_mars": false,
+     "id": 58,
+     "cia_tech": "BIS88",
+     "target_cia_tech": "BIS88"
+    }
+   ]
   },
   {
    "facade": "xld",
@@ -717,7 +2136,7 @@
    "description": "applications déployées XLD (1 élément)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/applications?elt_type=deployed_application&editor=BI&page_size=1&page=1",
    "status": 200,
-   "ms": 2235,
+   "ms": 230,
    "bytes": 92,
    "content_type": "application/json",
    "shape": [
@@ -727,7 +2146,13 @@
      "type": "str"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "ref": "Environments/BIS88/BFABS/10-DEV/ABS-DEV/ABS-API",
+     "type": "udm.DeployedApplication"
+    }
+   ]
   },
   {
    "facade": "xld",
@@ -735,7 +2160,7 @@
    "description": "applications déployées XLD, autre éditeur",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/applications?elt_type=deployed_application&editor=NX&page_size=1&page=1",
    "status": 200,
-   "ms": 235,
+   "ms": 213,
    "bytes": 92,
    "content_type": "application/json",
    "shape": [
@@ -745,7 +2170,13 @@
      "type": "str"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "ref": "Environments/BIS88/BFABS/10-DEV/ABS-DEV/ABS-API",
+     "type": "udm.DeployedApplication"
+    }
+   ]
   },
   {
    "facade": "xld",
@@ -753,7 +2184,7 @@
    "description": "environnements XLD (1 élément)",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/xld/BIS88/environments?editor=BI&page_size=1&page=1",
    "status": 200,
-   "ms": 222,
+   "ms": 211,
    "bytes": 80,
    "content_type": "application/json",
    "shape": [
@@ -763,7 +2194,13 @@
      "type": "str"
     }
    ],
-   "error": null
+   "error": null,
+   "body": [
+    {
+     "ref": "Environments/BIS88/BF000/20-VAL/000-VAL.ENV",
+     "type": "udm.Environment"
+    }
+   ]
   },
   {
    "facade": "artifactory",
@@ -771,7 +2208,7 @@
    "description": "connectivité Artifactory",
    "url": "https://apitools.mycloud.intrabpce.fr/api/v1/artifactory/health",
    "status": 200,
-   "ms": 219,
+   "ms": 187,
    "bytes": 16,
    "content_type": "application/json",
    "shape": "str",
