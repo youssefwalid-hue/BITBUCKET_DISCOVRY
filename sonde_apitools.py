@@ -23,7 +23,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-VERSION = "1.2"
+VERSION = "1.3"
 DEFAULT_URL = "https://apitools.mycloud.intrabpce.fr"
 TIMEOUT = 30
 
@@ -51,7 +51,8 @@ TESTS = [
     ("jenkins", "jenkins/url/{cia}", "instance Jenkins du CIA"),
     ("jenkins", "jenkins/inventory/{cia}/items", "jobs du dossier racine (sans folder_path)"),
     ("jenkins", "jenkins/inventory/{cia}/items?folder_path={cia}", "jobs du dossier nommé par le CIA"),
-    ("jenkins", "jenkins/inventory/{cia}/items?folder_path={cia_tech}", "jobs du dossier nommé par le CIA technique"),
+    ("jenkins", "jenkins/inventory/{cia_tech}/items", "jobs à la racine de l'instance du CIA technique"),
+    ("jenkins", "jenkins/inventory/{cia_tech}/items?folder_path={cia}", "jobs du dossier du CIA sur l'instance du CIA technique"),
     ("jira", "jira/projects/search?cia={cia}", "projet Jira du CIA"),
     ("jira", "jira/projects/search?cia={cia}&key={key}", "projet Jira du CIA (avec la clé de projet)"),
     ("jira", "jira/projects/{key}", "projet Jira portant la clé du projet Bitbucket"),
@@ -59,6 +60,7 @@ TESTS = [
     ("xld", "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor}&page_size=1&page=1", "applications déployées XLD (1 élément)"),
     ("xld", "xld/{cia_tech}/applications?elt_type=deployed_application&editor={editor2}&page_size=1&page=1", "applications déployées XLD, autre éditeur"),
     ("xld", "xld/{cia_tech}/environments?editor={editor}&page_size=1&page=1", "environnements XLD (1 élément)"),
+    ("xld", "xld/{cia_tech}/applications?elt_type=application&editor={editor}&page_size=50&page=1", "applications XLD de la plateforme (50 premières : repérer le dossier du CIA)"),
     ("artifactory", "artifactory/health", "connectivité Artifactory"),
     ("artifactory", "artifactory/xray/index/{repo_art}", "indexation Xray du dépôt Artifactory nommé par --repo-artifactory"),
 ]
