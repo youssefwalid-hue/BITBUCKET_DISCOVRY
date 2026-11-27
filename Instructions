@@ -1,17 +1,25 @@
 cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-py bri.py statut --nom instance --verifier                                    # lignes « qualité » + qualite_<horodatage>.json → à me renvoyer
-py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires   # ligne « activité (v7.5) : … » → à me renvoyer
-py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus
-py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000   # seulement si « activité (v7.5) » montre des dépôts sans activité (collecte --refresh faite avec la v7.4)
+# 0. v7.6 installée ? sinon : Expand-Archive .\bri_v7.zip -DestinationPath C:\Users\BWT40FH\BITBUCKET\V7\outils -Force ; py -W error verifier_package.py --complet
 
+# 1. VÉRIFIER ce qui a été fait (0 appel) : inventaire / collecte / fiches / activité / rattachement / qualité + « reste à faire » (dont montée N3, saturés, erreurs)
+py bri.py statut --nom instance --verifier          # écrit espaces\instance\qualite_<horodatage>.json (à comparer au précédent)
+py bri.py sources statut --nom instance ; py bri.py cia statut --nom instance
 
+# 2. COMPLÉTER : activité manquante, puis erreurs (33 453 FORBIDDEN : droits si elles reviennent à l'identique, incident si elles passent)
+py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000     # relancer jusqu'à « rien à faire »
+py bri.py inventaire --nom instance                                                     # 3. NOUVEAUX projets / dépôts (mis en attente), disparus marqués, 229 projets changés
+py bri.py collecte --nom instance --retry-errors --max-duration 540 --max-calls 150000  # en un passage : nouveaux dépôts + erreurs + montée N3 des dépôts restés en N2 (niveau 3 = défaut de l'espace, N2 réutilisé)
+py bri.py collecte --nom instance --satures --profil complet --sans-archives --actifs 365   # 4. N3 « si nécessaire » : saturés actifs relus avec bornes doublées (optionnel, coûteux)
+py bri.py classifier --nom instance                                                     # fiches nouvelles ou périmées (4 904)
 
+# 5. nouveaux projets → rattachement CIA, détails REFA et apitools des nouveaux codes (incrémental)
+py bri.py cia rapprocher --nom instance --legacy-entity NATIXIS --entity-from-prefix --accept-suggestion-score 1.0 --reference
+py bri.py cia appliquer --nom instance
+py bri.py sources refa --nom instance --sans-recherche ; py bri.py sources projets --nom instance
 
-Expand-Archive .\bri_v7.zip -DestinationPath C:\Users\BWT40FH\BITBUCKET\V7\outils -Force
-cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-py -W error verifier_package.py --complet          # 17 contrôles, aucun avertissement attendu
-py bri.py sources apitools --nom instance --parties referentiels,cf                 # ≈ 6 700 appels, ≈ 1 h
-py bri.py sources apitools --nom instance --parties refa,checkmarx,sonar,jenkins    # 2–3 h à 4 fils (Sonar ≈ 5 s/code) ; --max-duration 120 pour borner, relancer pour reprendre
+# 6. preuves DevSecOps v7.6 ($env:APITOOLS_TOKEN posé), puis pages + bilan
+py bri.py sources apitools --nom instance --parties referentiels,cf
+py bri.py sources apitools --nom instance --parties refa,checkmarx,sonar,jenkins --max-duration 120   # relancer pour reprendre
 py bri.py sources apitools --nom instance --parties xld
-py bri.py sources statut --nom instance ; py bri.py statut --nom instance --verifier
-py bri.py cia rapport --nom instance --out D:\bri\tdb_instance
+py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires
+py bri.py statut --nom instance --verifier
