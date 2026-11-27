@@ -3,3 +3,15 @@ py bri.py statut --nom instance --verifier                                    # 
 py bri.py cia rapport --nom instance --out D:\bri\tdb_instance --extraits-proprietaires   # ligne « activité (v7.5) : … » → à me renvoyer
 py bri.py sources test --nom instance --source apitools --etendu --cia NXW53 --projet NXW53   # 13 / 13 attendus
 py bri.py collecte --nom instance --activite --max-duration 540 --max-calls 150000   # seulement si « activité (v7.5) » montre des dépôts sans activité (collecte --refresh faite avec la v7.4)
+
+
+
+
+Expand-Archive .\bri_v7.zip -DestinationPath C:\Users\BWT40FH\BITBUCKET\V7\outils -Force
+cd C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
+py -W error verifier_package.py --complet          # 17 contrôles, aucun avertissement attendu
+py bri.py sources apitools --nom instance --parties referentiels,cf                 # ≈ 6 700 appels, ≈ 1 h
+py bri.py sources apitools --nom instance --parties refa,checkmarx,sonar,jenkins    # 2–3 h à 4 fils (Sonar ≈ 5 s/code) ; --max-duration 120 pour borner, relancer pour reprendre
+py bri.py sources apitools --nom instance --parties xld
+py bri.py sources statut --nom instance ; py bri.py statut --nom instance --verifier
+py bri.py cia rapport --nom instance --out D:\bri\tdb_instance
