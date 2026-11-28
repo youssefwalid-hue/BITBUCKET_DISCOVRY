@@ -1,21 +1,473 @@
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py .\verifier_package.py C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db verif_V91.txt
-vérification du package bri v7 — C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7
-  [OK]    intégrité (MANIFEST.sha256) — 104 fichiers conformes
-  [OK]    arborescence v7 — 54 fichiers attendus présents (bri.py + paquet bri/ par domaines, tests/, tools/, data/, docs/)
-  [OK]    compilation — 104 fichiers Python (3.14)
-  [OK]    imports — 37 modules, bibliothèque standard seule
-  [OK]    GET uniquement — méthode GET explicite dans bri/core/http.py, aucun autre verbe littéral dans bri/**/*.py, verbe variable seulement dans bri/sources/client.py (liste blanche), aucune bibliothèque tierce
-  [OK]    sources externes (liste blanche, DDL) — POST limités au jeton OAuth2 (REFA, apitools) et à la recherche REFA ; GET apitools à effet de bord jamais construits (licences_cleaning, nutriscore, reset…) ; 20 tables sources CREATE IF NOT EXISTS, DDL de référence identique
-  [OK]    moteur de règles — E.5 · référentiel v1 : 17 types dont EMPTY · conventions batch_chain, deployable_api, xld_dictionary, xld_manifest, xld_package, xld_package_priority · cycles de vie annuel, calibrated_cib, spec
-  [OK]    signatures — L04_signatures.csv 259 lignes · technology_signatures.json (14 familles)
-  [OK]    schéma L19 — primary_type 17 valeurs dont EMPTY · bloc analyse décrit
-  [ÉCHEC] absence de données de pilote — fichiers [] · mentions ['intrabpce']
-  [OK]    documentation — 26 documents de référence présents
-  [OK]    langues fr / en — 455 messages console et 807 libellés de pages traduits (bri/locale/en.json) · bascule --lang / BRI_LANG / espace
-  [OK]    règles et versions de paramètres — export de base 17 types · 49 signatures · 28 règles logiques · validation des versions · page générée
-  [OK]    rattachement CIA — cia_match 41 tests OK · DDL de référence = DDL embarqué · migration 7 tables / 3 vues + description · aucun accès HTTP
-  [OK]    activité et présence v7.5 · preuves DevSecOps v7.6 — 3 tables CREATE IF NOT EXISTS (DDL de référence identique, aucune colonne nominative) · activité calculée sur un échantillon (commits 90 / 365 j, PR, tag, branches, builds, Jira) sans valeur nominative · liste blanche apitools figée le 26/11 : 14 GET acceptés (dont jenkins inventory items), builds / config Jenkins, Awesome Graphs, report_tasks, reset, Jira refusés · analyses cf-activity (committer ignoré), clés Sonar, références XLD, inventaire Jenkins
-  [OK]    chaîne complète (instance simulée) — 24 dépôts collectés (N3 19) · 24/24 types attendus · 253 appels GET, 0 non GET · tableaux de bord générés
 
-Résultat : ÉCHEC (16 contrôles, 1 échec(s))
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7>
+=== A Tables et vues, nombre de lignes ===
+base | C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db
+date | 2026-11-28T12:07:44
+table | apitools_cf_activity | 79925
+table | apitools_checkmarx | 3411
+table | apitools_cia_lookups | 4478
+table | apitools_cia_projects | 4802
+table | apitools_habilitations | 6686
+table | apitools_jenkins | 4478
+table | apitools_jenkins_jobs | 4034
+table | apitools_projects | 6693
+table | apitools_reads | 24829
+table | apitools_refa_info | 4478
+table | apitools_referentiels | 36
+table | apitools_sonar_projects | 19600
+table | apitools_xld_items | 518588
+table | apitools_xld_platforms | 229
+table | cia_decisions | 0
+table | cia_effective | 6686
+table | cia_groups | 408018
+table | cia_imports | 6
+table | cia_project_match | 26510
+table | cia_refa_applications | 102583
+table | cia_runs | 4
+table | events | 28
+table | http_cache | 1350105
+table | meta | 3
+table | progress | 19364
+table | project_presence | 6721
+table | projects | 6721
+table | refa_applications | 34871
+table | refa_applications_ext | 34871
+table | refa_details | 13434
+table | refa_hostings | 11903
+table | refa_responsibles | 63469
+table | refa_urls | 1657
+table | repo_activity | 79192
+table | repo_presence | 92697
+table | repos | 92697
+table | runs | 86
+view | v_cia_applications | 4478
+view | v_cia_queue | 98
+view | v_cia_repos | 92697
+view | v_refa_applications | 34871
+
+=== B Totaux de controle (statut : applications, projets, depots) ===
+projets (inventaire) | 6721
+depots (inventaire) | 92697
+applications REFA | 34871
+projets rattaches | 6628 | 91307
+projets sans application | 58 | 653
+codes rattaches inconnus de REFA | 0
+applications avec depots | 4478
+statut | PRD | 3593 | 5561 | 75443
+statut | OUT | 583 | 634 | 3147
+statut | DEV | 245 | 369 | 12231
+statut | TBO | 41 | 47 | 415
+statut | ARC | 16 | 17 | 71
+
+=== C Rattachement : etats, confiance, origine (projets, depots) ===
+review_state | OK | 6588 | 90752
+review_state | NON_RATTACHE | 45 | 476
+review_state | A_REVOIR | 26 | 371
+review_state | FAIBLE | 23 | 244
+review_state | A_CONFIRMER | 4 | 117
+confidence | HIGH | 6251 | 84575
+confidence | MEDIUM | 367 | 6487
+confidence |  | 58 | 653
+confidence | LOW | 10 | 245
+source | ENGINE | 6686 | 91960
+cia_status | PRD | 5561 | 75443
+cia_status | OUT | 634 | 3147
+cia_status | DEV | 369 | 12231
+cia_status |  | 58 | 653
+cia_status | TBO | 47 | 415
+cia_status | ARC | 17 | 71
+
+=== D Par entite : applications avec depots, projets, depots ===
+BPCE SOLUTIONS INFORMATIQUES | 1908 | 3096 | 42387
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | 1162 | 22056
+BPCE | 567 | 657 | 9198
+NATIXIS | 430 | 581 | 6790
+BPCE PAYMENT SERVICES | 148 | 204 | 1293
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | 129 | 1652
+NATIXIS NORTH AMERICA LLC | 74 | 85 | 1516
+ESTREEM | 61 | 62 | 143
+NATIXIS HONG KONG BRANCH | 59 | 69 | 635
+NATIXIS WEALTH MANAGEMENT | 46 | 53 | 255
+AEW | 36 | 36 | 120
+IT-CE | 25 | 26 | 41
+BIMPLI | 24 | 26 | 153
+NATIXIS INTEREPARGNE | 23 | 29 | 533
+INFORMATIQUE BANQUES POPULAIRES | 18 | 18 | 90
+BANQUE PALATINE | 18 | 21 | 188
+CREDIT FONCIER DE FRANCE | 15 | 17 | 383
+OSTRUM ASSET MANAGEMENT | 14 | 14 | 22
+CREDIT COOPERATIF | 14 | 14 | 183
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | 15 | 151
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | 14 | 43
+BANQUE POPULAIRE GRAND OUEST | 13 | 22 | 394
+BANQUE POPULAIRE DU SUD | 11 | 12 | 416
+BANQUE POPULAIRE DU NORD | 9 | 16 | 238
+NATIXIS - SUCURSAL EM PORTUGAL | 8 | 8 | 24
+CAPITOLE FINANCE-TOFINSO | 8 | 8 | 26
+CAISSE EPARGNE PREVOYANCE LANGUEDOC ROUSSILLON | 8 | 9 | 303
+CAISSE D'EPARGNE ET DE PREVOYANCE DE RHONE ALPES | 8 | 8 | 44
+CAISSE D'EPARGNE ET DE PREVOYANCE GRAND EST EUROPE | 7 | 7 | 5
+CAISSE D'EPARGNE ET DE PREVOYANCE DE NORMANDIE | 7 | 8 | 130
+BANQUE POPULAIRE VAL DE FRANCE | 7 | 7 | 22
+BANQUE POPULAIRE RIVES DE PARIS | 7 | 17 | 136
+BANQUE POPULAIRE MEDITERRANEE | 7 | 8 | 29
+BANQUE POPULAIRE AUVERGNE RHONE ALPES | 7 | 8 | 89
+MIROVA | 6 | 7 | 25
+CAISSE D'EPARGNE ET DE PREVOYANCE ILE-DE-FRANCE | 6 | 6 | 8
+CAISSE D'EPARGNE ET DE PREVOYANCE DE MIDI PYRENEES | 6 | 6 | 32
+CAISSE D'EPARGNE ET DE PREVOYANCE AQUITAINE POITOU CHARENTES | 6 | 7 | 127
+BANQUE POPULAIRE OCCITANE | 6 | 10 | 79
+BANQUE POPULAIRE BOURGOGNE FRANCHE-COMTE | 6 | 7 | 92
+BANQUE POPULAIRE ALSACE LORRAINE CHAMPAGNE | 6 | 6 | 61
+TURBO | 5 | 5 | 5
+NATIXIS LONDON BRANCH | 5 | 5 | 209
+CAISSE D'EPARGNE ET DE PREVOYANCE BRETAGNE - PAYS DE LOIRE | 5 | 6 | 13
+BPCE EQUIPMENT SOLUTIONS USA CORP | 5 | 5 | 20
+BPCE EQUIPMENT SOLUTIONS SAS | 5 | 6 | 42
+SOCIETE CENTRALE POUR LE FINANCEMENT DE L'IMMOBILIER SOCFIM | 4 | 4 | 6
+NATIXIS TRADEX SOLUTIONS | 4 | 4 | 19
+CAISSE D'EPARGNE ET DE PREVOYANCE DE BOURGOGNE FRANCHE-COMTE | 4 | 8 | 203
+CAISSE D'EPARGNE CEPAC | 4 | 4 | 6
+BPCE SERVICES FINANCIERS | 4 | 6 | 211
+BPCE EQUIPMENT SOLUTIONS POLSKA SP.ZO.O. | 4 | 4 | 20
+NATIXIS INVESTMENT MANAGERS | 3 | 3 | 3
+HEXARQ | 3 | 4 | 233
+ECOFI INVESTISSEMENTS | 3 | 3 | 33
+CASDEN BANQUE POPULAIRE | 3 | 3 | 3
+CAISSE D'EPARGNE ET DE PREVOYANCE LOIRE-CENTRE | 3 | 3 | 1
+CAISSE D'EPARGNE ET DE PREVOYANCE LOIRE DROME ARDECHE | 3 | 3 | 2
+CAISSE D'EPARGNE ET DE PREVOYANCE D'AUVERGNE ET DU LIMOUSIN | 3 | 3 | 2
+BPCE EQUIPMENT SOLUTIONS SCHWEIZ AG | 3 | 3 | 3
+BANQUE POPULAIRE AQUITAINE CENTRE ATLANTIQUE | 3 | 3 | 2
+XPOLLENS | 2 | 2 | 1
+NATIXIS INTERTITRES | 2 | 2 | 2
+FEDERATION NATIONALE DES BANQUES POPULAIRES | 2 | 2 | 3
+CAISSE D'EPARGNE ET DE PREVOYANCE COTE D'AZUR | 2 | 2 | 2
+BPCE ACHATS ET SERVICES | 2 | 2 | 1
+BANQUE NAGELMACKERS | 2 | 2 | 3
+BANQUE BCP | 2 | 2 | 0
+VEGA INVESTMENT SOLUTIONS | 1 | 1 | 13
+PALATINE ASSET MANAGEMENT | 1 | 1 | 1
+NATIXIS PFANDBRIEFBANK AG | 1 | 1 | 68
+NATIXIS INVESTMENT MANAGERS INTERNATIONAL | 1 | 2 | 6
+NATIXIS COFICINE | 1 | 1 | 2
+GEFA BANK GMBH | 1 | 1 | 29
+FEDER NATIO CAISS EPARG PREVO | 1 | 1 | 22
+BPCE SOLUTIONS IMMOBILIERES | 1 | 1 | 2
+BPCE SOLUTIONS CLIENTS | 1 | 1 | 0
+BPCE EQUIPMENT SOLUTIONS BRASIL S.A. ARRENDAMENTO MERCANTIL | 1 | 1 | 1
+BPCE EQUIPMENT SOLUTIONS BENELUX B.V. | 1 | 1 | 0
+BPCE ASSURANCES IARD | 1 | 1 | 1
+89C3 (ÉDITEUR IT) | 1 | 1 | 2
+
+=== E Format de prod_team par entite (>= 10 applications) ===
+entite | applications | prod_team rempli | commence par PRD- | 1 segment | 2 | 3 | 4 | 5+
+BPCE SOLUTIONS INFORMATIQUES | 1908 | 97.8 % | 97.0 % | 1 | 0 | 304 | 1005 | 556
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | 100.0 % | 99.2 % | 0 | 0 | 146 | 330 | 122
+BPCE | 567 | 98.4 % | 98.2 % | 0 | 0 | 91 | 42 | 425
+NATIXIS | 430 | 98.8 % | 98.6 % | 0 | 0 | 56 | 169 | 200
+BPCE PAYMENT SERVICES | 148 | 98.6 % | 98.0 % | 1 | 0 | 0 | 143 | 2
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | 100.0 % | 100.0 % | 0 | 0 | 120 | 1 | 0
+NATIXIS NORTH AMERICA LLC | 74 | 100.0 % | 91.9 % | 0 | 0 | 1 | 4 | 69
+ESTREEM | 61 | 100.0 % | 100.0 % | 0 | 0 | 0 | 61 | 0
+NATIXIS HONG KONG BRANCH | 59 | 100.0 % | 88.1 % | 0 | 0 | 0 | 3 | 56
+NATIXIS WEALTH MANAGEMENT | 46 | 100.0 % | 100.0 % | 0 | 0 | 1 | 45 | 0
+AEW | 36 | 100.0 % | 94.4 % | 0 | 0 | 33 | 1 | 2
+IT-CE | 25 | 60.0 % | 56.0 % | 0 | 0 | 0 | 4 | 11
+BIMPLI | 24 | 100.0 % | 87.5 % | 2 | 0 | 0 | 22 | 0
+NATIXIS INTEREPARGNE | 23 | 100.0 % | 95.7 % | 1 | 0 | 0 | 22 | 0
+INFORMATIQUE BANQUES POPULAIRES | 18 | 77.8 % | 77.8 % | 0 | 0 | 0 | 12 | 2
+BANQUE PALATINE | 18 | 100.0 % | 100.0 % | 0 | 0 | 1 | 0 | 17
+CREDIT FONCIER DE FRANCE | 15 | 100.0 % | 86.7 % | 0 | 0 | 1 | 2 | 12
+CREDIT COOPERATIF | 14 | 100.0 % | 100.0 % | 0 | 0 | 1 | 0 | 13
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | 100.0 % | 100.0 % | 0 | 0 | 1 | 0 | 13
+OSTRUM ASSET MANAGEMENT | 14 | 100.0 % | 100.0 % | 0 | 0 | 14 | 0 | 0
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | 100.0 % | 100.0 % | 0 | 0 | 0 | 13 | 0
+BANQUE POPULAIRE GRAND OUEST | 13 | 100.0 % | 76.9 % | 0 | 0 | 1 | 3 | 9
+BANQUE POPULAIRE DU SUD | 11 | 100.0 % | 100.0 % | 0 | 0 | 1 | 0 | 10
+--- familles, toutes entites ---
+PRD-APP | 3799 | 84.8 %
+PRD-INF | 216 | 4.8 %
+PRD-TRV | 166 | 3.7 %
+PRD-SEC | 100 | 2.2 %
+(vide) | 75 | 1.7 %
+PRD-PDT | 60 | 1.3 %
+SUI-N3 | 18 | 0.4 %
+SUT-INT | 8 | 0.2 %
+DSI-INT | 6 | 0.1 %
+fournisseur | 5 | 0.1 %
+DSI-TES | 3 | 0.1 %
+ETB-BPN | 3 | 0.1 %
+ETB-BPGO | 3 | 0.1 %
+ETB-CFF | 2 | 0.0 %
+ETB-CELR | 2 | 0.0 %
+RSI-INT | 2 | 0.0 %
+ETB-CEAPC | 1 | 0.0 %
+DSI-POWER | 1 | 0.0 %
+ETB-BPMED | 1 | 0.0 %
+ETB-CEN | 1 | 0.0 %
+DSI-BGC | 1 | 0.0 %
+SUT-BGC | 1 | 0.0 %
+DSI-CCO | 1 | 0.0 %
+ETB-CEBPL | 1 | 0.0 %
+ETB-BPRI | 1 | 0.0 %
+ETB-BPVF | 1 | 0.0 %
+
+=== E2 Familles de production des 12 plus grosses entites ===
+BPCE SOLUTIONS INFORMATIQUES | familles=10 | domaines=43 | equipes=70 | PRD-APP 1720 ; PRD-TRV 64 ; (vide) 42 ; PRD-INF 42 ; PRD-PDT 23 ; SUI-N3 13 ; DSI-TES 1 ; PRD-SEC 1
+BPCE INFOGERANCE ET TECHNOLOGIES | familles=7 | domaines=118 | equipes=199 | PRD-APP 241 ; PRD-INF 167 ; PRD-SEC 97 ; PRD-TRV 51 ; PRD-PDT 37 ; SUI-N3 4 ; DSI-TES 1
+BPCE | familles=4 | domaines=18 | equipes=36 | PRD-APP 553 ; (vide) 9 ; PRD-INF 4 ; DSI-POWER 1
+NATIXIS | familles=4 | domaines=27 | equipes=46 | PRD-APP 399 ; PRD-TRV 25 ; (vide) 5 ; SUT-BGC 1
+BPCE PAYMENT SERVICES | familles=3 | domaines=7 | equipes=14 | PRD-APP 145 ; (vide) 2 ; fournisseur 1
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | familles=1 | domaines=1 | equipes=2 | PRD-APP 121
+NATIXIS NORTH AMERICA LLC | familles=5 | domaines=5 | equipes=6 | PRD-APP 68 ; DSI-INT 3 ; SUT-INT 1 ; DSI-BGC 1 ; RSI-INT 1
+ESTREEM | familles=1 | domaines=2 | equipes=3 | PRD-APP 61
+NATIXIS HONG KONG BRANCH | familles=5 | domaines=6 | equipes=14 | PRD-APP 36 ; PRD-TRV 14 ; SUT-INT 4 ; DSI-INT 3 ; PRD-SEC 2
+NATIXIS WEALTH MANAGEMENT | familles=1 | domaines=2 | equipes=2 | PRD-APP 46
+AEW | familles=2 | domaines=2 | equipes=4 | PRD-APP 34 ; SUT-INT 2
+IT-CE | familles=3 | domaines=5 | equipes=6 | PRD-APP 14 ; (vide) 10 ; SUI-N3 1
+
+=== F Axe utile par entite (concentre > 60 %, fin < 5 applications par valeur) ===
+entite | applications | axe | valeurs | plus gros groupe | part | vides | verdict
+BPCE SOLUTIONS INFORMATIQUES | 1908 | famille | 9 | 1720 | 90.1 % | 42 | concentre
+BPCE SOLUTIONS INFORMATIQUES | 1908 | domaine | 42 | 537 | 28.1 % | 42 | utile
+BPCE SOLUTIONS INFORMATIQUES | 1908 | it_org | 180 | 62 | 3.2 % | 2 | utile
+BPCE SOLUTIONS INFORMATIQUES | 1908 | csl_org | 16 | 712 | 37.3 % | 82 | utile
+BPCE SOLUTIONS INFORMATIQUES | 1908 | bo_org | 29 | 712 | 37.3 % | 53 | utile
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | famille | 7 | 241 | 40.3 % | 0 | utile
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | domaine | 118 | 38 | 6.4 % | 0 | utile
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | it_org | 199 | 28 | 4.7 % | 6 | fin
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | csl_org | 9 | 571 | 95.5 % | 1 | concentre
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | bo_org | 13 | 571 | 95.5 % | 0 | concentre
+BPCE | 567 | famille | 3 | 553 | 97.5 % | 9 | concentre
+BPCE | 567 | domaine | 17 | 425 | 75.0 % | 9 | concentre
+BPCE | 567 | it_org | 25 | 103 | 18.2 % | 13 | utile
+BPCE | 567 | csl_org | 21 | 415 | 73.2 % | 18 | concentre
+BPCE | 567 | bo_org | 82 | 95 | 16.8 % | 13 | utile
+NATIXIS | 430 | famille | 3 | 399 | 92.8 % | 5 | concentre
+NATIXIS | 430 | domaine | 26 | 64 | 14.9 % | 5 | utile
+NATIXIS | 430 | it_org | 103 | 34 | 7.9 % | 8 | fin
+NATIXIS | 430 | csl_org | 21 | 192 | 44.7 % | 23 | utile
+NATIXIS | 430 | bo_org | 59 | 127 | 29.5 % | 6 | utile
+BPCE PAYMENT SERVICES | 148 | famille | 2 | 145 | 98.0 % | 2 | concentre
+BPCE PAYMENT SERVICES | 148 | domaine | 6 | 71 | 48.0 % | 2 | utile
+BPCE PAYMENT SERVICES | 148 | it_org | 11 | 45 | 30.4 % | 0 | utile
+BPCE PAYMENT SERVICES | 148 | csl_org | 1 | 147 | 99.3 % | 1 | concentre
+BPCE PAYMENT SERVICES | 148 | bo_org | 5 | 142 | 95.9 % | 0 | concentre
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | famille | 1 | 121 | 100.0 % | 0 | concentre
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | domaine | 1 | 121 | 100.0 % | 0 | concentre
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | it_org | 11 | 22 | 18.2 % | 0 | utile
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | csl_org | 2 | 110 | 90.9 % | 0 | concentre
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | bo_org | 6 | 102 | 84.3 % | 0 | concentre
+NATIXIS NORTH AMERICA LLC | 74 | famille | 5 | 68 | 91.9 % | 0 | concentre
+NATIXIS NORTH AMERICA LLC | 74 | domaine | 5 | 68 | 91.9 % | 0 | concentre
+NATIXIS NORTH AMERICA LLC | 74 | it_org | 10 | 21 | 28.4 % | 0 | utile
+NATIXIS NORTH AMERICA LLC | 74 | csl_org | 1 | 74 | 100.0 % | 0 | concentre
+NATIXIS NORTH AMERICA LLC | 74 | bo_org | 4 | 55 | 74.3 % | 0 | concentre
+ESTREEM | 61 | famille | 1 | 61 | 100.0 % | 0 | concentre
+ESTREEM | 61 | domaine | 2 | 60 | 98.4 % | 0 | concentre
+ESTREEM | 61 | it_org | 1 | 60 | 98.4 % | 1 | concentre
+ESTREEM | 61 | csl_org | 1 | 61 | 100.0 % | 0 | concentre
+ESTREEM | 61 | bo_org | 1 | 61 | 100.0 % | 0 | concentre
+NATIXIS HONG KONG BRANCH | 59 | famille | 5 | 36 | 61.0 % | 0 | concentre
+NATIXIS HONG KONG BRANCH | 59 | domaine | 6 | 36 | 61.0 % | 0 | concentre
+NATIXIS HONG KONG BRANCH | 59 | it_org | 22 | 11 | 18.6 % | 0 | fin
+NATIXIS HONG KONG BRANCH | 59 | csl_org | 3 | 55 | 93.2 % | 0 | concentre
+NATIXIS HONG KONG BRANCH | 59 | bo_org | 16 | 39 | 66.1 % | 0 | concentre
+NATIXIS WEALTH MANAGEMENT | 46 | famille | 1 | 46 | 100.0 % | 0 | concentre
+NATIXIS WEALTH MANAGEMENT | 46 | domaine | 2 | 45 | 97.8 % | 0 | concentre
+NATIXIS WEALTH MANAGEMENT | 46 | it_org | 6 | 12 | 26.1 % | 0 | utile
+NATIXIS WEALTH MANAGEMENT | 46 | csl_org | 3 | 42 | 91.3 % | 0 | concentre
+NATIXIS WEALTH MANAGEMENT | 46 | bo_org | 19 | 11 | 23.9 % | 0 | fin
+AEW | 36 | famille | 2 | 34 | 94.4 % | 0 | concentre
+AEW | 36 | domaine | 2 | 34 | 94.4 % | 0 | concentre
+AEW | 36 | it_org | 3 | 28 | 77.8 % | 0 | concentre
+AEW | 36 | csl_org | 1 | 36 | 100.0 % | 0 | concentre
+AEW | 36 | bo_org | 4 | 33 | 91.7 % | 0 | concentre
+IT-CE | 25 | famille | 2 | 14 | 56.0 % | 10 | utile
+IT-CE | 25 | domaine | 4 | 8 | 32.0 % | 10 | utile
+IT-CE | 25 | it_org | 0 | 0 | n/a | 25 | vide
+IT-CE | 25 | csl_org | 0 | 0 | n/a | 25 | vide
+IT-CE | 25 | bo_org | 0 | 0 | n/a | 25 | vide
+BIMPLI | 24 | famille | 3 | 21 | 87.5 % | 0 | concentre
+BIMPLI | 24 | domaine | 3 | 21 | 87.5 % | 0 | concentre
+BIMPLI | 24 | it_org | 2 | 19 | 79.2 % | 0 | concentre
+BIMPLI | 24 | csl_org | 2 | 23 | 95.8 % | 0 | concentre
+BIMPLI | 24 | bo_org | 4 | 13 | 54.2 % | 0 | utile
+NATIXIS INTEREPARGNE | 23 | famille | 2 | 22 | 95.7 % | 0 | concentre
+NATIXIS INTEREPARGNE | 23 | domaine | 2 | 22 | 95.7 % | 0 | concentre
+NATIXIS INTEREPARGNE | 23 | it_org | 1 | 23 | 100.0 % | 0 | concentre
+NATIXIS INTEREPARGNE | 23 | csl_org | 2 | 21 | 91.3 % | 0 | concentre
+NATIXIS INTEREPARGNE | 23 | bo_org | 2 | 21 | 91.3 % | 0 | concentre
+INFORMATIQUE BANQUES POPULAIRES | 18 | famille | 3 | 10 | 55.6 % | 4 | utile
+INFORMATIQUE BANQUES POPULAIRES | 18 | domaine | 4 | 10 | 55.6 % | 4 | fin
+INFORMATIQUE BANQUES POPULAIRES | 18 | it_org | 0 | 0 | n/a | 18 | vide
+INFORMATIQUE BANQUES POPULAIRES | 18 | csl_org | 0 | 0 | n/a | 18 | vide
+INFORMATIQUE BANQUES POPULAIRES | 18 | bo_org | 0 | 0 | n/a | 18 | vide
+BANQUE PALATINE | 18 | famille | 1 | 18 | 100.0 % | 0 | concentre
+BANQUE PALATINE | 18 | domaine | 2 | 17 | 94.4 % | 0 | concentre
+BANQUE PALATINE | 18 | it_org | 3 | 14 | 77.8 % | 2 | concentre
+BANQUE PALATINE | 18 | csl_org | 2 | 14 | 77.8 % | 3 | concentre
+BANQUE PALATINE | 18 | bo_org | 3 | 14 | 77.8 % | 2 | concentre
+CREDIT FONCIER DE FRANCE | 15 | famille | 2 | 13 | 86.7 % | 0 | concentre
+CREDIT FONCIER DE FRANCE | 15 | domaine | 3 | 12 | 80.0 % | 0 | concentre
+CREDIT FONCIER DE FRANCE | 15 | it_org | 1 | 13 | 86.7 % | 2 | concentre
+CREDIT FONCIER DE FRANCE | 15 | csl_org | 1 | 13 | 86.7 % | 2 | concentre
+CREDIT FONCIER DE FRANCE | 15 | bo_org | 1 | 13 | 86.7 % | 2 | concentre
+CREDIT COOPERATIF | 14 | famille | 1 | 14 | 100.0 % | 0 | concentre
+CREDIT COOPERATIF | 14 | domaine | 2 | 13 | 92.9 % | 0 | concentre
+CREDIT COOPERATIF | 14 | it_org | 1 | 13 | 92.9 % | 1 | concentre
+CREDIT COOPERATIF | 14 | csl_org | 1 | 13 | 92.9 % | 1 | concentre
+CREDIT COOPERATIF | 14 | bo_org | 1 | 13 | 92.9 % | 1 | concentre
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | famille | 1 | 14 | 100.0 % | 0 | concentre
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | domaine | 2 | 13 | 92.9 % | 0 | concentre
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | it_org | 1 | 12 | 85.7 % | 2 | concentre
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | csl_org | 1 | 12 | 85.7 % | 2 | concentre
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 14 | bo_org | 1 | 12 | 85.7 % | 2 | concentre
+OSTRUM ASSET MANAGEMENT | 14 | famille | 1 | 14 | 100.0 % | 0 | concentre
+OSTRUM ASSET MANAGEMENT | 14 | domaine | 1 | 14 | 100.0 % | 0 | concentre
+OSTRUM ASSET MANAGEMENT | 14 | it_org | 2 | 12 | 85.7 % | 0 | concentre
+OSTRUM ASSET MANAGEMENT | 14 | csl_org | 1 | 14 | 100.0 % | 0 | concentre
+OSTRUM ASSET MANAGEMENT | 14 | bo_org | 4 | 8 | 57.1 % | 0 | fin
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | famille | 1 | 13 | 100.0 % | 0 | concentre
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | domaine | 1 | 13 | 100.0 % | 0 | concentre
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | it_org | 1 | 13 | 100.0 % | 0 | concentre
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | csl_org | 1 | 13 | 100.0 % | 0 | concentre
+BPCE EQUIPEMENT FINANCE ITALIA S.P.A | 13 | bo_org | 1 | 13 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE GRAND OUEST | 13 | famille | 2 | 10 | 76.9 % | 0 | concentre
+BANQUE POPULAIRE GRAND OUEST | 13 | domaine | 4 | 8 | 61.5 % | 0 | concentre
+BANQUE POPULAIRE GRAND OUEST | 13 | it_org | 1 | 13 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE GRAND OUEST | 13 | csl_org | 1 | 13 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE GRAND OUEST | 13 | bo_org | 1 | 13 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE DU SUD | 11 | famille | 1 | 11 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE DU SUD | 11 | domaine | 2 | 10 | 90.9 % | 0 | concentre
+BANQUE POPULAIRE DU SUD | 11 | it_org | 1 | 11 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE DU SUD | 11 | csl_org | 1 | 11 | 100.0 % | 0 | concentre
+BANQUE POPULAIRE DU SUD | 11 | bo_org | 1 | 11 | 100.0 % | 0 | concentre
+
+=== F2 Format de it_org ===
+it_org au format trigramme-libelle | 652 | 14.6 %
+BPCE SOLUTIONS INFORMATIQUES | 1908 | 0.4 %
+BPCE INFOGERANCE ET TECHNOLOGIES | 598 | 97.2 %
+BPCE | 567 | 0.0 %
+NATIXIS | 430 | 0.7 %
+BPCE PAYMENT SERVICES | 148 | 0.0 %
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 121 | 0.0 %
+NATIXIS NORTH AMERICA LLC | 74 | 0.0 %
+ESTREEM | 61 | 0.0 %
+NATIXIS HONG KONG BRANCH | 59 | 0.0 %
+NATIXIS WEALTH MANAGEMENT | 46 | 0.0 %
+AEW | 36 | 0.0 %
+IT-CE | 25 | 0.0 %
+
+=== G Attributs REFA utiles aux filtres, sur les applications avec depots ===
+colonne | applications renseignees | part | valeurs | valeurs les plus frequentes (valeur=applications)
+type_code | 4478 | 100.0 % | 6 | APP=4118 ; SFI=170 ; TECH=129 ; NON=39 ; PTF=20 ; VA=2
+level_code | 4478 | 100.0 % | 4 | APP=3876 ; SUB=582 ; EXE=15 ; INS=5
+nature_code | 1964 | 43.9 % | 9 | (vide)=2514 ; DEV=1445 ; SFT=455 ; NOC=18 ; PTF=16 ; MDW=11 ; INF=11
+nature | 1964 | 43.9 % | 9 | (vide)=2514 ; Développement spécifique=1445 ; Progiciel=455 ; Non Concerné=18 ; Plate-forme=16 ; Middleware=11 ; Infocentre=11
+internet_exposed | 3225 | 72.0 % | 3 | 0=2902 ; (vide)=1253 ; 1=323
+ssi_top | 3298 | 73.6 % | 3 | 0=2885 ; (vide)=1180 ; 1=413
+dora_id | 262 | 5.9 % | 4 | (vide)=4216 ; 1=205 ; 2=42 ; 3=15
+pci | 4469 | 99.8 % | 3 | 0=4422 ; 1=47 ; (vide)=9
+gdpr_code | 943 | 21.1 % | 6 | (vide)=3535 ; 0=379 ; 1=170 ; 4=167 ; 2=126 ; 3=101
+pdds_code | 4469 | 99.8 % | 7 | NON=4342 ; IBAN=43 ; CDE (PA-DSS)=40 ; CDE=34 ; (vide)=9 ; CDE (PA-DSS) - IBAN=7 ; CDE - IBAN=3
+rfim | 4468 | 99.8 % | 3 | 0=4455 ; 1=13 ; (vide)=10
+bcbs | 4469 | 99.8 % | 3 | 0=4406 ; 1=63 ; (vide)=9
+sirene | 4478 | 100.0 % | 2 | 0=4000 ; 1=478
+availability_code | 4249 | 94.9 % | 6 | 1=1690 ; 2=1065 ; 3=853 ; 4=542 ; (vide)=229 ; 0=99
+integrity_code | 4247 | 94.8 % | 6 | 1=1709 ; 3=1111 ; 2=1020 ; 4=309 ; (vide)=231 ; 0=98
+confidentiality_code | 4302 | 96.1 % | 6 | 2=1516 ; 1=1223 ; 3=1091 ; 4=317 ; (vide)=176 ; 0=155
+traceability_code | 4247 | 94.8 % | 6 | 2=2025 ; 1=1378 ; 3=624 ; (vide)=231 ; 4=121 ; 0=99
+sensibility_code | 0 | 0.0 % | 1 | (vide)=4478
+drp_code | 0 | 0.0 % | 1 | (vide)=4478
+management_type_code | 4478 | 100.0 % | 3 | BPCEIT=3616 ; SELF=814 ; NONE=48
+info_system_code | 4071 | 90.9 % | 27 | 3=547 ; 23=514 ; 17=450 ; (vide)=407 ; 22=393 ; 2=346 ; 24=253
+service_class | 2943 | 65.7 % | 12 | (vide)=1535 ; EN COURS DE DÉFINITION=773 ; Classe B=661 ; HORS PERIMETRE=462 ; Classe D=359 ; Classe C=258 ; SILVER=188
+tech_legacy | 4478 | 100.0 % | 50 | NATIXIS=2164 ; IT-CE=647 ; INFORMATIQUE BANQUES POPULAI=442 ; BPCE INFOGERANCE ET TECHNOLO=400 ; BPCE=278 ; 89C3 (ÉDITEUR IT)=188 ; BPCE SOLUTIONS INFORMATIQUES=61
+domain | 2020 | 45.1 % | 244 | (vide)=2458 ; Ne concerne pas=176 ; OTHER=171 ; ASS-ANV-TRANSVERSE=93 ; SFS-NFI-ECC=58 ; Garanties et Cautions Corpor=45 ; ASS-MAP-TRANSVERSE=45
+
+=== G2 Structure : sous-applications, projets et depots par application ===
+sous-applications (racine differente) | 822
+applications avec parent | 822
+applications sur plusieurs projets | 902
+projets par application | 1 projet | 3576
+projets par application | 11+ | 19
+projets par application | 2-3 | 658
+projets par application | 4-10 | 225
+depots par application | 0 | 420
+depots par application | 1-5 | 2383
+depots par application | 101+ | 137
+depots par application | 21-100 | 465
+depots par application | 6-20 | 1073
+
+=== H Depots : collecte, etat, classification ===
+content_status | done=79218 ; error=12981 ; pending=498
+state | AVAILABLE=92697
+archived | 0=86460 ; 1=6237
+public | 0=92691 ; 1=6
+is_fork | 0=88602 ; 1=4095
+level_reached | 3=55470 ; 2=23750 ; 1=12979 ; (vide)=498
+nature | UNKNOWN=27035 ; APPLICATION=17257 ; CI_CD=8161 ; DATABASE=7307 ; CONFIGURATION=7306 ; SCRIPTING=6586 ; IAC=6534 ; LIBRARY=4506 ; EMPTY=4407 ; DOCUMENTATION=2827 ; (vide)=737 ; DATA=34
+lifecycle | UNKNOWN=35819 ; DORMANT=34055 ; ACTIVE=15597 ; ARCHIVED=6076 ; (vide)=737 ; DEPRECATED=413
+status_q | INFERRED=68513 ; CONFIRMED=21040 ; CONFLICTING=2407 ; (vide)=737
+files_truncated | 0=92091 ; (vide)=498 ; 1=108
+erreur | métadonnées : FORBIDDEN | 12829
+erreur | métadonnées : ERROR | 131
+erreur | fichiers : FORBIDDEN | 17
+erreur | fichiers : ERROR | 2
+
+=== H2 Depots non collectes par entite (25 premieres) ===
+entite | depots | en erreur | part | archives | publics
+BPCE SOLUTIONS INFORMATIQUES | 42585 | 8080 | 19.0 % | 2692 | 0
+BPCE INFOGERANCE ET TECHNOLOGIES | 22226 | 1050 | 4.7 % | 446 | 1
+BPCE | 9410 | 676 | 7.2 % | 1751 | 3
+NATIXIS | 6844 | 702 | 10.3 % | 498 | 0
+NATIXIS INVESTMENT MANAGERS OPERATING SERVICES | 1653 | 96 | 5.8 % | 242 | 0
+NATIXIS NORTH AMERICA LLC | 1516 | 689 | 45.4 % | 218 | 1
+BPCE PAYMENT SERVICES | 1302 | 770 | 59.1 % | 37 | 0
+NATIXIS HONG KONG BRANCH | 638 | 37 | 5.8 % | 13 | 0
+NATIXIS INTEREPARGNE | 536 | 30 | 5.6 % | 21 | 0
+BANQUE POPULAIRE DU SUD | 416 | 0 | 0.0 % | 0 | 0
+BANQUE POPULAIRE GRAND OUEST | 396 | 0 | 0.0 % | 0 | 0
+CREDIT FONCIER DE FRANCE | 383 | 31 | 8.1 % | 0 | 0
+CAISSE EPARGNE PREVOYANCE LANGUEDOC ROUSSILLON | 323 | 1 | 0.3 % | 188 | 0
+NATIXIS WEALTH MANAGEMENT | 256 | 41 | 16.0 % | 6 | 0
+BANQUE POPULAIRE DU NORD | 238 | 0 | 0.0 % | 0 | 0
+HEXARQ | 235 | 233 | 99.1 % | 39 | 0
+BPCE SERVICES FINANCIERS | 212 | 0 | 0.0 % | 0 | 0
+NATIXIS LONDON BRANCH | 209 | 110 | 52.6 % | 38 | 0
+CAISSE D'EPARGNE ET DE PREVOYANCE DE BOURGOGNE FRANCHE-COMTE | 203 | 0 | 0.0 % | 7 | 0
+BANQUE PALATINE | 189 | 0 | 0.0 % | 0 | 0
+CREDIT COOPERATIF | 183 | 130 | 71.0 % | 3 | 0
+BIMPLI | 153 | 64 | 41.8 % | 0 | 0
+CAISSE D'EPARGNE ET DE PREVOYANCE HAUTS DE FRANCE | 151 | 0 | 0.0 % | 0 | 0
+ESTREEM | 143 | 96 | 67.1 % | 0 | 0
+BANQUE POPULAIRE RIVES DE PARIS | 136 | 0 | 0.0 % | 0 | 0
+depots de projets sans application | 653
+
+=== I Sources complementaires (activite, presence, preuves DevSecOps, details REFA) : lignes, couverture, colonnes ===
+apitools_cf_activity | 79925 | project_key distincts=5840 | project_key, slug, size_bytes, last_write_utc, commits_180d, empty, fetched_utc
+apitools_checkmarx | 3411 | cia distincts=3411 | cia, allowed, team_exists, teampath, reason, fetched_utc
+apitools_cia_lookups | 4478 | cia distincts=4478 | cia, status, http_status, n_projects, error, fetched_utc, run_id
+apitools_cia_projects | 4802 | cia distincts=2957 | cia, project_key, name, fetched_utc, run_id
+apitools_habilitations | 6686 | project_key distincts=6686 | project_key, status, http_status, n_groups, n_users_ignored, error, fetched_utc, run_id, payload
+apitools_jenkins | 4478 | cia distincts=4478 | cia, folder_exists, folder_url, instance_key, instance_urls_json, cia_tech, items_status, n_jobs, n_jobs_failed, n_jobs_never_built, n_jobs_disabled, last_build_utc, fetched_utc
+apitools_jenkins_jobs | 4034 | cia distincts=978 | cia, full_name, name, url, job_class, color, buildable, last_build_number, last_build_result, last_build_utc, health_score, repo_slug, project_key, fetched_utc
+apitools_projects | 6693 | cia distincts=0 | project_key, name, cia, fields_json, fetched_utc, run_id
+apitools_reads | 24829 |  | kind, key, status, http_status, n_items, error, fetched_utc, run_id
+apitools_refa_info | 4478 | cia distincts=4478 | cia, status, dicp, entite_biats, entite_refa, code_etablissement, cia_tech_json, cia_tech_first, ops_team, parent, fetched_utc
+apitools_referentiels | 36 |  | kind, code, value, fetched_utc
+apitools_sonar_projects | 19600 | cia distincts=2036 | sonar_key, cia, name, qualifier, visibility, last_analysis_utc, managed, project_uuid, repo_slug, project_key, fetched_utc
+apitools_xld_items | 518588 | cia distincts=9311 | cia_tech, kind, ref, cia, stage, env_name, app_name, item_type, fetched_utc
+apitools_xld_platforms | 229 |  | cia_tech, url, is_mars, n_applications, n_deployed, n_environments, fetched_utc
+project_presence | 6721 |  | key, first_seen_utc, first_seen_estimated, last_seen_utc, last_seen_run, missing_since_utc, missing_run
+refa_applications | 34871 | cia distincts=34871 | group_id, cia, local_id, name, label_fr, label_en, type_code, level_code, status_code, status_label, status_update_date, tech_legacy_code, tech_legacy, entity_code, entity, parent_group_id, root_group_id, nature_code, nature, domain_code, domain, billing_center_code, info_system_code, business_service_code, management_type_code, prod_team_code, prod_team, it_org_code, it_org, dev_org_code, dev_org
+refa_applications_ext | 34871 | cia distincts=34871 | group_id, cia, digram, editor, editor_strategy, validation_date, associated_app, latency_sensitive, dora_label, agreement_code, agreement_label, calendar, prod_org_unit, prod_op_org_unit, payload_version, enriched_utc
+refa_details | 13434 |  | group_id, kind, status, n, http_status, error, fetched_utc, run_id
+refa_hostings | 11903 |  | group_id, seq, type_code, type_label, offer_code, offer_label, service_type_code, service_type_label, provider_code, provider_label, from_cockpit, fetched_utc
+refa_responsibles | 63469 |  | group_id, seq, resp_id, type_code, type_label, position, iup, email, first_name, last_name, is_present, company_code, company, bu_code, bu, scope_code, scope, fetched_utc
+refa_urls | 1657 |  | group_id, seq, link, env_code, env_label, fetched_utc
+repo_activity | 79195 | project_key distincts=4556 | project_key, slug, computed_utc, source, commits_90d, commits_365d, commits_oldest_utc, commits_window_capped, pr_open, pr_open_oldest_days, pr_open_stale_30d, pr_merged_365d, pr_declined_365d, pr_last_update_utc, pr_window_capped, last_tag, last_tag_commit, branches_detail, branches_active_90d, branches_stale_365d, branches_with_open_pr, branches_with_builds, branches_builds_failed, default_build
+repo_presence | 92697 | project_key distincts=5862 | project_key, slug, repo_id, first_seen_utc, first_seen_estimated, last_seen_utc, last_seen_run, missing_since_utc, missing_run
+
+=== FIN ===
