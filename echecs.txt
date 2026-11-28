@@ -1,1 +1,400 @@
-py -c "import sqlite3;c=sqlite3.connect(r'C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db');[print(k,'|',r[1],'|',r[0]) for k in ['it_org','prod_team'] for r in c.execute(f'select a.{k},count(distinct a.cia) from cia_effective e join refa_applications a on a.cia=e.cia where a.entity=? group by 1 order by 1',('BPCE INFOGERANCE ET TECHNOLOGIES',))]" | Out-File -Encoding utf8 axes_bpceit.txt
+it_org | 6 | None
+it_org | 10 | ABO-Back Office Clients
+it_org | 6 | ACA-Authentification et Contr¶le d'AccÞs
+it_org | 12 | ACT-Automatisation et coordination transverse
+it_org | 3 | ADS-Active Directories
+it_org | 1 | AFA-Affacturage
+it_org | 1 | APA-Accompagnement Projet et Architecture
+it_org | 3 | APM-Performance Applicative - APM
+it_org | 1 | ARL-Architecture et Projets Clients
+it_org | 5 | ARZ-Administration retail Z
+it_org | 1 | ASA-Administration des Sauvegardes
+it_org | 2 | ASR-Assurances Non Vie
+it_org | 1 | AT1-Architecture Transverse
+it_org | 4 | ATO-Automation et Outils
+it_org | 7 | AUP-Automatisation Plateformes Applicatives
+it_org | 1 | AUS-Automatisation
+it_org | 2 | AUU-Linux-Unix
+it_org | 1 | AZE-Administration Environnement Z-EQX
+it_org | 1 | BAC-Administration BDD PF Client
+it_org | 1 | BDI-BDD DistribuÚe
+it_org | 2 | BDS-BDD DistribuÚ SEF
+it_org | 1 | BIE-Infrastructure Exploitation
+it_org | 1 | BIMPLI
+it_org | 1 | BLT-Blue Team
+it_org | 1 | BOP-Infrastructure SGBD Open
+it_org | 4 | BOR-Infrastructure Oracle
+it_org | 1 | CAISSE D'EPARGNE ET DE PREVOYANCE RHONE ALPES
+it_org | 1 | CAM-Construction Automatisation et MaintenabilitÚ
+it_org | 1 | CAPITOLE FINANCE-TOFINSO
+it_org | 9 | CCA-DevSecOps (Cloud, Containers, et Applications)
+it_org | 3 | CCI-Cloud Core Infrastructure
+it_org | 1 | CCO-CrÚdit Conso
+it_org | 3 | CCY-CMS et Cyber
+it_org | 1 | CHG-Changements
+it_org | 2 | CHP-Gestion des Comptes Ó Hauts PrivilÞges
+it_org | 1 | CLO-Public Cloud
+it_org | 2 | COD-Coaching Devops
+it_org | 1 | COO-Coordination Technique
+it_org | 1 | COR-Coaching et RÞglementaire
+it_org | 2 | COT-Container
+it_org | 1 | CPL-COMPLIANCE
+it_org | 2 | CPT-COMPTA
+it_org | 1 | CRC-Centre de Relations ClientÞles
+it_org | 2 | CRE-CrÚdit
+it_org | 13 | CSA-Comptes Standards et Annuaires d'habilitations
+it_org | 3 | CTL-Contr¶les
+it_org | 1 | Coe-RÚseau Coeur
+it_org | 1 | CrÚdit Foncier de France
+it_org | 5 | D4O-Data for Ops et DPM Operating System
+it_org | 1 | DAR-DÚtection et Architecture
+it_org | 2 | DB1-DBA 1
+it_org | 2 | DB2-DBA 2
+it_org | 1 | DBO-DBA Open
+it_org | 1 | DCL-DATA & CLOUD
+it_org | 2 | DEC-DÚcisionnels
+it_org | 1 | DEO-Data Entreprise & Outils
+it_org | 1 | DIA-Devops and Infrastructure Automation
+it_org | 20 | DID-Infrastructure Digitale
+it_org | 9 | DIS-SÚcuritÚ Informatique
+it_org | 1 | DLV-Delivery
+it_org | 1 | DOC-Documentaire et Entreprise NumÚrique
+it_org | 2 | DOS-DPM Operating System
+it_org | 5 | DPU-Deep Purple et BAD CE
+it_org | 5 | DRS-Transferts - Dorsales
+it_org | 2 | DSE-Data Service
+it_org | 3 | DSE-DÚveloppement Transverse
+it_org | 4 | DSO-Data Solution
+it_org | 3 | EAD-Endpoints Protection et SÚcuritÚ AD
+it_org | 4 | EAS-Epargne Assurances
+it_org | 1 | ECOFI INVESTISSEMENTS
+it_org | 1 | ECP-Environnements Certification Programme
+it_org | 1 | EDI-EDI
+it_org | 1 | EDS-Exploitation dÚcentralisÚe et support
+it_org | 2 | EGA-Expertise Gateway
+it_org | 4 | EPA-Client Epargne
+it_org | 2 | ERA-ExpÚrience RÚunion et Audiovisuel
+it_org | 2 | GED-Workflow et GED
+it_org | 3 | HDP-Socle Data ET IA
+it_org | 3 | HPC-Homologation Plateformes Clients
+it_org | 1 | HUA-Hardware, Urbanisation, Architecture et CapacitÚ
+it_org | 1 | IAC-Tools et IaC
+it_org | 3 | IAM-Identity and Access Management
+it_org | 2 | ICG-ICG
+it_org | 1 | IDB-Bases de DonnÚes
+it_org | 3 | IEC-Industrialisation  Expertise Cloud
+it_org | 1 | INA-INET Applications
+it_org | 1 | INC-INET Clouds
+it_org | 1 | INF-Infrastructure
+it_org | 4 | INN-Innovation
+it_org | 2 | INS-INET Sas Externes
+it_org | 2 | INU-INET Utilisateurs
+it_org | 1 | IPE-IntÚgration Plateforme Expertise
+it_org | 1 | ISA-Infrastructure de sauvegarde
+it_org | 2 | ISG-IntÚgration et Support Gateway
+it_org | 1 | IT TRV - APS-DBA
+it_org | 2 | IT flux
+it_org | 27 | ITC-IntÚgration Continue
+it_org | 1 | LCF-LCF et Automates
+it_org | 1 | LEA-Leasing
+it_org | 6 | LIB-Liberty
+it_org | 1 | LOR-Liberty orchestration
+it_org | 1 | MBO-Back Office
+it_org | 1 | MDM-MDM et Store
+it_org | 2 | MES-Messagerie UnifiÚe
+it_org | 1 | MFR-MAINFRAME
+it_org | 1 | MGA-MÚniga
+it_org | 3 | MIM-MacOs et Impression
+it_org | 1 | MNF-SÚcuritÚ du Mainframe
+it_org | 13 | MSG-Messaging
+it_org | 1 | Mirova Head office
+it_org | 1 | NAS-Assurances Vie
+it_org | 3 | OCC-Outils Collaboratifs
+it_org | 7 | OCM-Outils de Collaboration et Messagerie
+it_org | 1 | OCW-Outils Communication et Workflows
+it_org | 4 | ODS-Outillage Data & Support Retail et BPCE
+it_org | 2 | OPU-Linux OpÚrations
+it_org | 4 | OPV-Virtualisation OpÚrations et socle
+it_org | 1 | OPW-Windows OpÚrations
+it_org | 4 | ORD-Ordonnancement
+it_org | 2 | OSE-Socles et expertises systÞme
+it_org | 3 | OSO-ObservabilitÚ des socles
+it_org | 1 | OST-Gestion de la capacitÚ et outils transverses
+it_org | 6 | OTP-Outils Transformation et Projets
+it_org | 8 | PAG-Production Agences
+it_org | 2 | PAI-Paiements
+it_org | 2 | PAP-Infrastructure Plateforme Applicative
+it_org | 2 | PBE-Production Bancaire Etablissements
+it_org | 3 | PCE-Programme, Contr¶le et Expertise
+it_org | 2 | PCT-Protection des Comptes
+it_org | 2 | PDT-Postes de Travail
+it_org | 10 | PEB-Produits ETL-BI
+it_org | 1 | PEP-Paiements SEPA
+it_org | 4 | PES-Performance et supervision
+it_org | 1 | PEZ-Paiements et Echanges Z
+it_org | 1 | PFC-Plateforme Collaborateurs
+it_org | 11 | PIE-Plateforme des SystÞmes Information des Etablissements
+it_org | 1 | PJC-Projet Clients
+it_org | 3 | PJD-Projets Data
+it_org | 7 | PKI-PKI, Certificats et Cryptographie
+it_org | 2 | PMO-PMO
+it_org | 1 | PMT-Production Paiements
+it_org | 7 | PRD-Production Data
+it_org | 1 | PRF-PERF & COMPTA
+it_org | 1 | PRL-PRUDENTIEL
+it_org | 1 | PSE-Point Service
+it_org | 1 | PT-IT-BPCEIT-DIS-SRE-SDE
+it_org | 1 | PT-IT-BPCEIT-DPM-PAG-DUT-TRD
+it_org | 8 | PTA-Portail Agences
+it_org | 1 | RAG-RÚseau Agences
+it_org | 2 | REF-Outils RÚfÚrentiels
+it_org | 2 | RHC-RH & COMM
+it_org | 2 | RIA-RISQUES AUTRES
+it_org | 2 | RIC-RISQUES DE CREDIT
+it_org | 2 | RIM-Risques MarchÚ Porto
+it_org | 4 | ROS-Robots NAV
+it_org | 2 | S2S-Support N2 Socle Poste de Travail
+it_org | 1 | SBS-Stockage Bloc et RÚseau SAN
+it_org | 1 | SCF-Solutions de ConformitÚ
+it_org | 3 | SCO-Stockage Objet et Cloud
+it_org | 6 | SCX-SÚcurisation des Canaux Externes
+it_org | 3 | SDA-Serveurs d'Application
+it_org | 5 | SDD-SÚcuritÚ des donnÚes
+it_org | 1 | SEA-Production SEF, Epargne, Assurances
+it_org | 1 | SEC-Risques, SÚcuritÚ FinanciÞre et Transverses
+it_org | 1 | SFI-Stockage File
+it_org | 28 | SIM-SI MÚtiers internes
+it_org | 8 | SIS-SI SpÚcialisÚs
+it_org | 3 | SOF-SecuritÚ Offensive
+it_org | 2 | SOW-Socle Windows
+it_org | 1 | SPB-SÚcuritÚ des personnes et des biens
+it_org | 2 | SQL-Infrastructure SQL Server
+it_org | 1 | SRA-SÚcuritÚ RÚseau Applications
+it_org | 1 | SRE-SÚcuritÚ des RÚseaux
+it_org | 4 | SRH-SystÞme Information RH Etablissement
+it_org | 2 | SRM-SÚcuritÚ des RÚseaux Micro-SegmentÚs
+it_org | 4 | SRQ-SUIVI REGLEMENTAIRE & QUALITE
+it_org | 2 | SRU-SÚcuritÚ RÚseau Utilisateurs
+it_org | 2 | SRZ-Support applicatif retail Z
+it_org | 1 | STA-Socle Technique Agences
+it_org | 1 | STR-Solutions Transverses
+it_org | 14 | SUH-Supervision Hypervision
+it_org | 2 | SUP-Supervision
+it_org | 5 | SWE-Sites Web Etablissement
+it_org | 1 | SYA-SystÞmes d'authentification
+it_org | 3 | SYN-Syntropie
+it_org | 3 | SYV-SystÞme et Virtualisation
+it_org | 1 | SYZ-SystÞme Z
+it_org | 1 | TCH-TESTS DE CHARGE
+it_org | 3 | TEE-TÚlÚphonie et EcosystÞmes
+it_org | 1 | TIT-Titres
+it_org | 6 | TPR-TÚlÚphonie Production
+it_org | 2 | TTR-T&T, Repository, Achats
+it_org | 2 | ULC-Usine Logicielle Coeur
+it_org | 5 | VIR-Virtualisation Poste de Travail
+it_org | 3 | VOC-Vulnerability Operation Center
+it_org | 1 | WAN-WAN et Internet
+it_org | 1 | WIF-WIFI
+it_org | 2 | WKF-Workflow Agences
+it_org | 1 | WMZ-Middleware multi-mÚtiers Z
+it_org | 2 | X86-Urbanisation serveurs et socle
+prod_team | 1 | DSI-TES-SHAREPOINT
+prod_team | 11 | PRD-APP-89C3-BAD
+prod_team | 1 | PRD-APP-ADMINISTRATION-FLUX
+prod_team | 1 | PRD-APP-AFFACTURAGE
+prod_team | 1 | PRD-APP-AGENCES-BDD
+prod_team | 3 | PRD-APP-AGENCES-CREDIT
+prod_team | 1 | PRD-APP-AGENCES-CRM
+prod_team | 2 | PRD-APP-AGENCES-DECISIONNELS
+prod_team | 1 | PRD-APP-AGENCES-DOCUMENT-NUMERIQUE
+prod_team | 3 | PRD-APP-AGENCES-EPARGNE
+prod_team | 9 | PRD-APP-AGENCES-PORTAIL
+prod_team | 1 | PRD-APP-AGENCES-RISQUES-FINANCES
+prod_team | 1 | PRD-APP-AGENCES-SOCLE
+prod_team | 7 | PRD-APP-AGENCES-TRANSFO-DEVOPS
+prod_team | 1 | PRD-APP-AGENCES-WEBSERVICE
+prod_team | 2 | PRD-APP-AGENCES-WORKFLOW
+prod_team | 2 | PRD-APP-ASSURANCES-IARD-ASR
+prod_team | 3 | PRD-APP-ASSURANCES-VIE
+prod_team | 1 | PRD-APP-BDD-OPEN
+prod_team | 1 | PRD-APP-BDD-PLATEFORMES-CLIENTS
+prod_team | 1 | PRD-APP-BFI-DBA
+prod_team | 1 | PRD-APP-CASDEN-DISTRIBUE
+prod_team | 1 | PRD-APP-CCO
+prod_team | 1 | PRD-APP-CIAM
+prod_team | 3 | PRD-APP-CONTAINERS
+prod_team | 1 | PRD-APP-CONTROLM
+prod_team | 2 | PRD-APP-CORP-DAT-BDD1
+prod_team | 2 | PRD-APP-CORP-DAT-BDD2
+prod_team | 1 | PRD-APP-CORP-DAT-DCLOUD
+prod_team | 2 | PRD-APP-CORP-FIS-COMPTA
+prod_team | 1 | PRD-APP-CORP-FIS-PFB
+prod_team | 1 | PRD-APP-CORP-FIS-PRUDENTIEL
+prod_team | 1 | PRD-APP-CORP-MAINFRAME
+prod_team | 2 | PRD-APP-CORP-RH-COM
+prod_team | 2 | PRD-APP-CORP-RSK-AUTRE
+prod_team | 2 | PRD-APP-CORP-RSK-CREDIT
+prod_team | 1 | PRD-APP-CORP-RSK-M-CALE
+prod_team | 1 | PRD-APP-CORP-RSK-M-PORTUS
+prod_team | 1 | PRD-APP-CORP-SGG-COMPLIANCE
+prod_team | 3 | PRD-APP-CORP-TRV-APP
+prod_team | 1 | PRD-APP-CORP-TRV-PILOTAGE
+prod_team | 3 | PRD-APP-CORP-TRV-PMO
+prod_team | 1 | PRD-APP-CORP-TRV-TEST-CHARGE
+prod_team | 2 | PRD-APP-CORP-TT-REPOSITORY
+prod_team | 6 | PRD-APP-DATA-METIERS
+prod_team | 1 | PRD-APP-DPM-DPO-ECP
+prod_team | 1 | PRD-APP-DPM-PIE-CPE
+prod_team | 1 | PRD-APP-EAS-DBA
+prod_team | 1 | PRD-APP-ECHANGES-EDI
+prod_team | 1 | PRD-APP-ECHANGES-SEPA
+prod_team | 1 | PRD-APP-EQUIPMENT-SOLUTIONS
+prod_team | 3 | PRD-APP-EQX-BAD
+prod_team | 10 | PRD-APP-ETL-BI
+prod_team | 4 | PRD-APP-FLUX
+prod_team | 1 | PRD-APP-GARANTIES-CAUTION
+prod_team | 2 | PRD-APP-GED
+prod_team | 1 | PRD-APP-HORSPROD-POINT-SERVICE
+prod_team | 3 | PRD-APP-ICG
+prod_team | 1 | PRD-APP-LEASING
+prod_team | 1 | PRD-APP-MAINFRAME-ECHANGES-MINOS
+prod_team | 1 | PRD-APP-MAINFRAME-EQX-ADMIN-TECH
+prod_team | 1 | PRD-APP-MAINFRAME-MIDDLEWARE-NXS-FEC
+prod_team | 5 | PRD-APP-MAINFRAME-MYS-ADMIN-TECH-PROD
+prod_team | 2 | PRD-APP-MAINFRAME-MYS-APPLI-PROD
+prod_team | 1 | PRD-APP-MAINFRAME-SYSTEME
+prod_team | 1 | PRD-APP-MENIGA
+prod_team | 2 | PRD-APP-MONETIQUE-BO
+prod_team | 1 | PRD-APP-MONETIQUE-LCF
+prod_team | 5 | PRD-APP-MYS-BAD
+prod_team | 1 | PRD-APP-NAM
+prod_team | 4 | PRD-APP-NAV
+prod_team | 1 | PRD-APP-NEWTEST
+prod_team | 2 | PRD-APP-ORDONNANCEUR
+prod_team | 2 | PRD-APP-PACKAGING
+prod_team | 3 | PRD-APP-PCL-HOMOLOGATION
+prod_team | 1 | PRD-APP-PEP-BNF
+prod_team | 3 | PRD-APP-PEP-DFS
+prod_team | 1 | PRD-APP-PEP-GMI
+prod_team | 3 | PRD-APP-POWERBI
+prod_team | 2 | PRD-APP-RETAIL-DEVOPS-CLOUD
+prod_team | 2 | PRD-APP-SEF-DBA
+prod_team | 3 | PRD-APP-SERVEURSDAPPLICATIONS
+prod_team | 1 | PRD-APP-SI-ETABLISSEMENTS-BUILD-MCO
+prod_team | 3 | PRD-APP-SI-ETABLISSEMENTS-COREBANK
+prod_team | 1 | PRD-APP-SI-ETABLISSEMENTS-FILIALES
+prod_team | 1 | PRD-APP-SI-ETABLISSEMENTS-INDUS
+prod_team | 3 | PRD-APP-SI-ETABLISSEMENTS-PDE
+prod_team | 1 | PRD-APP-SI-ETABLISSEMENTS-REPORT
+prod_team | 2 | PRD-APP-SI-ETABLISSEMENTS-SPB
+prod_team | 5 | PRD-APP-SI-ETABLISSEMENTS-SRH
+prod_team | 9 | PRD-APP-SI-ETABLISSEMENTS-SWE
+prod_team | 10 | PRD-APP-SI-SPECIALISE
+prod_team | 13 | PRD-APP-STREAMS-MESSAGING
+prod_team | 3 | PRD-APP-SYNTROPIE
+prod_team | 5 | PRD-APP-TES
+prod_team | 5 | PRD-APP-THEIA
+prod_team | 1 | PRD-APP-TITRES
+prod_team | 2 | PRD-APP-WEBAPI
+prod_team | 2 | PRD-APP-WEBAPI-N3
+prod_team | 1 | PRD-INF-AIX
+prod_team | 4 | PRD-INF-ARCHITECTURE-PROJET
+prod_team | 2 | PRD-INF-BCLOUD
+prod_team | 2 | PRD-INF-BSI
+prod_team | 1 | PRD-INF-CENTRES-SERVICES
+prod_team | 1 | PRD-INF-CITRIX
+prod_team | 4 | PRD-INF-CLOUD-PRIVE
+prod_team | 1 | PRD-INF-COORDINATION-INFRA
+prod_team | 24 | PRD-INF-DIA-CIT
+prod_team | 26 | PRD-INF-DID-SOM
+prod_team | 1 | PRD-INF-EKARA
+prod_team | 4 | PRD-INF-GROUPWARE
+prod_team | 2 | PRD-INF-HARDWARE-X86
+prod_team | 1 | PRD-INF-INET-APPLICATIONS
+prod_team | 1 | PRD-INF-INET-CLOUD
+prod_team | 1 | PRD-INF-INET-EXPLOIT
+prod_team | 1 | PRD-INF-INET-EXTERNAL-CONNECTIVITY
+prod_team | 1 | PRD-INF-INET-USERS-DDI
+prod_team | 1 | PRD-INF-INFRA-SAUVEGARDE
+prod_team | 4 | PRD-INF-LINUX
+prod_team | 2 | PRD-INF-LINUX-AUTOMATION
+prod_team | 3 | PRD-INF-LINUX-BIGDATA
+prod_team | 2 | PRD-INF-LINUX-EXPERTISE
+prod_team | 6 | PRD-INF-METROLOGIE-INSTRU
+prod_team | 3 | PRD-INF-OUTIL-PERFORMANCE
+prod_team | 18 | PRD-INF-PAP-ACT-API
+prod_team | 1 | PRD-INF-PAP-ACT-PMS
+prod_team | 5 | PRD-INF-PAP-AUTOMATION
+prod_team | 3 | PRD-INF-PF-INTEGRATION-CONTINUE
+prod_team | 5 | PRD-INF-RESEAU-AUTOMATISATION
+prod_team | 1 | PRD-INF-RESEAU-CENTRALE-AGENCES
+prod_team | 1 | PRD-INF-RESEAU-LAN-DATACENTER-N2
+prod_team | 1 | PRD-INF-RESEAU-WIFI
+prod_team | 1 | PRD-INF-SAUVEGARDE-RESTAURATION
+prod_team | 1 | PRD-INF-SCALEIT
+prod_team | 2 | PRD-INF-SGBD-AUTOMATION
+prod_team | 1 | PRD-INF-SGBD-EXPLOITATION-INFRA
+prod_team | 1 | PRD-INF-SGBD-OPEN
+prod_team | 4 | PRD-INF-SGBD-ORACLE
+prod_team | 2 | PRD-INF-SGBD-SQLSERVER
+prod_team | 1 | PRD-INF-STOCKAGE-BLOC-SAN
+prod_team | 1 | PRD-INF-STOCKAGE-FILE
+prod_team | 3 | PRD-INF-STOCKAGE-OBJET
+prod_team | 1 | PRD-INF-SUPPORT-NOC-N2
+prod_team | 8 | PRD-INF-TOOLS-SUPERVISION
+prod_team | 1 | PRD-INF-VIRTUALISATION-AUTOMATISATION
+prod_team | 3 | PRD-INF-VIRTUALISATION-OPERATIONS
+prod_team | 1 | PRD-INF-VIRTUALISATION-OUTILS
+prod_team | 2 | PRD-INF-WINDOWS
+prod_team | 2 | PRD-PDT-ACTIVE-DIRECTORY
+prod_team | 3 | PRD-PDT-APPLI-M365
+prod_team | 1 | PRD-PDT-CLOUDIDENTITY
+prod_team | 1 | PRD-PDT-ENGINEERING-TELEPHONY
+prod_team | 2 | PRD-PDT-INFRA-MESSAGERIE
+prod_team | 1 | PRD-PDT-INT-EMEA-IT-SUPPORT
+prod_team | 4 | PRD-PDT-INTERACT
+prod_team | 1 | PRD-PDT-MDM
+prod_team | 1 | PRD-PDT-OCM-SCF
+prod_team | 1 | PRD-PDT-PDT-MAJPCA
+prod_team | 2 | PRD-PDT-POSTE-IMPRESSION-SCAN
+prod_team | 2 | PRD-PDT-POSTE-INFRA
+prod_team | 1 | PRD-PDT-POSTE-MACOS
+prod_team | 1 | PRD-PDT-POSTE-SOCLE
+prod_team | 1 | PRD-PDT-SERVEURS-AGENCES
+prod_team | 1 | PRD-PDT-SOCLES-SERVEURS-AGENCES
+prod_team | 1 | PRD-PDT-TCU-CRC-MYS
+prod_team | 2 | PRD-PDT-TCU-ERA
+prod_team | 8 | PRD-PDT-TOIP-TELEPHONY
+prod_team | 1 | PRD-PDT-TRV-DWO
+prod_team | 4 | PRD-SEC-ANNUAIRES-SECU
+prod_team | 1 | PRD-SEC-APPLICATIONS
+prod_team | 6 | PRD-SEC-AUTH
+prod_team | 2 | PRD-SEC-DATAPROTECTION
+prod_team | 2 | PRD-SEC-DLP
+prod_team | 2 | PRD-SEC-FIREWALL
+prod_team | 1 | PRD-SEC-HABILITATION-AD-STANDARD
+prod_team | 5 | PRD-SEC-IAM
+prod_team | 2 | PRD-SEC-IAM-CFN
+prod_team | 2 | PRD-SEC-IAM-CHP
+prod_team | 4 | PRD-SEC-IAM-CTL
+prod_team | 1 | PRD-SEC-MAINFRAME
+prod_team | 38 | PRD-SEC-PAS
+prod_team | 8 | PRD-SEC-PKI
+prod_team | 3 | PRD-SEC-RELAIS-MESSAGERIE
+prod_team | 2 | PRD-SEC-SCAN-VULN
+prod_team | 3 | PRD-SEC-SECURITE-ANTIVIRUS
+prod_team | 1 | PRD-SEC-SECURITE-RESEAUX
+prod_team | 1 | PRD-SEC-SOC-BLUETEAM
+prod_team | 6 | PRD-SEC-SOC-MCO
+prod_team | 2 | PRD-SEC-SOC-SOF
+prod_team | 1 | PRD-SEC-SONDES-INTRUSION
+prod_team | 1 | PRD-TRV-DATA-ENTREPRISE-OUTILS
+prod_team | 3 | PRD-TRV-DOS
+prod_team | 3 | PRD-TRV-FABLAB
+prod_team | 1 | PRD-TRV-IPI-EXPERTS
+prod_team | 34 | PRD-TRV-SI-INTERNE
+prod_team | 1 | PRD-TRV-SI-INTERNE-N3
+prod_team | 6 | PRD-TRV-SUNDAI-MOA
+prod_team | 2 | PRD-TRV-SUPERVISION-BACKOFFICE
+prod_team | 4 | SUI-N3-POSTE-CITRIX-SUPPORT
+
