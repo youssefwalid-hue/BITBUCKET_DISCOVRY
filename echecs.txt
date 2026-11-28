@@ -1,18 +1,1 @@
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7> py -c "import sqlite3;c=sqlite3.connect(r'C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db');E=['BPCE SOLUTIONS INFORMATIQUES','BPCE INFOGERANCE ET TECHNOLOGIES','BPCE','NATIXIS'];[print(e,'|',k,'|',*c.execute(f'select count(*),max(n) from (select a.{k},count(distinct a.cia) n from cia_effective e join refa_applications a on a.cia=e.cia where a.entity=? and length(a.{k})>0 group by 1)',(e,)).fetchone()) for e in E for k in ['csl_org','it_org','bo_org','prod_team']]"
-BPCE SOLUTIONS INFORMATIQUES | csl_org | 16 712
-BPCE SOLUTIONS INFORMATIQUES | it_org | 180 62
-BPCE SOLUTIONS INFORMATIQUES | bo_org | 29 712
-BPCE SOLUTIONS INFORMATIQUES | prod_team | 69 191
-BPCE INFOGERANCE ET TECHNOLOGIES | csl_org | 9 571
-BPCE INFOGERANCE ET TECHNOLOGIES | it_org | 199 28
-BPCE INFOGERANCE ET TECHNOLOGIES | bo_org | 13 571
-BPCE INFOGERANCE ET TECHNOLOGIES | prod_team | 199 38
-BPCE | csl_org | 21 415
-BPCE | it_org | 25 103
-BPCE | bo_org | 82 95
-BPCE | prod_team | 35 82
-NATIXIS | csl_org | 21 192
-NATIXIS | it_org | 103 34
-NATIXIS | bo_org | 59 127
-NATIXIS | prod_team | 45 30
-PS C:\Users\BWT40FH\BITBUCKET\V7\outils\bri_v7>
+py -c "import sqlite3;c=sqlite3.connect(r'C:\Users\BWT40FH\BITBUCKET\V6\bri\instance.db');[print(k,'|',r[1],'|',r[0]) for k in ['it_org','prod_team'] for r in c.execute(f'select a.{k},count(distinct a.cia) from cia_effective e join refa_applications a on a.cia=e.cia where a.entity=? group by 1 order by 1',('BPCE INFOGERANCE ET TECHNOLOGIES',))]" | Out-File -Encoding utf8 axes_bpceit.txt
